@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
 import { Button } from '~/components/ui/button';
+import { HomeChartList } from './home-chart-list';
+
+const sectionContainerClassName =
+  'relative mx-auto w-full max-w-6xl px-6 lg:px-8';
 
 export function HomeHero() {
   return (
@@ -12,23 +16,26 @@ export function HomeHero() {
         <div className="absolute bottom-[-10rem] left-[38%] h-[24rem] w-sm rounded-full bg-[radial-gradient(circle,rgba(249,203,40,0.24)_0%,rgba(249,203,40,0)_72%)] blur-2xl" />
       </div>
 
-      <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-6 pt-24 pb-20 text-center sm:pt-28 lg:px-8 lg:pt-36">
+      <section
+        className={`${sectionContainerClassName} flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36`}
+      >
         <p className="mb-8 rounded-full border border-[#ebebeb] bg-white/90 px-4 py-1 font-mono text-[#4d4d4d] text-[12px] uppercase tracking-[0.12em] backdrop-blur">
-          NekoChart • Online Chart Builder
+          NekoChart • Free Online Chart Maker
         </p>
 
         <h1 className="max-w-5xl text-balance font-semibold text-5xl leading-[1.02] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
-          Build clear charts from raw data in minutes
+          Free online chart maker for Excel and CSV data
         </h1>
 
         <p className="mt-7 max-w-2xl text-pretty text-[#4d4d4d] text-base leading-7 sm:text-lg sm:leading-8">
-          Import your CSV, choose a visual style, and export publication-ready
-          charts with consistent spacing, color, and typography.
+          Upload or paste your spreadsheet, generate bar charts, line charts,
+          and pie charts in 1 minute, then export PNG or SVG instantly. No
+          signup, no registration, completely free.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Button asChild className="h-11 rounded-full px-6 text-sm" size="lg">
-            <Link href="#">Start for free</Link>
+            <Link href="#">Create Chart Online</Link>
           </Button>
           <Button
             asChild
@@ -36,10 +43,16 @@ export function HomeHero() {
             size="lg"
             variant="outline"
           >
-            <Link href="#">View templates</Link>
+            <Link href="#">View Bar, Line, Pie Examples</Link>
           </Button>
         </div>
+
+        <p className="mt-5 font-mono text-[#888888] text-xs tracking-[0.06em] uppercase">
+          Free chart maker · No signup · PNG/SVG export
+        </p>
       </section>
+
+      <HomeChartList className={sectionContainerClassName} />
     </main>
   );
 }
