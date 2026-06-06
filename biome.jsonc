@@ -1,69 +1,77 @@
 {
-	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"root": true,
-	"vcs": {
-		"enabled": true,
-		"useIgnoreFile": true,
-		"clientKind": "git"
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"recommended": true,
-			"source": {
-				"recommended": true,
-				"organizeImports": "on",
-				"useSortedAttributes": "on"
-			}
-		}
-	},
-	"formatter": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true,
-			"nursery": {
-				"useSortedClasses": {
-					"level": "warn",
-					"fix": "safe",
-					"options": {
-						"functions": ["clsx", "cva", "cn"]
-					}
-				}
-			}
-		}
-	},
-	"html": {
-		"formatter": {
-			"enabled": true
-		}
-	},
-	"javascript": {
-		"assist": {
-			"enabled": true
-		},
-		"formatter": {
-			"enabled": true
-		},
-		"linter": {
-			"enabled": true
-		}
-	},
-	"css": {
-		"assist": {
-			"enabled": true
-		},
-		"formatter": {
-			"enabled": true
-		},
-		"linter": {
-			"enabled": true
-		},
-		"parser": {
-			"cssModules": true,
-			"tailwindDirectives": true
-		}
-	}
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "root": true,
+  "vcs": {
+    "enabled": true,
+    "useIgnoreFile": true,
+    "clientKind": "git"
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "formatWithErrors": true,
+    "useEditorconfig": true
+  },
+  "assist": { "actions": { "source": { "organizeImports": "off" } } },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "suspicious": {
+        "noSparseArray": "off",
+        "noArrayIndexKey": "off",
+        "noExplicitAny": "off",
+        "noShadowRestrictedNames": "off",
+        "noNonNullAssertedOptionalChain": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "noUselessFragments": "off",
+        "noImportantStyles": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "noUnusedImports": "off",
+        "useHookAtTopLevel": "off",
+        "useParseIntRadix": "off"
+      },
+      "performance": {
+        "noDynamicNamespaceImportAccess": "off",
+        "noImgElement": "off"
+      },
+      "style": {
+        "useTemplate": "off",
+        "noNonNullAssertion": "off",
+        "useNodejsImportProtocol": "off",
+        "useConsistentArrayType": {
+          "level": "off",
+          "options": { "syntax": "shorthand" }
+        }
+      },
+      "a11y": {
+        "useValidAnchor": "off",
+        "noSvgWithoutTitle": "off",
+        "useKeyWithClickEvents": "off",
+        "noStaticElementInteractions": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "es5",
+      "semicolons": "always"
+    }
+  },
+  "css": {
+    "parser": {
+      "cssModules": true,
+      "tailwindDirectives": true
+    }
+  }
 }

@@ -1,0 +1,4 @@
+- 每次执行前回复我 "Hi NekoChart"
+- 设计样式请遵守 DESIGN.md 规则
+- components/ui 中存在的组件，直接复用
+- app 中页面的组件放在对应页面的 _components 下，比如 demo demo/_components(demo 的特有组件)
