@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '~/components/ui/button';
 import { boxContainerClassName } from '~/lib/layout';
@@ -34,11 +35,18 @@ export function GlobalHeader() {
         className={`${boxContainerClassName} flex h-16 items-center justify-between`}
       >
         <div className="flex items-center gap-6">
-          <Link
-            href="/"
-            className="font-mono text-sm uppercase tracking-[0.12em] text-[#171717]"
-          >
-            NekoChart
+          <Link href="/" className="flex shrink-0 items-center">
+            <Image
+              src="/logo.png"
+              alt="NekoChart"
+              width={48}
+              height={48}
+              priority
+            />
+            <span className="text-xl ml-2 font-mono lowercase">
+              <span>Neko</span>
+              <span className="text-blue-600">Chart</span>
+            </span>
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
             <Link
