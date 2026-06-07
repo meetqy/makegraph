@@ -1,18 +1,20 @@
 type HeroBackgroundProps = {
   gridWidth?: number;
   gridHeight?: number;
+  bleedTop?: boolean;
 };
 
 export function HeroBackground({
   gridWidth = 200,
   gridHeight = 200,
+  bleedTop = false,
 }: HeroBackgroundProps) {
   return (
-    <>
-      <svg
-        aria-hidden="true"
-        className="absolute inset-x-0 -top-16 -z-10 h-[calc(100%+4rem)] w-full [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-      >
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute inset-x-0 bottom-0 -z-10 overflow-hidden ${bleedTop ? '-top-16' : 'top-0'}`}
+    >
+      <svg className="absolute inset-0 h-full w-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)]">
         <defs>
           <pattern
             id="hero-grid-pattern"
@@ -42,19 +44,6 @@ export function HeroBackground({
           strokeWidth="0"
         />
       </svg>
-
-      <div
-        aria-hidden="true"
-        className="absolute top-10 left-[calc(50%-4rem)] -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:top-[calc(50%-30rem)] lg:left-48 xl:left-[calc(50%-24rem)]"
-      >
-        <div
-          style={{
-            clipPath:
-              'polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)',
-          }}
-          className="aspect-[1108/632] w-[69rem] bg-[linear-gradient(to_right,#50e3c2,#ff0080,#ff4d4d,#f9cb28)] opacity-20"
-        />
-      </div>
-    </>
+    </div>
   );
 }
