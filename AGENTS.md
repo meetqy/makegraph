@@ -3,3 +3,5 @@
 - components/ui 中存在的组件，直接复用
 - app 中页面的组件放在对应页面的 \_components 下，比如 demo demo/\_components(demo 的特有组件)
 - 文案默认用英语，注释默认用中文
+- 文案/需求/SEO 的参考资源都在 docs 目录下
+- 每次执行完成之后，不需要执行 run dev / run build 执行检查，需要执行 pnpm run check:write

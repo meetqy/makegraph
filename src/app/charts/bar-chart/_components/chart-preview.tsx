@@ -42,67 +42,69 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
         </Button>
       </div>
 
-      <div className="flex w-full flex-1 flex-col items-center justify-center p-6">
-        {settings.title && (
-          <h3 className="mb-6 font-medium text-[#171717] text-xl">
-            {settings.title}
-          </h3>
-        )}
+      <div className="flex w-full flex-1 overflow-x-auto">
+        <div className="flex flex-col items-center justify-center min-w-[700px] w-full h-full p-4 sm:p-6 mx-auto">
+          {settings.title && (
+            <h3 className="mb-6 font-medium text-[#171717] text-xl shrink-0">
+              {settings.title}
+            </h3>
+          )}
 
-        <div className="flex-1 w-full min-h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={data}
-              margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
-            >
-              {settings.showGrid && (
-                <CartesianGrid
-                  strokeDasharray="4 4"
-                  vertical={false}
-                  stroke="#ebebeb"
+          <div className="flex-1 w-full min-h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={data}
+                margin={{ top: 20, right: 0, left: 0, bottom: 20 }}
+              >
+                {settings.showGrid && (
+                  <CartesianGrid
+                    strokeDasharray="4 4"
+                    vertical={false}
+                    stroke="#ebebeb"
+                  />
+                )}
+                <XAxis
+                  dataKey="name"
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fill: '#888888', fontSize: 13 }}
+                  dy={10}
                 />
-              )}
-              <XAxis
-                dataKey="name"
-                tickLine={false}
-                axisLine={false}
-                tick={{ fill: '#888888', fontSize: 13 }}
-                dy={10}
-              />
-              <YAxis
-                tickLine={false}
-                axisLine={false}
-                tick={{ fill: '#888888', fontSize: 13 }}
-                dx={-10}
-              />
-              <Tooltip
-                cursor={{ fill: '#fafafa' }}
-                contentStyle={{
-                  borderRadius: '8px',
-                  border: '1px solid #ebebeb',
-                  boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
-                  fontSize: '13px',
-                }}
-                itemStyle={{ color: '#171717', fontWeight: 500 }}
-              />
-              {settings.showLegend && (
-                <Legend
-                  iconType="circle"
-                  wrapperStyle={{
+                <YAxis
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fill: '#888888', fontSize: 13 }}
+                  dx={-10}
+                />
+                <Tooltip
+                  cursor={{ fill: '#fafafa' }}
+                  contentStyle={{
+                    borderRadius: '8px',
+                    border: '1px solid #ebebeb',
+                    boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
                     fontSize: '13px',
-                    color: '#4d4d4d',
-                    paddingTop: '20px',
                   }}
+                  itemStyle={{ color: '#171717', fontWeight: 500 }}
                 />
-              )}
-              <Bar
-                dataKey="value"
-                name={settings.yAxisLabel || 'Value'}
-                fill={settings.color}
-                radius={[4, 4, 0, 0]}
-              />
-            </BarChart>
-          </ResponsiveContainer>
+                {settings.showLegend && (
+                  <Legend
+                    iconType="circle"
+                    wrapperStyle={{
+                      fontSize: '13px',
+                      color: '#4d4d4d',
+                      paddingTop: '20px',
+                    }}
+                  />
+                )}
+                <Bar
+                  dataKey="value"
+                  name={settings.yAxisLabel || 'Value'}
+                  fill={settings.color}
+                  radius={[4, 4, 0, 0]}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
     </div>
