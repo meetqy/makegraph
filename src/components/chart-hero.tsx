@@ -1,4 +1,3 @@
-import React from 'react';
 import { HeroBackground } from '~/components/hero-background';
 
 interface ChartHeroProps {

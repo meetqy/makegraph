@@ -9,36 +9,83 @@ type HeroBackgroundProps = {
 };
 
 type HeroBlockState = {
+  x: number;
+  y: number;
+  lightColor: string;
+  darkColor: string;
   color: string;
   opacity: number;
 };
 
-const heroBlockPalette = [
-  '#fafafa',
-  '#f8e9e7',
-  '#efe3cf',
-  '#e4ebf5',
-  '#e6efe7',
-];
+type HeroBlockPalette = {
+  light: string;
+  dark: string;
+};
 
-const heroBlockOffsets = [
-  { x: -200, y: 0 },
-  { x: 600, y: 0 },
-  { x: -400, y: 600 },
-  { x: 200, y: 800 },
-  { x: 800, y: 400 },
-  { x: 1000, y: 600 },
+const heroBlockPalette: HeroBlockPalette[] = [
+  { light: '#f8f2f1', dark: '#d96c5f' },
+  { light: '#f4eddc', dark: '#c7912d' },
+  { light: '#edf2f8', dark: '#5d82bf' },
+  { light: '#edf4ee', dark: '#5f9a69' },
+  { light: '#f3f0f8', dark: '#8770b8' },
 ];
 
 const heroBackgroundRows = 5;
 const heroBackgroundBleedTop = 64;
+const heroBackgroundColumns = 10;
+const heroBackgroundBlockCount = 3;
+const heroBlockHiddenOpacity = 0;
+const heroBlockLightOpacity = 0.28;
+const heroBlockActiveOpacity = 0.72;
+const heroBlockStartDelay = 70;
+const heroBlockFadeInDuration = 900;
+const heroBlockFadeOutDuration = 900;
+const heroBlockMoveDelay = 180;
+const heroBlockCyclePauseMin = 900;
+const heroBlockCyclePauseRange = 1400;
 
-function getRandomBlockState(): HeroBlockState {
+function getRandomPalette() {
+  return (
+    heroBlockPalette[Math.floor(Math.random() * heroBlockPalette.length)] ??
+    heroBlockPalette[0]
+  );
+}
+
+function getRandomPalettes(count: number): HeroBlockPalette[] {
+  const shuffledPalettes = [...heroBlockPalette].sort(
+    () => Math.random() - 0.5
+  );
+
+  return shuffledPalettes.slice(0, count);
+}
+
+function getRandomBlockPosition(gridWidth: number, gridHeight: number) {
+  const column = Math.floor(Math.random() * heroBackgroundColumns) - 4;
+  const row = Math.floor(Math.random() * heroBackgroundRows);
+
   return {
-    color:
-      heroBlockPalette[Math.floor(Math.random() * heroBlockPalette.length)] ??
-      heroBlockPalette[0],
-    opacity: 0.35 + Math.random() * 0.45,
+    x: column * gridWidth,
+    y: row * gridHeight,
+  };
+}
+
+function getInitialBlockState(
+  index: number,
+  gridWidth: number,
+  gridHeight: number
+): HeroBlockState {
+  const palette =
+    heroBlockPalette[index % heroBlockPalette.length] ?? heroBlockPalette[0];
+  const column = index * 2 - 2;
+  const row = index % heroBackgroundRows;
+
+  return {
+    x: column * gridWidth,
+    y: row * gridHeight,
+    lightColor: palette.light,
+    darkColor: palette.dark,
+    color: palette.light,
+    opacity: heroBlockHiddenOpacity,
   };
 }
 
@@ -52,32 +99,149 @@ export function HeroBackground({
     gridHeight * heroBackgroundRows + (bleedTop ? heroBackgroundBleedTop : 0);
 
   const [blockStates, setBlockStates] = useState<HeroBlockState[]>(() =>
-    heroBlockOffsets.map((_, index) => ({
-      color:
-        heroBlockPalette[index % heroBlockPalette.length] ??
-        heroBlockPalette[0],
-      opacity: 0.24 + ((index % 3) + 1) * 0.12,
-    }))
+    Array.from({ length: heroBackgroundBlockCount }, (_, index) =>
+      getInitialBlockState(index, gridWidth, gridHeight)
+    )
   );
 
   useEffect(() => {
-    const intervalId = window.setInterval(
-      () => {
+    let isDisposed = false;
+    const timeoutIds: number[] = [];
+
+    const scheduleTimeout = (callback: () => void, delay: number) => {
+      const timeoutId = window.setTimeout(callback, delay);
+      timeoutIds.push(timeoutId);
+    };
+
+    const runCycle = () => {
+      if (isDisposed) {
+        return;
+      }
+
+      const activeCount =
+        1 + Math.floor(Math.random() * heroBackgroundBlockCount);
+      const activeIndexes = Array.from(
+        { length: heroBackgroundBlockCount },
+        (_, index) => index
+      )
+        .sort(() => Math.random() - 0.5)
+        .slice(0, activeCount);
+      const activeIndexSet = new Set(activeIndexes);
+      const activePalettes = getRandomPalettes(activeCount);
+      const nextStatesByIndex = new Map<number, HeroBlockState>();
+
+      activeIndexes.forEach((blockIndex, paletteIndex) => {
+        const palette = activePalettes[paletteIndex] ?? getRandomPalette();
+        const position = getRandomBlockPosition(gridWidth, gridHeight);
+
+        nextStatesByIndex.set(blockIndex, {
+          ...position,
+          lightColor: palette.light,
+          darkColor: palette.dark,
+          color: palette.light,
+          opacity: heroBlockLightOpacity,
+        });
+      });
+
+      setBlockStates((previousStates) =>
+        previousStates.map((blockState, index) => {
+          if (!activeIndexSet.has(index)) {
+            return {
+              ...blockState,
+              color: blockState.lightColor,
+              opacity: heroBlockHiddenOpacity,
+            };
+          }
+
+          return nextStatesByIndex.get(index) ?? blockState;
+        })
+      );
+
+      scheduleTimeout(() => {
+        if (isDisposed) {
+          return;
+        }
+
         setBlockStates((previousStates) =>
-          previousStates.map((state) => {
-            if (Math.random() < 0.45) {
-              return getRandomBlockState();
+          previousStates.map((blockState, index) => {
+            if (!activeIndexSet.has(index)) {
+              return blockState;
             }
 
-            return state;
+            return {
+              ...blockState,
+              color: blockState.darkColor,
+              opacity: heroBlockActiveOpacity,
+            };
           })
         );
-      },
-      2800 + Math.round(Math.random() * 1800)
-    );
+      }, heroBlockStartDelay);
 
-    return () => window.clearInterval(intervalId);
-  }, []);
+      scheduleTimeout(() => {
+        if (isDisposed) {
+          return;
+        }
+
+        setBlockStates((previousStates) =>
+          previousStates.map((blockState, index) => {
+            if (!activeIndexSet.has(index)) {
+              return blockState;
+            }
+
+            return {
+              ...blockState,
+              color: blockState.lightColor,
+              opacity: heroBlockLightOpacity,
+            };
+          })
+        );
+      }, heroBlockStartDelay + heroBlockFadeInDuration);
+
+      scheduleTimeout(
+        () => {
+          if (isDisposed) {
+            return;
+          }
+
+          setBlockStates((previousStates) =>
+            previousStates.map((blockState, index) => {
+              if (!activeIndexSet.has(index)) {
+                return blockState;
+              }
+
+              return {
+                ...blockState,
+                opacity: heroBlockHiddenOpacity,
+              };
+            })
+          );
+        },
+        heroBlockStartDelay +
+          heroBlockFadeInDuration +
+          heroBlockFadeOutDuration +
+          heroBlockMoveDelay
+      );
+
+      scheduleTimeout(
+        runCycle,
+        heroBlockStartDelay +
+          heroBlockFadeInDuration +
+          heroBlockFadeOutDuration +
+          heroBlockMoveDelay +
+          heroBlockCyclePauseMin +
+          Math.round(Math.random() * heroBlockCyclePauseRange)
+      );
+    };
+
+    scheduleTimeout(runCycle, 1200);
+
+    return () => {
+      isDisposed = true;
+      timeoutIds.forEach((timeoutId) => {
+        window.clearTimeout(timeoutId);
+      });
+    };
+  }, [gridHeight, gridWidth]);
 
   return (
     <div
@@ -105,28 +269,22 @@ export function HeroBackground({
             />
           </pattern>
         </defs>
+
         <svg x="50%" y="-1" className="overflow-visible">
-          {heroBlockOffsets.map((offset, index) => {
-            const blockState = blockStates[index];
-
-            if (!blockState) {
-              return null;
-            }
-
-            return (
-              <rect
-                key={`${offset.x}-${offset.y}`}
-                x={offset.x}
-                y={offset.y}
-                width={gridWidth + 1}
-                height={gridHeight + 1}
-                fill={blockState.color}
-                fillOpacity={blockState.opacity}
-                className="hero-grid-block"
-              />
-            );
-          })}
+          {blockStates.map((blockState, index) => (
+            <rect
+              key={`${index}-${blockState.x}-${blockState.y}`}
+              x={blockState.x}
+              y={blockState.y}
+              width={gridWidth + 1}
+              height={gridHeight + 1}
+              fill={blockState.color}
+              fillOpacity={blockState.opacity}
+              className="hero-grid-block"
+            />
+          ))}
         </svg>
+
         <rect
           fill="url(#hero-grid-pattern)"
           width="100%"

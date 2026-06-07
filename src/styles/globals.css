@@ -232,8 +232,8 @@
 
 .hero-grid-block {
   transition:
-    fill 900ms steps(2, end),
-    fill-opacity 220ms steps(2, end);
+    fill 900ms ease-in-out,
+    fill-opacity 900ms ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
