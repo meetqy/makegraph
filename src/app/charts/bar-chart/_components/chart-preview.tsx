@@ -30,7 +30,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
     <div className="flex flex-1 flex-col bg-white overflow-hidden">
       <div className="flex items-center justify-between border-[#ebebeb] border-b px-6 h-14 shrink-0">
         <h2 className="font-medium text-[#171717] text-sm uppercase tracking-wide">
-          Preview
+          Graph
         </h2>
         <Button
           size="sm"

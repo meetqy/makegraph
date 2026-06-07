@@ -1,3 +1,4 @@
+import { Input } from '~/components/ui/input';
 import type { ChartSettings } from './bar-chart-maker';
 
 const THEME_COLORS = [
@@ -34,29 +35,31 @@ export function ChartConfigPanel({
       </div>
 
       <div className="flex flex-col gap-6 p-5 overflow-y-auto">
-        <label className="flex flex-col gap-2">
+        <label htmlFor="chart-title" className="flex flex-col gap-2">
           <span className="font-medium text-[#4d4d4d] text-xs">
             Chart Title
           </span>
-          <input
+          <Input
+            id="chart-title"
             type="text"
             value={settings.title}
             onChange={(e) => updateSetting('title', e.target.value)}
             placeholder="e.g., Monthly Revenue"
-            className="w-full rounded-md border border-[#ebebeb] bg-[#fafafa] px-3 py-2 text-sm outline-none transition-colors focus:border-[#171717] focus:bg-white"
+            className="h-9 w-full rounded-md border-[#ebebeb] bg-[#fafafa] px-3 py-2 text-sm transition-colors focus-visible:border-[#171717] focus-visible:bg-white focus-visible:ring-0 shadow-none"
           />
         </label>
 
-        <label className="flex flex-col gap-2">
+        <label htmlFor="series-label" className="flex flex-col gap-2">
           <span className="font-medium text-[#4d4d4d] text-xs">
             Series Label (Legend)
           </span>
-          <input
+          <Input
+            id="series-label"
             type="text"
             value={settings.yAxisLabel}
             onChange={(e) => updateSetting('yAxisLabel', e.target.value)}
             placeholder="e.g., Revenue ($)"
-            className="w-full rounded-md border border-[#ebebeb] bg-[#fafafa] px-3 py-2 text-sm outline-none transition-colors focus:border-[#171717] focus:bg-white"
+            className="h-9 w-full rounded-md border-[#ebebeb] bg-[#fafafa] px-3 py-2 text-sm transition-colors focus-visible:border-[#171717] focus-visible:bg-white focus-visible:ring-0 shadow-none"
           />
         </label>
 
