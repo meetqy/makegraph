@@ -107,7 +107,7 @@ export function DataTableEditor<T extends Record<string, unknown>>({
 
   return (
     <div className="flex flex-1 w-full h-full min-h-0 flex-col overflow-hidden bg-white">
-      <div className="px-5 h-14 flex items-center justify-between shrink-0">
+      <div className="border-[#ebebeb] border-b px-5 h-14 flex items-center justify-between shrink-0">
         <h2 className="font-medium text-[#171717] text-sm uppercase tracking-wide">
           {title}
         </h2>

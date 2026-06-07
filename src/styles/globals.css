@@ -215,8 +215,17 @@
 
 .data-editor-grid .dsg-scrollable-view {
   border-left: none;
+  border-top: none;
 }
 
 .data-editor-grid .dsg-row .dsg-cell:first-child {
   border-left: none;
+}
+
+.data-editor-grid .dsg-row-header {
+  box-shadow: none;
+}
+
+.data-editor-grid .dsg-row-header .dsg-cell {
+  border-top: none;
 }
