@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Table, Settings } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 import {
@@ -78,11 +78,11 @@ export function BarChartMaker() {
       <style>{`
         @media (max-width: 1279px) {
           body {
-            padding-bottom: 73px;
+            padding-bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
           }
         }
       `}</style>
-      <div className="flex flex-col xl:grid w-full h-full xl:grid-cols-[400px_1fr_300px] xl:grid-rows-[1fr] overflow-hidden xl:divide-x divide-[#ebebeb] bg-white pb-[73px] xl:pb-0">
+      <div className="relative flex h-full w-full flex-col overflow-hidden bg-white pb-[calc(6rem+env(safe-area-inset-bottom))] divide-[#ebebeb] xl:grid xl:grid-cols-[400px_1fr_300px] xl:grid-rows-[1fr] xl:divide-x xl:pb-0">
         {/* Desktop: Data Editor */}
         <div className="hidden xl:flex flex-col h-full min-h-[400px] xl:min-h-0">
           <DataTableEditor
@@ -104,7 +104,7 @@ export function BarChartMaker() {
         </div>
 
         {/* Mobile: Bottom Bar */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 flex xl:hidden items-center border-t border-[#ebebeb] p-4 gap-4 bg-white">
+        <div className="fixed right-0 bottom-0 left-0 z-50 flex items-center gap-4 border-[#ebebeb] border-t bg-white px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] xl:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button

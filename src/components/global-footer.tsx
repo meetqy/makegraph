@@ -6,8 +6,8 @@ import { boxContainerClassName } from '~/lib/layout';
 export function GlobalFooter() {
   return (
     <footer className="border-t border-[#ebebeb] bg-white text-[#4d4d4d]">
-      <div className={`${boxContainerClassName} py-12 xl:py-16`}>
-        <div className="mb-12 max-w-2xl">
+      <div className={`${boxContainerClassName} pt-10 xl:pt-12`}>
+        <div className="mb-10 max-w-2xl">
           <Link
             href="/"
             className="font-mono text-[#171717] text-sm uppercase tracking-[0.12em]"
@@ -20,7 +20,7 @@ export function GlobalFooter() {
           </p>
         </div>
 
-        <div className="mb-16">
+        <div className="mb-12">
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-4">
             {chartTypeItems.map((item) => (
               <li key={item.name}>
@@ -35,11 +35,11 @@ export function GlobalFooter() {
           </ul>
         </div>
 
-        <div className="flex flex-col border-[#ebebeb] border-t pt-8 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col border-[#ebebeb] border-t pt-6 pb-1 md:flex-row md:items-center md:justify-between md:pb-6 xl:pb-8">
           <p className="text-[#888888] text-xs leading-5">
             &copy; {new Date().getFullYear()} NekoChart. All rights reserved.
           </p>
-          <ul className="mt-4 flex flex-wrap items-center gap-6 md:mt-0">
+          <ul className="mt-3 flex flex-wrap items-center gap-6 md:mt-0">
             <li>
               <Link
                 href="#"

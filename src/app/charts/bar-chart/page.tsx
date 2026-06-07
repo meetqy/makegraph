@@ -113,12 +113,12 @@ export default function BarChartPage() {
         title={heroTitle}
         description={heroDescription}
       />
-      <div className="relative z-10 w-full bg-white p-4">
+      <div className="relative w-full bg-white p-4">
         <div className="h-[calc(100svh-12rem)] rounded-md w-full overflow-hidden border border-[#ebebeb] bg-white">
           <BarChartMaker />
         </div>
       </div>
-      <div className="relative z-10 border-t border-[#ebebeb] bg-white">
+      <div className="relative border-t border-[#ebebeb] bg-white">
         <section className="mx-auto flex w-full max-w-[1200px] flex-col divide-y divide-[#ebebeb] px-6 py-16 sm:px-8 sm:py-20">
           <section className="py-16 first:pt-0">
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
