@@ -1,5 +1,6 @@
 import { Input } from '~/components/ui/input';
 import type { ChartSettings } from './bar-chart-maker';
+import { Checkbox } from '~/components/ui/checkbox';
 
 const THEME_COLORS = [
   { label: 'Ink', value: '#171717' },
@@ -87,22 +88,30 @@ export function ChartConfigPanel({
 
         <div className="border-[#ebebeb] border-t pt-5">
           <div className="flex flex-col gap-4">
-            <label className="flex cursor-pointer items-center gap-3">
-              <input
-                type="checkbox"
+            <label
+              htmlFor="show-legend"
+              className="flex cursor-pointer items-center gap-3"
+            >
+              <Checkbox
+                id="show-legend"
                 checked={settings.showLegend}
-                onChange={(e) => updateSetting('showLegend', e.target.checked)}
-                className="size-4 cursor-pointer rounded border-[#ebebeb] accent-[#171717]"
+                onCheckedChange={(checked) =>
+                  updateSetting('showLegend', !!checked)
+                }
               />
               <span className="text-[#4d4d4d] text-sm">Show Legend</span>
             </label>
 
-            <label className="flex cursor-pointer items-center gap-3">
-              <input
-                type="checkbox"
+            <label
+              htmlFor="show-grid"
+              className="flex cursor-pointer items-center gap-3"
+            >
+              <Checkbox
+                id="show-grid"
                 checked={settings.showGrid}
-                onChange={(e) => updateSetting('showGrid', e.target.checked)}
-                className="size-4 cursor-pointer rounded border-[#ebebeb] accent-[#171717]"
+                onCheckedChange={(checked) =>
+                  updateSetting('showGrid', !!checked)
+                }
               />
               <span className="text-[#4d4d4d] text-sm">
                 Show Background Grid
