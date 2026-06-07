@@ -1,4 +1,5 @@
 import '~/styles/globals.css';
+import 'react-datasheet-grid/dist/style.css';
 
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
