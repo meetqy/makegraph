@@ -1,6 +1,17 @@
+import type { Metadata } from 'next';
 import { BarChartMaker } from './_components/bar-chart-maker';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
+
+const heroEyebrow = 'Online Bar Chart Tool';
+const heroTitle = 'Free Online Bar Chart Maker.';
+const heroDescription =
+  'Create a bar chart online, compare category data, customize labels and colors, and preview results instantly for reports, dashboards, presentations, and marketing visuals.';
+
+export const metadata: Metadata = {
+  title: 'Free Online Bar Chart Maker',
+  description: heroDescription,
+};
 
 const comparisonPoints = [
   'See which category leads, trails, or changes rank at a glance.',
@@ -98,9 +109,9 @@ export default function BarChartPage() {
   return (
     <div className="flex flex-col bg-transparent">
       <ChartHero
-        eyebrow="Chart Maker"
-        title="Free Online Bar Chart Maker for Clear Category Comparisons."
-        description="Create a bar chart online, compare category data, customize labels and colors, and preview results instantly for reports, dashboards, presentations, and marketing visuals."
+        eyebrow={heroEyebrow}
+        title={heroTitle}
+        description={heroDescription}
       />
       <div className="relative z-10 w-full bg-white p-4">
         <div className="h-[calc(100svh-12rem)] rounded-md w-full overflow-hidden border border-[#ebebeb] bg-white">
