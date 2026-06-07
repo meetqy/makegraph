@@ -140,7 +140,7 @@ export function DataTableEditor<T extends Record<string, unknown>>({
             rowHeight={34}
             headerRowHeight={34}
             height={gridHeight}
-            className="border-none bg-white"
+            className="data-editor-grid border-none bg-white"
             style={{ '--dsg-border-color': '#ebebeb' } as React.CSSProperties}
           />
         ) : null}

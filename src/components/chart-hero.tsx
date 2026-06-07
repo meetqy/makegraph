@@ -1,4 +1,5 @@
 import React from 'react';
+import { HeroBackground } from '~/components/hero-background';
 
 interface ChartHeroProps {
   eyebrow: string;
@@ -8,7 +9,8 @@ interface ChartHeroProps {
 
 export function ChartHero({ eyebrow, title, description }: ChartHeroProps) {
   return (
-    <div className="px-6 py-16 sm:py-24 lg:px-8">
+    <div className="relative isolate px-6 py-16 sm:py-24 lg:px-8">
+      <HeroBackground gridHeight={260} />
       <div className="mx-auto max-w-2xl text-center">
         <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
           {eyebrow}

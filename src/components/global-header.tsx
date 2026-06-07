@@ -24,7 +24,7 @@ export function GlobalHeader() {
     <header
       className="sticky top-0 z-50 w-full"
       style={{
-        backgroundColor: `rgba(255, 255, 255, ${scrollProgress * 0.8})`,
+        backgroundColor: `rgba(255, 255, 255, ${scrollProgress * 0.88})`,
         borderBottom: `1px solid rgba(235, 235, 235, ${scrollProgress})`,
         backdropFilter: `blur(${scrollProgress * 12}px)`,
         WebkitBackdropFilter: `blur(${scrollProgress * 12}px)`,

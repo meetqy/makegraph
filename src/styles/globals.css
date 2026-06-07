@@ -212,3 +212,11 @@
     @apply font-sans;
   }
 }
+
+.data-editor-grid .dsg-scrollable-view {
+  border-left: none;
+}
+
+.data-editor-grid .dsg-row .dsg-cell:first-child {
+  border-left: none;
+}

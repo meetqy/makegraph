@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { HeroBackground } from '~/components/hero-background';
 import { Button } from '~/components/ui/button';
 import { boxContainerClassName } from '~/lib/layout';
 import { HomeChartList } from './home-chart-list';
@@ -9,6 +10,7 @@ const sectionContainerClassName = `relative ${boxContainerClassName}`;
 export function HomeHero() {
   return (
     <main className="relative isolate min-h-screen text-[#171717]">
+      <HeroBackground />
       <section
         className={`${sectionContainerClassName} flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36`}
       >

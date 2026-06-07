@@ -99,7 +99,7 @@ export function BarChartMaker() {
         </div>
 
         {/* Desktop: Customize */}
-        <div className="hidden xl:flex flex-col h-full min-h-0 overflow-y-auto">
+        <div className="hidden xl:flex flex-col h-full min-h-0 overflow-hidden xl:-mr-px">
           <ChartConfigPanel settings={settings} onChange={setSettings} />
         </div>
 
