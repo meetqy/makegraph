@@ -9,12 +9,17 @@
 - 设计样式必须遵守 DESIGN.md 规则。
 - components/ui 中已存在的组件应直接复用。
 - app 中页面私有组件放在对应页面的 \_components 下（例如 demo/\_components）。
+- landing page 或说明内容区默认优先使用 section / band / 分栏排版，不要默认堆大量 cards。
+- 如需使用 cards，只能少量用于承载局部重点信息，并且尽量减少厚重阴影。
+- landing page 中避免出现分割线紧挨分割线、重复叠线的情况；section 分隔与模块内部的分隔要错开处理。
 
 ## 3. 内容与资料规范
 
-- 文案默认使用英语。
+- 页面展示文案默认使用英语。
 - 注释默认使用中文。
-- 文案、需求、SEO 相关参考资料统一在 docs 目录下。
+- 统计图目录下的说明性 markdown 文案默认使用中文。
+- 统计图相关的 markdown 文件放在对应的 chart 目录下（例如 src/app/charts/bar-chart/），不放在 docs 目录中。
+- 非统计图页面的文案、需求、SEO 相关参考资料统一放在 docs 目录下。
 
 ## 4. 执行与检查规范
 
