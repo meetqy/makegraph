@@ -104,7 +104,7 @@ export function BarChartMaker() {
         </div>
 
         {/* Mobile: Bottom Bar */}
-        <div className="fixed bottom-0 left-0 right-0 z-40 flex xl:hidden items-center border-t border-[#ebebeb] p-4 gap-4 bg-white">
+        <div className="fixed bottom-0 left-0 right-0 z-50 flex xl:hidden items-center border-t border-[#ebebeb] p-4 gap-4 bg-white">
           <Sheet>
             <SheetTrigger asChild>
               <Button

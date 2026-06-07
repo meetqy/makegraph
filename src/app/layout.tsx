@@ -4,7 +4,9 @@ import 'react-datasheet-grid/dist/style.css';
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 
+import { GlobalBackground } from '~/components/global-background';
 import { GlobalFooter } from '~/components/global-footer';
+import { GlobalHeader } from '~/components/global-header';
 import { TRPCReactProvider } from '~/trpc/react';
 
 export const metadata: Metadata = {
@@ -25,7 +27,9 @@ export default function RootLayout({
   return (
     <html className={`${geist.variable}`} lang="en">
       <TRPCReactProvider>
-        <body className="flex min-h-screen flex-col bg-white">
+        <body className="relative flex min-h-screen flex-col bg-white">
+          <GlobalBackground />
+          <GlobalHeader />
           <div className="flex-1">{children}</div>
           <GlobalFooter />
         </body>

@@ -1,11 +1,12 @@
 import Link from 'next/link';
 
 import { chartTypeItems } from '~/config/charts';
+import { boxContainerClassName } from '~/lib/layout';
 
 export function GlobalFooter() {
   return (
     <footer className="border-t border-[#ebebeb] bg-white text-[#4d4d4d]">
-      <div className="mx-auto max-w-6xl px-6 py-12 lg:px-8 xl:py-16">
+      <div className={`${boxContainerClassName} py-12 xl:py-16`}>
         <div className="mb-12 max-w-2xl">
           <Link
             href="/"

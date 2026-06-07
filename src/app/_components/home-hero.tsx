@@ -1,21 +1,14 @@
 import Link from 'next/link';
 
 import { Button } from '~/components/ui/button';
+import { boxContainerClassName } from '~/lib/layout';
 import { HomeChartList } from './home-chart-list';
 
-const sectionContainerClassName =
-  'relative mx-auto w-full max-w-6xl px-6 lg:px-8';
+const sectionContainerClassName = `relative ${boxContainerClassName}`;
 
 export function HomeHero() {
   return (
-    <main className="relative isolate min-h-screen overflow-hidden bg-white text-[#171717]">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[-12rem] left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,124,240,0.4)_0%,rgba(0,124,240,0)_72%)] blur-2xl" />
-        <div className="absolute top-[9rem] right-[8%] h-[24rem] w-sm rounded-full bg-[radial-gradient(circle,rgba(255,0,128,0.34)_0%,rgba(255,0,128,0)_70%)] blur-2xl" />
-        <div className="absolute top-[15rem] left-[10%] h-[20rem] w-xs rounded-full bg-[radial-gradient(circle,rgba(80,227,194,0.32)_0%,rgba(80,227,194,0)_72%)] blur-2xl" />
-        <div className="absolute bottom-[-10rem] left-[38%] h-[24rem] w-sm rounded-full bg-[radial-gradient(circle,rgba(249,203,40,0.24)_0%,rgba(249,203,40,0)_72%)] blur-2xl" />
-      </div>
-
+    <main className="relative isolate min-h-screen text-[#171717]">
       <section
         className={`${sectionContainerClassName} flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36`}
       >
