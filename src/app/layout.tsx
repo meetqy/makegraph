@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 
 import { GlobalFooter } from '~/components/global-footer';
+import { TRPCReactProvider } from '~/trpc/react';
 
 export const metadata: Metadata = {
   title: 'NekoChart - Free Online Chart Maker',
@@ -23,10 +24,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html className={`${geist.variable}`} lang="en">
-      <body className="flex min-h-screen flex-col bg-white">
-        <div className="flex-1">{children}</div>
-        <GlobalFooter />
-      </body>
+      <TRPCReactProvider>
+        <body className="flex min-h-screen flex-col bg-white">
+          <div className="flex-1">{children}</div>
+          <GlobalFooter />
+        </body>
+      </TRPCReactProvider>
     </html>
   );
 }
