@@ -9,7 +9,7 @@ export default function BarChartPage() {
         title="Bar Chart Maker."
         description="Edit data, customize appearance, and preview your bar chart."
       />
-      <div className="w-full p-4">
+      <div className="relative z-10 w-full bg-white p-4">
         <div className="h-[calc(100svh-12rem)] rounded-md w-full overflow-hidden border border-[#ebebeb] bg-white">
           <BarChartMaker />
         </div>

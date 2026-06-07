@@ -229,3 +229,15 @@
 .data-editor-grid .dsg-row-header .dsg-cell {
   border-top: none;
 }
+
+.hero-grid-block {
+  transition:
+    fill 900ms steps(2, end),
+    fill-opacity 220ms steps(2, end);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid-block {
+    transition: none;
+  }
+}

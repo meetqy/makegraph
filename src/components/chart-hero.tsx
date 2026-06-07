@@ -10,7 +10,7 @@ interface ChartHeroProps {
 export function ChartHero({ eyebrow, title, description }: ChartHeroProps) {
   return (
     <div className="relative isolate px-6 py-16 sm:py-24 lg:px-8">
-      <HeroBackground bleedTop gridHeight={260} />
+      <HeroBackground bleedTop />
       <div className="relative z-10 mx-auto max-w-2xl text-center">
         <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
           {eyebrow}
