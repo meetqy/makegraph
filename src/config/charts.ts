@@ -29,6 +29,13 @@ export const chartTypeItems: ChartTypeItem[] = [
     icon: BarChart3,
   },
   {
+    name: 'Double Bar Chart',
+    description:
+      'Compare two related datasets side by side across multiple categories.',
+    href: '/charts/double-bar-chart',
+    icon: BarChart3,
+  },
+  {
     name: 'Line Chart',
     description: 'Show changes over time with a clean trend-focused view.',
     href: '/charts/line-chart',

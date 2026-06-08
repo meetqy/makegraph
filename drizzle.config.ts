@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ['nekochart_*'],
+  tablesFilter: ['makegraph_*'],
 } satisfies Config;

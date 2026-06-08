@@ -12,7 +12,7 @@ export function GlobalFooter() {
             href="/"
             className="font-mono text-[#171717] text-sm uppercase tracking-[0.12em]"
           >
-            NekoChart
+            MakeGraph
           </Link>
           <p className="mt-4 text-[#888888] text-sm leading-6">
             A fast online chart maker. Upload your data, get automatic chart
@@ -37,7 +37,7 @@ export function GlobalFooter() {
 
         <div className="flex flex-col border-[#ebebeb] border-t pt-6 pb-1 md:flex-row md:items-center md:justify-between md:pb-6 xl:pb-8">
           <p className="text-[#888888] text-xs leading-5">
-            &copy; {new Date().getFullYear()} NekoChart. All rights reserved.
+            &copy; {new Date().getFullYear()} MakeGraph. All rights reserved.
           </p>
           <ul className="mt-3 flex flex-wrap items-center gap-6 md:mt-0">
             <li>

@@ -10,7 +10,7 @@ import { GlobalHeader } from '~/components/global-header';
 import { TRPCReactProvider } from '~/trpc/react';
 
 export const metadata: Metadata = {
-  title: 'NekoChart - Free Online Chart Maker',
+  title: 'MakeGraph - Free Online Chart Maker',
   description:
     'Turn your Excel or CSV data into clear charts in 1 minute. Free online chart maker.',
   icons: [{ rel: 'icon', url: '/favicon.ico' }],

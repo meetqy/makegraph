@@ -1,8 +1,8 @@
-# NekoChart Agent Rules
+# MakeGraph Agent Rules
 
 ## 1. 回复规范
 
-- 每次执行前先回复我 " ===== Hi NekoChart ===== "。
+- 每次执行前先回复我 " ===== Hi MakeGraph ===== "。
 
 ## 2. 设计与组件规范
 

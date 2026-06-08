@@ -38,14 +38,14 @@ export function GlobalHeader() {
           <Link href="/" className="flex shrink-0 items-center">
             <Image
               src="/logo.png"
-              alt="NekoChart"
+              alt="MakeGraph"
               width={48}
               height={48}
               priority
             />
             <span className="text-xl ml-2 font-mono lowercase">
-              <span>Neko</span>
-              <span className="text-blue-600">Chart</span>
+              <span>Make</span>
+              <span className="text-blue-600">Graph</span>
             </span>
           </Link>
           <nav className="hidden items-center gap-1 md:flex">

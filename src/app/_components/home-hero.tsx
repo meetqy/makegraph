@@ -15,7 +15,7 @@ export function HomeHero() {
         className={`${sectionContainerClassName} relative z-10 flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36`}
       >
         <p className="mb-8 rounded-full border border-[#ebebeb] bg-white/90 px-4 py-1 font-mono text-[#4d4d4d] text-[12px] uppercase tracking-[0.12em] backdrop-blur">
-          NekoChart • Free Online Chart Maker
+          MakeGraph • Free Online Chart Maker
         </p>
 
         <h1 className="max-w-5xl text-balance font-semibold text-5xl leading-[1.02] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
