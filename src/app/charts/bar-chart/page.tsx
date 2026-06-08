@@ -9,7 +9,7 @@ import { boxContainerClassName } from '~/lib/layout';
 const heroEyebrow = 'Online Bar Chart Tool';
 const heroTitle = 'Free Online Bar Chart Maker.';
 const heroDescription =
-  'Make bar chart and make bar graph online for free. Create a bar chart online, compare category data, customize labels and colors, and preview results instantly for reports, dashboards, presentations, and marketing visuals.';
+  'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.';
 
 export const metadata: Metadata = {
   title: generateChartTitle('Bar Chart'),

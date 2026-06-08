@@ -10,7 +10,7 @@ import { generateChartTitle } from '~/lib/utils';
 const heroEyebrow = 'Online Double Bar Chart Tool';
 const heroTitle = 'Free Online Double Bar Chart Maker.';
 const heroDescription =
-  'Make double bar chart and make double bar graph online for free. Create a double bar chart online, compare two data sets side by side, customize labels and colors, and preview results instantly for reports, dashboards, and presentations.';
+  'Free online double bar chart maker. Compare two data sets side by side, customize colors, and preview instantly for dashboards and presentations.';
 
 export const metadata: Metadata = {
   title: generateChartTitle('Double Bar Chart'),

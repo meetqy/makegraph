@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function generateChartTitle(chartName: string) {
-  return `Make a ${chartName} graph | Create a ${chartName} chart for free.`;
+  return `Free Online ${chartName} Maker | MakeGraph`;
 }

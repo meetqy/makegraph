@@ -21,7 +21,7 @@
 - 统计图目录下的说明性 markdown 文案默认使用中文。
 - 统计图相关的 markdown 文件放在对应的 chart 目录下（例如 src/app/charts/bar-chart/），不放在 docs 目录中。
 - 非统计图页面的文案、需求、SEO 相关参考资料统一放在 docs 目录下。
-- SEO/GEO 关键词规范：图表详情页的文案必须包含 `make graph` 和 `make chart` 相关的核心关键词，具体格式必须包含 `make {chartname} graph` 和 `make {chartname} chart`，以确保良好的 SEO/GEO 表现。
+- SEO 文案规范：Title 长度控制在 60 个字符以内，Description 长度控制在 160 个字符以内。文案必须自然流畅，禁止生硬堆砌关键词。
 
 ## 4. 执行与检查规范
 
