@@ -1,15 +1,8 @@
+import { useEffect, useState } from 'react';
 import { Input } from '~/components/ui/input';
 import type { ChartSettings } from './bar-chart-maker';
 import { Checkbox } from '~/components/ui/checkbox';
-
-const THEME_COLORS = [
-  { label: 'Ink', value: '#171717' },
-  { label: 'Blue', value: '#0070f3' },
-  { label: 'Violet', value: '#7928ca' },
-  { label: 'Cyan', value: '#50e3c2' },
-  { label: 'Pink', value: '#ff0080' },
-  { label: 'Warning', value: '#f5a623' },
-];
+import { CompactPicker } from 'react-color';
 
 type ChartConfigPanelProps = {
   settings: ChartSettings;
@@ -20,6 +13,12 @@ export function ChartConfigPanel({
   settings,
   onChange,
 }: ChartConfigPanelProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const updateSetting = <K extends keyof ChartSettings>(
     key: K,
     value: ChartSettings[K]
@@ -68,22 +67,16 @@ export function ChartConfigPanel({
           <span className="font-medium text-[#4d4d4d] text-xs">
             Theme Color
           </span>
-          <div className="flex flex-wrap gap-3">
-            {THEME_COLORS.map((c) => (
-              <button
-                type="button"
-                key={c.value}
-                onClick={() => updateSetting('color', c.value)}
-                title={c.label}
-                className={`size-7 rounded-full border-2 transition-transform hover:scale-110 ${
-                  settings.color === c.value
-                    ? 'border-[#171717] ring-2 ring-transparent ring-offset-2 ring-offset-white'
-                    : 'border-transparent'
-                }`}
-                style={{ backgroundColor: c.value }}
+          {mounted ? (
+            <div className="rounded-md border border-[#ebebeb] bg-white p-2 compact-picker-container">
+              <CompactPicker
+                color={settings.color}
+                onChange={(color) => updateSetting('color', color.hex)}
               />
-            ))}
-          </div>
+            </div>
+          ) : (
+            <div className="h-[90px]" />
+          )}
         </div>
 
         <div className="border-[#ebebeb] border-t pt-5">

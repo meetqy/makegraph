@@ -1,18 +1,26 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { DoubleBarChartMaker } from './_components/double-bar-chart-maker';
 import { boxContainerClassName } from '~/lib/layout';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
+import { generateChartTitle } from '~/lib/utils';
 
 // 英雄区文案
 const heroEyebrow = 'Online Double Bar Chart Tool';
 const heroTitle = 'Free Online Double Bar Chart Maker.';
 const heroDescription =
-  'Create a double bar chart online, compare two data sets side by side, customize labels and colors, and preview results instantly for reports, dashboards, and presentations.';
+  'Make double bar chart and make double bar graph online for free. Create a double bar chart online, compare two data sets side by side, customize labels and colors, and preview results instantly for reports, dashboards, and presentations.';
 
 export const metadata: Metadata = {
-  title: 'Free Online Double Bar Chart Maker',
+  title: generateChartTitle('Double Bar Chart'),
   description: heroDescription,
+  openGraph: {
+    images: ['/charts/double-bar-chart-og-image.png'],
+  },
+  twitter: {
+    images: ['/charts/double-bar-chart-og-image.png'],
+  },
 };
 
 const comparisonPoints = [
@@ -138,15 +146,14 @@ export default function DoubleBarChartPage() {
               </div>
             </div>
             <div className="mt-12">
-              <div className="flex aspect-video w-full items-center justify-center rounded-2xl border border-dashed border-[#d9d9d9] bg-[#fafafa] px-6 text-center">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                    Image Placeholder
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#4d4d4d] sm:text-base">
-                    Add a comparison or chart overview visual here.
-                  </p>
-                </div>
+              <div className="flex w-full items-center justify-center rounded-2xl border border-[#ebebeb] bg-[#fafafa] overflow-hidden">
+                <Image
+                  src="/charts/double-bar-chart-og-image.png"
+                  alt="Double Bar Chart Example"
+                  width={1200}
+                  height={630}
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
           </section>

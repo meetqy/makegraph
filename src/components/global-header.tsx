@@ -50,7 +50,7 @@ export function GlobalHeader() {
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
             <Link
-              href="/charts"
+              href="/#charts"
               className="rounded-full px-3 py-2 text-sm text-[#4d4d4d] transition-colors hover:bg-[#f5f5f5] hover:text-[#171717]"
             >
               Charts

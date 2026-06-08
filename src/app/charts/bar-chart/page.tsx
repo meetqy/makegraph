@@ -1,16 +1,25 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { BarChartMaker } from './_components/bar-chart-maker';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
+import { generateChartTitle } from '~/lib/utils';
+import { boxContainerClassName } from '~/lib/layout';
 
 const heroEyebrow = 'Online Bar Chart Tool';
 const heroTitle = 'Free Online Bar Chart Maker.';
 const heroDescription =
-  'Create a bar chart online, compare category data, customize labels and colors, and preview results instantly for reports, dashboards, presentations, and marketing visuals.';
+  'Make bar chart and make bar graph online for free. Create a bar chart online, compare category data, customize labels and colors, and preview results instantly for reports, dashboards, presentations, and marketing visuals.';
 
 export const metadata: Metadata = {
-  title: 'Free Online Bar Chart Maker',
+  title: generateChartTitle('Bar Chart'),
   description: heroDescription,
+  openGraph: {
+    images: ['/charts/bar-graph-og-image.png'],
+  },
+  twitter: {
+    images: ['/charts/bar-graph-og-image.png'],
+  },
 };
 
 const comparisonPoints = [
@@ -119,7 +128,9 @@ export default function BarChartPage() {
         </div>
       </div>
       <div className="relative border-t border-[#ebebeb] bg-white">
-        <section className="mx-auto flex w-full max-w-[1200px] flex-col divide-y divide-[#ebebeb] px-6 py-16 sm:px-8 sm:py-20">
+        <section
+          className={`${boxContainerClassName} flex flex-col divide-y divide-[#ebebeb] py-16 sm:py-20`}
+        >
           <section className="py-16 first:pt-0">
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
               <div>
@@ -148,15 +159,14 @@ export default function BarChartPage() {
               </div>
             </div>
             <div className="mt-12">
-              <div className="flex aspect-video w-full items-center justify-center rounded-2xl border border-dashed border-[#d9d9d9] bg-[#fafafa] px-6 text-center">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                    Image Placeholder
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#4d4d4d] sm:text-base">
-                    Add a comparison or chart overview visual here.
-                  </p>
-                </div>
+              <div className="flex w-full items-center justify-center rounded-2xl border border-[#ebebeb] bg-[#fafafa] overflow-hidden">
+                <Image
+                  src="/charts/bar-graph-og-image.png"
+                  alt="Bar Chart Example"
+                  width={1200}
+                  height={630}
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
           </section>
@@ -225,28 +235,6 @@ export default function BarChartPage() {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-            <div className="mt-12 grid gap-6 lg:grid-cols-2">
-              <div className="flex aspect-4/3 items-center justify-center rounded-2xl border border-dashed border-[#d9d9d9] bg-[#fafafa] px-6 text-center">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                    Image Placeholder
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#4d4d4d]">
-                    Add a use case visual, workflow mockup, or chart example.
-                  </p>
-                </div>
-              </div>
-              <div className="flex aspect-4/3 items-center justify-center rounded-2xl border border-dashed border-[#d9d9d9] bg-[#fafafa] px-6 text-center">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                    Image Placeholder
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#4d4d4d]">
-                    Add a feature highlight visual or editor detail here.
-                  </p>
-                </div>
               </div>
             </div>
           </section>

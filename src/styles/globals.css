@@ -213,6 +213,12 @@
   }
 }
 
+/* 覆盖 react-color CompactPicker 的自带外层阴影 */
+.compact-picker-container > div > div {
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
 .data-editor-grid .dsg-scrollable-view {
   border-left: none;
   border-top: none;
