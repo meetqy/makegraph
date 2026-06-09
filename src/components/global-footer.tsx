@@ -3,6 +3,15 @@ import Link from 'next/link';
 import { chartTypeItems } from '~/config/charts';
 import { boxContainerClassName } from '~/lib/layout';
 
+// 友情链接配置列表（支持直接传入 HTML 代码）
+export const friendLinks: string[] = [
+  '<a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge3-light.svg" alt="Featured on Twelve Tools" width="200" height="54"></a>',
+  `<a href="https://starterbest.com" target="_blank" rel="noopener noreferrer"> 
+    <img src="https://starterbest.com/badages-awards.svg"
+    alt="Featured on Starter Best" style="height: 54px; width: auto;"/>
+</a>`,
+];
+
 export function GlobalFooter() {
   return (
     <footer className="border-t border-[#ebebeb] bg-white text-[#4d4d4d]">
@@ -35,7 +44,7 @@ export function GlobalFooter() {
           </ul>
         </div>
 
-        <div className="flex flex-col border-[#ebebeb] border-t pt-6 pb-1 md:flex-row md:items-center md:justify-between md:pb-6 xl:pb-8">
+        <div className="flex flex-col border-[#ebebeb] border-t pt-6 pb-6 md:flex-row md:items-center md:justify-between xl:pb-8">
           <p className="text-[#888888] text-xs leading-5">
             &copy; {new Date().getFullYear()} MakeGraph. All rights reserved.
           </p>
@@ -58,6 +67,16 @@ export function GlobalFooter() {
             </li>
           </ul>
         </div>
+
+        {friendLinks.length > 0 && (
+          <div className="border-[#ebebeb] border-t pt-4 pb-8 flex flex-col md:flex-row md:items-center gap-4">
+            <ul className="flex flex-wrap items-center gap-4 text-xs text-[#888888] [&_a]:transition-colors hover:[&_a]:text-[#171717]">
+              {friendLinks.map((html, index) => (
+                <li key={index} dangerouslySetInnerHTML={{ __html: html }} />
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </footer>
   );

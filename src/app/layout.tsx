@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   description:
     'Turn your Excel or CSV data into clear charts in 1 minute. Free online chart maker.',
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
+  openGraph: {
+    images: [{ url: '/og.png' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og.png'],
+  },
 };
 
 const geist = Geist({

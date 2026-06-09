@@ -18,6 +18,14 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/bar-graph-og-image.png',
   },
   {
+    name: 'Bar Chart Race',
+    description:
+      'Free online bar chart race maker. Animate rankings over time, edit time-series data, and preview smooth race playback instantly.',
+    href: '/charts/bar-chart-race',
+    icon: BarChart3,
+    image: '/charts/bar-chart-race-og-image.png',
+  },
+  {
     name: 'Double Bar Chart',
     description:
       'Free online double bar chart maker. Compare two data sets side by side, customize colors, and preview instantly for dashboards and presentations.',

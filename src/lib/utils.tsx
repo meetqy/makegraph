@@ -17,6 +17,7 @@ const CHART_LINK_PATTERNS: Array<[RegExp, string]> = [
   [/100% stacked bar chart/gi, '/charts/stacked-bar-chart'],
   [/stacked bar chart/gi, '/charts/stacked-bar-chart'],
   [/double bar chart/gi, '/charts/double-bar-chart'],
+  [/bar chart race/gi, '/charts/bar-chart-race'],
   [/regular bar chart/gi, '/charts/bar-chart'],
   [/bar chart/gi, '/charts/bar-chart'],
 ];

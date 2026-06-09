@@ -20,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${siteUrl}/charts/bar-chart-race`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${siteUrl}/charts/double-bar-chart`,
       lastModified: now,
       changeFrequency: 'monthly',
