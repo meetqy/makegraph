@@ -4,7 +4,10 @@ import { DoubleBarChartMaker } from './_components/double-bar-chart-maker';
 import { boxContainerClassName } from '~/lib/layout';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
-import { generateChartTitle } from '~/lib/utils';
+import { generateChartTitle, withChartLinks } from '~/lib/utils';
+
+// 当前页面路径：用于在 withChartLinks 中跳过指向自身的链接
+const currentPath = '/charts/double-bar-chart';
 
 // 英雄区文案
 const heroEyebrow = 'Online Double Bar Chart Tool';
@@ -275,12 +278,12 @@ export default function DoubleBarChartPage() {
                       {group.title}
                     </h3>
                     <div className="mt-4 space-y-3">
-                      {group.items.map((item) => (
+                      {group.items.map((item, itemIndex) => (
                         <p
                           className="text-sm leading-6 text-[#4d4d4d] sm:text-base"
-                          key={item}
+                          key={`${group.title}-${itemIndex}`}
                         >
-                          {item}
+                          {withChartLinks(item, `dg-${itemIndex}`, currentPath)}
                         </p>
                       ))}
                     </div>
@@ -300,13 +303,21 @@ export default function DoubleBarChartPage() {
               </h2>
             </div>
             <div className="mt-10 grid gap-10 md:grid-cols-2">
-              {faqs.map((item) => (
+              {faqs.map((item, faqIndex) => (
                 <div key={item.question}>
                   <h3 className="text-xl font-semibold tracking-[-0.6px] text-[#171717]">
-                    {item.question}
+                    {withChartLinks(
+                      item.question,
+                      `faq-q-${faqIndex}`,
+                      currentPath
+                    )}
                   </h3>
                   <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4d4d4d] sm:text-base">
-                    {item.answer}
+                    {withChartLinks(
+                      item.answer,
+                      `faq-a-${faqIndex}`,
+                      currentPath
+                    )}
                   </p>
                 </div>
               ))}

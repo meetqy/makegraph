@@ -25,4 +25,12 @@ export const chartTypeItems: ChartTypeItem[] = [
     icon: BarChart3,
     image: '/charts/double-bar-chart-og-image.png',
   },
+  {
+    name: 'Stacked Bar Chart',
+    description:
+      'Free online stacked bar chart maker. Compare totals and composition at a glance, switch to 100% stacked, customize colors, and preview instantly for reports.',
+    href: '/charts/stacked-bar-chart',
+    icon: BarChart3,
+    image: '/charts/stacked-bar-chart-og-image.png',
+  },
 ];

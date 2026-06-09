@@ -1,0 +1,176 @@
+import { useMemo } from 'react';
+import { Download } from 'lucide-react';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Button } from '~/components/ui/button';
+import type { ChartDataRow, ChartSettings } from './stacked-bar-chart-maker';
+
+type ChartPreviewProps = {
+  data: ChartDataRow[];
+  settings: ChartSettings;
+};
+
+// 当开启 100% 堆叠时，将每个类别的数据按行总和归一化
+const normalizeForPercentStack = (rows: ChartDataRow[]) => {
+  return rows.map((row) => {
+    const total = row.value1 + row.value2 + row.value3;
+    if (total === 0) {
+      return { ...row };
+    }
+    return {
+      name: row.name,
+      value1: (row.value1 / total) * 100,
+      value2: (row.value2 / total) * 100,
+      value3: (row.value3 / total) * 100,
+    };
+  });
+};
+
+export function ChartPreview({ data, settings }: ChartPreviewProps) {
+  // In a real application, export functionality would snapshot the DOM or SVG.
+  // For MVP, just a placeholder action.
+  const handleExport = () => {
+    alert(
+      'Export functionality will be implemented here (e.g. html-to-image).'
+    );
+  };
+
+  // 根据是否开启 100% 堆叠决定渲染数据
+  const chartData = useMemo(
+    () => (settings.isPercentStacked ? normalizeForPercentStack(data) : data),
+    [data, settings.isPercentStacked]
+  );
+
+  // Y 轴刻度格式化：100% 堆叠时显示百分比
+  const yAxisTickFormatter = (value: number) => {
+    if (settings.isPercentStacked) {
+      return `${value}%`;
+    }
+    return String(value);
+  };
+
+  // Tooltip 数值格式化：100% 堆叠时显示百分比，否则保留 1 位小数
+  const tooltipFormatter = (value: number | string | undefined): string => {
+    if (value === undefined || value === null) {
+      return '';
+    }
+    const numericValue = typeof value === 'number' ? value : Number(value);
+    if (Number.isNaN(numericValue)) {
+      return String(value);
+    }
+    if (settings.isPercentStacked) {
+      return `${numericValue.toFixed(1)}%`;
+    }
+    return numericValue.toFixed(1);
+  };
+
+  return (
+    <div className="flex flex-1 flex-col bg-white overflow-hidden">
+      <div className="flex items-center justify-between border-[#ebebeb] border-b px-6 h-14 shrink-0">
+        <h2 className="font-medium text-[#171717] text-sm uppercase tracking-wide">
+          Graph
+        </h2>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={handleExport}
+          className="h-8 shadow-none border-[#ebebeb]"
+        >
+          <Download className="mr-2 size-3.5" /> Export
+        </Button>
+      </div>
+
+      <div className="flex w-full flex-1 overflow-x-auto">
+        <div className="flex flex-col items-center justify-center min-w-[700px] w-full h-full p-4 sm:p-6 mx-auto">
+          {settings.title && (
+            <h3 className="mb-6 font-medium text-[#171717] text-xl shrink-0">
+              {settings.title}
+            </h3>
+          )}
+
+          <div className="flex-1 w-full min-h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={chartData}
+                margin={{ top: 20, right: 0, left: 0, bottom: 20 }}
+              >
+                {settings.showGrid && (
+                  <CartesianGrid
+                    strokeDasharray="4 4"
+                    vertical={false}
+                    stroke="#ebebeb"
+                  />
+                )}
+                <XAxis
+                  dataKey="name"
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fill: '#888888', fontSize: 13 }}
+                  dy={10}
+                />
+                <YAxis
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fill: '#888888', fontSize: 13 }}
+                  dx={-10}
+                  tickFormatter={yAxisTickFormatter}
+                  domain={settings.isPercentStacked ? [0, 100] : undefined}
+                />
+                <Tooltip
+                  cursor={{ fill: '#fafafa' }}
+                  contentStyle={{
+                    borderRadius: '8px',
+                    border: '1px solid #ebebeb',
+                    boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+                    fontSize: '13px',
+                  }}
+                  itemStyle={{ color: '#171717', fontWeight: 500 }}
+                  formatter={tooltipFormatter as never}
+                />
+                {settings.showLegend && (
+                  <Legend
+                    iconType="circle"
+                    wrapperStyle={{
+                      fontSize: '13px',
+                      color: '#4d4d4d',
+                      paddingTop: '20px',
+                    }}
+                  />
+                )}
+                <Bar
+                  dataKey="value1"
+                  name={settings.yAxisLabel1 || 'Series 1'}
+                  fill={settings.color1}
+                  stackId="stack"
+                  radius={[0, 0, 0, 0]}
+                />
+                <Bar
+                  dataKey="value2"
+                  name={settings.yAxisLabel2 || 'Series 2'}
+                  fill={settings.color2}
+                  stackId="stack"
+                  radius={[0, 0, 0, 0]}
+                />
+                <Bar
+                  dataKey="value3"
+                  name={settings.yAxisLabel3 || 'Series 3'}
+                  fill={settings.color3}
+                  stackId="stack"
+                  radius={[4, 4, 0, 0]}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
