@@ -1,4 +1,4 @@
-import { Download } from 'lucide-react';
+import { useRef } from 'react';
 import {
   Bar,
   BarChart,
@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { Button } from '~/components/ui/button';
+import { ChartExporter } from '~/components/chart-exporter';
 import type { ChartDataRow, ChartSettings } from './double-bar-chart-maker';
 
 type ChartPreviewProps = {
@@ -18,13 +18,8 @@ type ChartPreviewProps = {
 };
 
 export function ChartPreview({ data, settings }: ChartPreviewProps) {
-  // In a real application, export functionality would snapshot the DOM or SVG.
-  // For MVP, just a placeholder action.
-  const handleExport = () => {
-    alert(
-      'Export functionality will be implemented here (e.g. html-to-image).'
-    );
-  };
+  // 导出目标容器：包含标题和图表本体，PNG 导出会基于这个容器渲染
+  const exportTargetRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="flex flex-1 flex-col bg-white overflow-hidden">
@@ -32,18 +27,17 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
         <h2 className="font-medium text-[#171717] text-sm uppercase tracking-wide">
           Graph
         </h2>
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={handleExport}
-          className="h-8 shadow-none border-[#ebebeb]"
-        >
-          <Download className="mr-2 size-3.5" /> Export
-        </Button>
+        <ChartExporter
+          targetRef={exportTargetRef}
+          filename="double-bar-chart"
+        />
       </div>
 
       <div className="flex w-full flex-1 overflow-x-auto">
-        <div className="flex flex-col items-center justify-center min-w-[700px] w-full h-full p-4 sm:p-6 mx-auto">
+        <div
+          ref={exportTargetRef}
+          className="flex flex-col items-center justify-center min-w-[700px] w-full h-full p-4 sm:p-6 mx-auto"
+        >
           {settings.title && (
             <h3 className="mb-6 font-medium text-[#171717] text-xl shrink-0">
               {settings.title}

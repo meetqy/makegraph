@@ -16,7 +16,7 @@ export function GlobalFooter() {
           </Link>
           <p className="mt-4 text-[#888888] text-sm leading-6">
             A fast online chart maker. Upload your data, get automatic chart
-            suggestions, and export PNG or SVG instantly, free with no signup.
+            suggestions, and export as PNG instantly, free with no signup.
           </p>
         </div>
 
