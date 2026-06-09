@@ -81,19 +81,84 @@ const decisionGuide = [
 
 const faqs = [
   {
-    question: 'What is a double bar chart best for?',
+    question: 'What is a double bar chart?',
     answer:
-      'A double bar chart is best for comparing two related data sets side by side across different categories. It highlights the differences and relationships between two metrics effectively.',
+      'A double bar chart displays two data series side by side within each category so people can compare two related metrics directly. Typical examples include this year vs last year, budget vs actual, or desktop vs mobile performance.',
+  },
+  {
+    question: 'How is a double bar chart different from a regular bar chart?',
+    answer:
+      'A regular bar chart usually shows one data series. A double bar chart places two bars inside each category so viewers can compare two related values at the same time.',
+  },
+  {
+    question: 'Is a double bar chart the same as a grouped bar chart?',
+    answer:
+      'Yes. Double bar chart is commonly used as another name for a grouped bar chart or clustered bar chart. The core idea is the same: multiple series are placed next to each other for comparison.',
   },
   {
     question: 'How is it different from a stacked bar chart?',
     answer:
-      'A double bar chart places the bars side by side to emphasize the comparison between the two values, while a stacked bar chart places them on top of each other to emphasize the total sum.',
+      'A double bar chart emphasizes the difference between two values by placing them side by side. A stacked bar chart emphasizes the total and how each part contributes to that total.',
   },
   {
-    question: 'Can I use it for more than two data sets?',
+    question: 'What kind of data works well in a double bar chart?',
     answer:
-      'While technically possible to have grouped bar charts with 3 or more bars, this tool is optimized for comparing exactly two series to keep the visualization clean and easy to read.',
+      'It works well for comparing two related values across the same categories, such as revenue by month, planned vs actual spending, male vs female responses, or traffic by device type.',
+  },
+  {
+    question: 'Can a double bar chart show more than two data series?',
+    answer:
+      'Yes. In practice, grouped bar charts can show three, four, or even more series. However, readability usually drops as more bars are added to each category, so two series is often the clearest choice.',
+  },
+  {
+    question: 'When should I avoid using a double bar chart?',
+    answer:
+      'It is usually not the best choice when you have too many categories, too many data series, need to show a long-term trend, or want to emphasize part-to-whole relationships. In those cases, a line chart, stacked bar chart, or pie chart may work better.',
+  },
+  {
+    question: 'Is a double bar chart suitable for time series data?',
+    answer:
+      'Yes, if you are comparing a limited number of time points such as monthly revenue this year vs last year. If the main goal is to show a longer trend over time, a line chart is usually easier to read.',
+  },
+  {
+    question: 'What are the main advantages of a double bar chart?',
+    answer:
+      'It is easy to understand, strong for comparing two data sets, visually clear, useful in dashboards and business reports, and effective for spotting gaps or outliers quickly.',
+  },
+  {
+    question: 'What are the drawbacks of a double bar chart?',
+    answer:
+      'It can become crowded when there are too many categories or too many series. It is also not ideal for showing cumulative totals or part-to-whole proportions.',
+  },
+  {
+    question: 'What colors should I use in a double bar chart?',
+    answer:
+      'Use two clearly distinct colors or two tones from the same family with enough contrast. Avoid using too many colors because that makes comparison harder instead of easier.',
+  },
+  {
+    question: 'How do I choose between a double bar chart and a line chart?',
+    answer:
+      'Use a double bar chart when you want to compare two data sets and emphasize value differences within categories. Use a line chart when you want to highlight movement, growth, or decline over time.',
+  },
+  {
+    question: 'Is a double bar chart useful for business analysis?',
+    answer:
+      'Yes. It is widely used in finance, sales, marketing, budgeting, and HR reporting because it makes side-by-side comparisons easy to scan and explain.',
+  },
+  {
+    question: 'Is a double bar chart suitable for academic research?',
+    answer:
+      'Yes. Researchers often use it to compare control vs experimental groups, different sample populations, or before-and-after results in a simple and readable way.',
+  },
+  {
+    question: 'Can I use a double bar chart in AI or data analysis reports?',
+    answer:
+      'Yes. It is useful for comparing model A vs model B, precision vs recall, training vs test results, or the performance of different algorithms across the same benchmark categories.',
+  },
+  {
+    question: 'What mistakes do people make most often with double bar charts?',
+    answer:
+      'Common mistakes include using too many categories, choosing colors that are too similar, using an inconsistent Y-axis scale, sorting data poorly, or making the legend unclear.',
   },
 ];
 
