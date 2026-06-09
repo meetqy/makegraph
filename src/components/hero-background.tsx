@@ -82,9 +82,9 @@ function getInitialBlockState(
   return {
     x: column * gridWidth,
     y: row * gridHeight,
-    lightColor: palette.light,
-    darkColor: palette.dark,
-    color: palette.light,
+    lightColor: palette!.light,
+    darkColor: palette!.dark,
+    color: palette!.light,
     opacity: heroBlockHiddenOpacity,
   };
 }
@@ -136,9 +136,9 @@ export function HeroBackground({
 
         nextStatesByIndex.set(blockIndex, {
           ...position,
-          lightColor: palette.light,
-          darkColor: palette.dark,
-          color: palette.light,
+          lightColor: palette!.light,
+          darkColor: palette!.dark,
+          color: palette!.light,
           opacity: heroBlockLightOpacity,
         });
       });
