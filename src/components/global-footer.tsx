@@ -42,7 +42,7 @@ export function GlobalFooter() {
           <ul className="mt-3 flex flex-wrap items-center gap-6 md:mt-0">
             <li>
               <Link
-                href="#"
+                href="/privacy-policy"
                 className="text-xs text-[#888888] hover:text-[#171717] transition-colors"
               >
                 Privacy Policy
@@ -50,7 +50,7 @@ export function GlobalFooter() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/terms-of-service"
                 className="text-xs text-[#888888] hover:text-[#171717] transition-colors"
               >
                 Terms of Service
