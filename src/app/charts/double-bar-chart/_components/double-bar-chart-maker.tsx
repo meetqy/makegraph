@@ -59,29 +59,26 @@ export function DoubleBarChartMaker() {
   const [data, setData] = useState<ChartDataRow[]>(initialData);
   const [settings, setSettings] = useState<ChartSettings>(initialSettings);
 
-  const columns = useMemo<DataTableColumn<ChartDataRow>[]>(
-    () => [
-      {
-        key: 'name',
-        title: 'A (Label)',
-        type: 'text',
-        minWidth: 120,
-      },
-      {
-        key: 'value1',
-        title: 'B (Value 1)',
-        type: 'number',
-        minWidth: 120,
-      },
-      {
-        key: 'value2',
-        title: 'C (Value 2)',
-        type: 'number',
-        minWidth: 120,
-      },
-    ],
-    []
-  );
+  const [columns, setColumns] = useState<DataTableColumn<ChartDataRow>[]>([
+    {
+      key: 'name',
+      title: 'A (Label)',
+      type: 'text',
+      minWidth: 120,
+    },
+    {
+      key: 'value1',
+      title: 'B (Value 1)',
+      type: 'number',
+      minWidth: 120,
+    },
+    {
+      key: 'value2',
+      title: 'C (Value 2)',
+      type: 'number',
+      minWidth: 120,
+    },
+  ]);
 
   const defaultNewRow = () => ({
     name: `Item ${data.length + 1}`,
@@ -105,6 +102,7 @@ export function DoubleBarChartMaker() {
             data={data}
             onChange={setData}
             columns={columns}
+            onColumnsChange={setColumns}
             defaultNewRow={defaultNewRow}
           />
         </div>
@@ -142,6 +140,7 @@ export function DoubleBarChartMaker() {
                   data={data}
                   onChange={setData}
                   columns={columns}
+                  onColumnsChange={setColumns}
                   defaultNewRow={defaultNewRow}
                 />
               </div>
