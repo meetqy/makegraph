@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { BarChartRaceMaker } from './_components/bar-chart-race-maker';
 import { boxContainerClassName } from '~/lib/layout';
+import { ChartList } from '~/components/chart-list';
 import { ChartHero } from '~/components/chart-hero';
+import { getBlogItemsByChartPath } from '~/config/blogs';
 import { generateChartTitle, withChartLinks } from '~/lib/utils';
 
 const currentPath = '/charts/bar-chart-race';
@@ -11,6 +13,7 @@ const heroEyebrow = 'Online Bar Chart Race Tool';
 const heroTitle = 'Free Online Bar Chart Race Maker.';
 const heroDescription =
   'Free online bar chart race maker. Animate rankings over time, edit data in a table, and preview a smooth racing chart instantly.';
+const relatedBlogs = getBlogItemsByChartPath(currentPath);
 
 export const metadata: Metadata = {
   title: generateChartTitle('Bar Chart Race'),
@@ -266,6 +269,24 @@ export default function BarChartRacePage() {
               ))}
             </div>
           </section>
+
+          {relatedBlogs.length > 0 && (
+            <section className="py-16">
+              <ChartList
+                items={relatedBlogs.map((blog) => ({
+                  title: blog.title,
+                  description: blog.description,
+                  href: blog.href,
+                  image: blog.image,
+                  icon: blog.icon,
+                  meta: blog.date,
+                }))}
+                eyebrow="Related blog"
+                title="Explore a guide connected to this chart type."
+                description="Open the related article to see the use case, data shape, and reporting context behind this chart."
+              />
+            </section>
+          )}
         </section>
       </div>
     </div>

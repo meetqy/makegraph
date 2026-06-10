@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { DoubleBarChartMaker } from './_components/double-bar-chart-maker';
 import { boxContainerClassName } from '~/lib/layout';
+import { ChartList } from '~/components/chart-list';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
+import { getBlogItemsByChartPath } from '~/config/blogs';
 import { generateChartTitle, withChartLinks } from '~/lib/utils';
 
 // 当前页面路径：用于在 withChartLinks 中跳过指向自身的链接
@@ -14,6 +16,7 @@ const heroEyebrow = 'Online Double Bar Chart Tool';
 const heroTitle = 'Free Online Double Bar Chart Maker.';
 const heroDescription =
   'Free online double bar chart maker. Compare two data sets side by side, customize colors, and preview instantly for dashboards and presentations.';
+const relatedBlogs = getBlogItemsByChartPath(currentPath);
 
 export const metadata: Metadata = {
   title: generateChartTitle('Double Bar Chart'),
@@ -351,6 +354,24 @@ export default function DoubleBarChartPage() {
               </div>
             </div>
           </section>
+
+          {relatedBlogs.length > 0 && (
+            <section className="py-16">
+              <ChartList
+                items={relatedBlogs.map((blog) => ({
+                  title: blog.title,
+                  description: blog.description,
+                  href: blog.href,
+                  image: blog.image,
+                  icon: blog.icon,
+                  meta: blog.date,
+                }))}
+                eyebrow="Related blog"
+                title="Learn when to use this chart in a real workflow."
+                description="Read the guide connected to this chart template to see the business scenario, the data structure, and the reporting questions it helps answer."
+              />
+            </section>
+          )}
         </section>
       </div>
     </div>

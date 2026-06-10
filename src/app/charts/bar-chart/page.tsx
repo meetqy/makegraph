@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { BarChartMaker } from './_components/bar-chart-maker';
+import { ChartList } from '~/components/chart-list';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
+import { getBlogItemsByChartPath } from '~/config/blogs';
 import { generateChartTitle, withChartLinks } from '~/lib/utils';
 import { boxContainerClassName } from '~/lib/layout';
 
@@ -13,6 +15,7 @@ const heroEyebrow = 'Online Bar Chart Tool';
 const heroTitle = 'Free Online Bar Chart Maker.';
 const heroDescription =
   'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.';
+const relatedBlogs = getBlogItemsByChartPath(currentPath);
 
 export const metadata: Metadata = {
   title: generateChartTitle('Bar Chart'),
@@ -299,6 +302,24 @@ export default function BarChartPage() {
               </div>
             </div>
           </section>
+
+          {relatedBlogs.length > 0 && (
+            <section className="py-16">
+              <ChartList
+                items={relatedBlogs.map((blog) => ({
+                  title: blog.title,
+                  description: blog.description,
+                  href: blog.href,
+                  image: blog.image,
+                  icon: blog.icon,
+                  meta: blog.date,
+                }))}
+                eyebrow="Related blog"
+                title="See a business use case for this chart."
+                description="Open the related guide to understand the scenario, the example data, and the reporting questions behind this chart choice."
+              />
+            </section>
+          )}
         </section>
       </div>
     </div>

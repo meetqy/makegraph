@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { StackedBarChartMaker } from './_components/stacked-bar-chart-maker';
 import { boxContainerClassName } from '~/lib/layout';
+import { ChartList } from '~/components/chart-list';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
+import { getBlogItemsByChartPath } from '~/config/blogs';
 import { generateChartTitle, withChartLinks } from '~/lib/utils';
 
 // 当前页面路径：用于在 withChartLinks 中跳过指向自身的链接
@@ -14,6 +16,7 @@ const heroEyebrow = 'Online Stacked Bar Chart Tool';
 const heroTitle = 'Free Online Stacked Bar Chart Maker.';
 const heroDescription =
   'Free online stacked bar chart maker. Compare totals and composition at a glance, switch to 100% stacked, customize colors, and preview instantly for reports.';
+const relatedBlogs = getBlogItemsByChartPath(currentPath);
 
 export const metadata: Metadata = {
   title: generateChartTitle('Stacked Bar Chart'),
@@ -352,6 +355,24 @@ export default function StackedBarChartPage() {
               </div>
             </div>
           </section>
+
+          {relatedBlogs.length > 0 && (
+            <section className="py-16">
+              <ChartList
+                items={relatedBlogs.map((blog) => ({
+                  title: blog.title,
+                  description: blog.description,
+                  href: blog.href,
+                  image: blog.image,
+                  icon: blog.icon,
+                  meta: blog.date,
+                }))}
+                eyebrow="Related blog"
+                title="Read a guide that uses this chart in context."
+                description="Jump to the related article to see the reporting scenario, the example data, and why this chart is a good fit."
+              />
+            </section>
+          )}
         </section>
       </div>
     </div>

@@ -42,3 +42,9 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/stacked-bar-chart-og-image.png',
   },
 ];
+
+export function getChartItemsByPaths(paths: string[]) {
+  return paths
+    .map((path) => chartTypeItems.find((item) => item.href === path))
+    .filter((item): item is ChartTypeItem => Boolean(item));
+}

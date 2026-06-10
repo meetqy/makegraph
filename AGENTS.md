@@ -21,6 +21,9 @@
 - 统计图目录下的说明性 markdown 文案默认使用中文。
 - 统计图相关的 markdown 文件放在对应的 chart 目录下（例如 src/app/charts/bar-chart/），不放在 docs 目录中。
 - 非统计图页面的文案、需求、SEO 相关参考资料统一放在 docs 目录下。
+- blog 与对应 chart 必须建立双向关联：blog 底部展示对应 chart，chart 底部也展示对应 blog，并支持相互跳转。
+- blog 底部展示的 chart 列表只能包含正文中明确提到、且站内实际存在的 chart；没有提到的 chart 不得展示。
+- blog 的 OG image 统一放在 `public/blogs` 目录下，并在对应 blog 页面中使用该目录下的图片作为 Open Graph / Twitter 预览图。
 - SEO 文案规范：Title 长度控制在 60 个字符以内，Description 长度控制在 160 个字符以内。文案必须自然流畅，禁止生硬堆砌关键词。
 
 ## 4. 执行与检查规范
