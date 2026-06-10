@@ -33,6 +33,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html className={`${geist.variable}`} lang="en">
+      <head>
+        <meta name="stackscope-claim" content="aZyd5K4q" />
+      </head>
       <TRPCReactProvider>
         <body className="relative flex min-h-screen flex-col bg-white">
           <GlobalBackground />

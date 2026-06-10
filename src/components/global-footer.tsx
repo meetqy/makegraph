@@ -6,10 +6,10 @@ import { boxContainerClassName } from '~/lib/layout';
 // 友情链接配置列表（支持直接传入 HTML 代码）
 export const friendLinks: string[] = [
   '<a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge3-light.svg" alt="Featured on Twelve Tools" width="200" height="54"></a>',
-  `<a href="https://starterbest.com" target="_blank" rel="noopener noreferrer"> 
-    <img src="https://starterbest.com/badages-awards.svg"
-    alt="Featured on Starter Best" style="height: 54px; width: auto;"/>
-</a>`,
+  `<a href="https://starterbest.com" target="_blank" rel="noopener noreferrer"><img src="https://starterbest.com/badages-awards.svg" alt="Featured on Starter Best" style="height: 54px; width: auto;"/></a>`,
+  `<a href="https://submitaitools.org" target="_blank" ><img src="https://submitaitools.org/static_submitaitools/images/submitaitools.png" alt="Submit AI Tools" style="border-radius: 10px; width: 200px; height: 60px;" /></a>`,
+  `<a href="https://navfolders.com" target="_blank"><img src="https://navfolders.com/badge/nav_light.svg" alt="NavFolders" width="200" height="54" /></a>`,
+  `<a href="https://showmebest.ai" target="_blank"><img src="https://showmebest.ai/badge/feature-badge-white.webp" alt="Featured on ShowMeBestAI" width="220" height="60"></a>`,
 ];
 
 export function GlobalFooter() {
