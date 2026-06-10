@@ -123,7 +123,7 @@ export function DataTableEditor<T extends Record<string, unknown>>({
 
       <div
         ref={gridContainerRef}
-        className="min-h-0 flex-1 bg-[#fafafa] -mr-[1px]"
+        className="min-h-0 flex-1 bg-[#fafafa] -mr-px"
       >
         {gridHeight > 0 ? (
           <DataSheetGrid
