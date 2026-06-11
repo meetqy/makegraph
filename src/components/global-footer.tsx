@@ -73,8 +73,8 @@ export function GlobalFooter() {
         </div>
 
         {friendLinks.length > 0 && (
-          <div className="border-[#ebebeb] border-t pt-3 pb-6 flex flex-col md:flex-row md:items-center gap-4">
-            <ul className="flex flex-wrap items-center gap-4 text-xs text-[#888888] [&_a]:transition-colors hover:[&_a]:text-[#171717]">
+          <div className="border-[#ebebeb] border-t pt-3 pb-6 flex flex-col md:flex-row md:items-center gap-3">
+            <ul className="flex flex-wrap items-center gap-3 text-xs text-[#888888] [&_a]:transition-colors hover:[&_a]:text-[#171717] [&_img]:!h-9 [&_img]:!w-auto">
               {friendLinks.map((html, index) => (
                 <li key={index} dangerouslySetInnerHTML={{ __html: html }} />
               ))}
