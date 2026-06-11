@@ -59,6 +59,12 @@ export function GlobalHeader() {
               Charts
             </Link>
             <Link
+              href="/templates"
+              className="rounded-full px-3 py-2 text-sm text-[#4d4d4d] transition-colors hover:bg-[#f5f5f5] hover:text-[#171717]"
+            >
+              Templates
+            </Link>
+            <Link
               href="/blogs"
               className="rounded-full px-3 py-2 text-sm text-[#4d4d4d] transition-colors hover:bg-[#f5f5f5] hover:text-[#171717]"
             >

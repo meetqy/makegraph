@@ -83,11 +83,11 @@ export function ChartList({
                 )}
                 <CardTitle className="flex items-center gap-2.5 text-base text-[#171717]">
                   {item.icon && (
-                    <span className="flex size-7 items-center justify-center rounded-lg bg-[#fafafa] text-[#171717] ring-1 ring-[#ebebeb]">
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#fafafa] text-[#171717] ring-1 ring-[#ebebeb]">
                       <item.icon className="size-3.5" />
                     </span>
                   )}
-                  <span>{item.title}</span>
+                  <span className="truncate">{item.title}</span>
                 </CardTitle>
                 <CardDescription className="line-clamp-2 text-sm leading-snug text-[#4d4d4d]">
                   {item.description}

@@ -76,9 +76,19 @@ const initialSettings: ChartSettings = {
   loop: true,
 };
 
-export function BarChartRaceMaker() {
-  const [data, setData] = useState<ChartDataRow[]>(initialData);
-  const [settings, setSettings] = useState<ChartSettings>(initialSettings);
+export type BarChartRaceMakerProps = {
+  initialData?: ChartDataRow[];
+  initialSettings?: ChartSettings;
+};
+
+export function BarChartRaceMaker({
+  initialData: providedData,
+  initialSettings: providedSettings,
+}: BarChartRaceMakerProps = {}) {
+  const [data, setData] = useState<ChartDataRow[]>(providedData ?? initialData);
+  const [settings, setSettings] = useState<ChartSettings>(
+    providedSettings ?? initialSettings
+  );
   // 维护每个名称对应的颜色；新增类别时自动从 defaultPalette 顺序分配
   const [categoryColors, setCategoryColors] = useState<CategoryColorMap>({});
 

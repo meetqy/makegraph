@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Table, Settings } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 import {
@@ -27,6 +27,7 @@ export type ChartSettings = {
   color: string;
   showLegend: boolean;
   showGrid: boolean;
+  showValues: boolean;
 };
 
 const initialData: ChartDataRow[] = [
@@ -44,11 +45,22 @@ const initialSettings: ChartSettings = {
   color: '#171717',
   showLegend: true,
   showGrid: true,
+  showValues: false,
 };
 
-export function BarChartMaker() {
-  const [data, setData] = useState<ChartDataRow[]>(initialData);
-  const [settings, setSettings] = useState<ChartSettings>(initialSettings);
+export type BarChartMakerProps = {
+  initialData?: ChartDataRow[];
+  initialSettings?: ChartSettings;
+};
+
+export function BarChartMaker({
+  initialData: providedData,
+  initialSettings: providedSettings,
+}: BarChartMakerProps = {}) {
+  const [data, setData] = useState<ChartDataRow[]>(providedData ?? initialData);
+  const [settings, setSettings] = useState<ChartSettings>(
+    providedSettings ?? initialSettings
+  );
 
   const [columns, setColumns] = useState<DataTableColumn<ChartDataRow>[]>([
     {

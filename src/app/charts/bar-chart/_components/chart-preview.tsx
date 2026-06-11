@@ -8,6 +8,7 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  LabelList,
 } from 'recharts';
 import { ChartExporter } from '~/components/chart-exporter';
 import type { ChartDataRow, ChartSettings } from './bar-chart-maker';
@@ -88,11 +89,21 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
                   />
                 )}
                 <Bar
+                  isAnimationActive={false}
                   dataKey="value"
                   name={settings.yAxisLabel || 'Value'}
                   fill={settings.color}
                   radius={[4, 4, 0, 0]}
-                />
+                >
+                  {settings.showValues && (
+                    <LabelList
+                      dataKey="value"
+                      position="top"
+                      fill="#4d4d4d"
+                      fontSize={12}
+                    />
+                  )}
+                </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>

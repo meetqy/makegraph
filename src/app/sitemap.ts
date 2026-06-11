@@ -38,6 +38,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${siteUrl}/templates`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/templates/capcom-game-series-sales`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${siteUrl}/blogs/budget-vs-actual-spending-across-departments`,
       lastModified: now,
       changeFrequency: 'monthly',
