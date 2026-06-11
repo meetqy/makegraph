@@ -17,6 +17,7 @@ const CHART_LINK_PATTERNS: Array<[RegExp, string]> = [
   [/100% stacked bar chart/gi, '/charts/stacked-bar-chart'],
   [/stacked bar chart/gi, '/charts/stacked-bar-chart'],
   [/double bar chart/gi, '/charts/double-bar-chart'],
+  [/line chart/gi, '/charts/line-chart'],
   [/bar chart race/gi, '/charts/bar-chart-race'],
   [/regular bar chart/gi, '/charts/bar-chart'],
   [/bar chart/gi, '/charts/bar-chart'],
@@ -29,7 +30,7 @@ const chartLinkClassName =
 /**
  * 在一段文本中识别已支持的统计图名称，并将其转换为指向对应图表页面的快捷链接。
  *
- * - 仅处理项目内已实现的图表，其他图表名称（如 pie chart、line chart）保持纯文本。
+ * - 仅处理项目内已实现的图表，其他未实现的图表名称（如 pie chart）保持纯文本。
  * - 通过 currentPath 避免在当前页面链接到自身。
  * - 长匹配优先：例如 "stacked bar chart" 不会被拆成 "stacked" + "bar chart" 两个独立链接。
  */

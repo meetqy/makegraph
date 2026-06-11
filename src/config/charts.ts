@@ -10,6 +10,14 @@ export type ChartTypeItem = {
 
 export const chartTypeItems: ChartTypeItem[] = [
   {
+    name: 'Line Chart',
+    description:
+      'Free online line chart maker. Plot trends over time, customize labels and colors, and preview results instantly for reports and presentations.',
+    href: '/charts/line-chart',
+    icon: BarChart3,
+    image: '/charts/line-chart-og-image.png',
+  },
+  {
     name: 'Bar Chart',
     description:
       'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.',
