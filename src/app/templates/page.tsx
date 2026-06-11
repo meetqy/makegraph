@@ -18,7 +18,7 @@ const templateItems = [
     description:
       'A ready-to-use bar chart race template with fixed Capcom franchises. Fill in the sales units over time to animate the history of Resident Evil, Monster Hunter, Street Fighter, and more.',
     href: '/templates/capcom-game-series-sales',
-    image: '/charts/bar-graph-og-image.png',
+    image: '/templates/capcom-game-series-sales-og-image.png',
     icon: BarChart3,
   },
 ];
