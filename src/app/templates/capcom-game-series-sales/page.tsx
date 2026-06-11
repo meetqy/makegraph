@@ -18,6 +18,13 @@ const heroDescription =
 export const metadata: Metadata = {
   title: generateChartTitle('Capcom Game Series Sales Race'),
   description: heroDescription,
+  openGraph: {
+    images: ['/templates/capcom-game-series-sales-og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/templates/capcom-game-series-sales-og-image.png'],
+  },
 };
 
 const initialData: ChartDataRow[] = [
