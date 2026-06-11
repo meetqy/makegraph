@@ -59,8 +59,15 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
                   dataKey="name"
                   tickLine={false}
                   axisLine={false}
-                  tick={{ fill: '#888888', fontSize: 13 }}
+                  tick={{
+                    fill: '#888888',
+                    fontSize: 12,
+                    angle: -45,
+                    textAnchor: 'end',
+                  }}
+                  interval={0}
                   dy={10}
+                  height={80}
                 />
                 <YAxis
                   tickLine={false}
