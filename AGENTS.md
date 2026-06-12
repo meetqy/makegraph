@@ -17,6 +17,7 @@
 ## 3. 内容与资料规范
 
 - 页面展示文案默认使用英语。
+- 多语言翻译文件按照页面组织，放在对应的页面目录下（例如 `src/app/[locale]/charts/line-chart/i18n/{locale}.json`）。
 - 注释默认使用中文。
 - 统计图目录下的说明性 markdown 文案默认使用中文。
 - 统计图相关的 markdown 文件放在对应的 chart 目录下（例如 src/app/charts/bar-chart/），不放在 docs 目录中。

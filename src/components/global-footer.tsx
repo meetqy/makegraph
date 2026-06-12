@@ -18,6 +18,9 @@ export const friendLinks: string[] = [
   `<a href="https://findly.tools/make-graph?utm_source=make-graph" target="_blank" rel="noopener noreferrer"><img src="https://findly.tools/badges/findly-tools-badge-light.svg" alt="Featured on Findly.tools" width="175" height="55" /></a>`,
   `<a href="https://fwfw.app/item/makegraph" target="_blank"><img src="https://fwfw.app/badge-white.svg" width="250" height="54" alt="Featured on FWFW" /></a>`,
   `<a href="https://mydirs.com" target="_blank"><img src="https://mydirs.com/badges/light.svg" alt="Featured on Mydirs" width="200" height="54"></a>`,
+  `<a href="https://newtool.site/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://newtool.site/badges/newtool-light.svg" alt="Featured on NewTool.site" height = "54px" width = "auto" /></a>`,
+  `<a href="https://saasfame.com/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://saasfame.com/badge-light.svg" alt="Featured on saasfame.com" style="height: 54px; width: auto;" /></a>`,
+  `<a href="https://saastool.site/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://saastool.site/badges/saastool-light.svg" alt="Featured on SaaSTool.site" height = "54px" width = "auto" /></a>`,
 ];
 
 export function GlobalFooter() {
