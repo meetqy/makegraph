@@ -5,5 +5,10 @@
     "blogs": "博客",
     "login": "登录",
     "signup": "注册"
+  },
+  "Footer": {
+    "description": "一个快速的在线图表制作工具。上传你的数据，获取自动图表建议，并立即导出为PNG，免费且无需注册。",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款"
   }
 }

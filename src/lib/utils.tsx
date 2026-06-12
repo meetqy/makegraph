@@ -14,6 +14,7 @@ export function generateChartTitle(chartName: string) {
 // 已支持的统计图名称到对应页面的映射。
 // 顺序很重要：更具体的短语必须放在更通用的短语之前，确保长匹配优先。
 const CHART_LINK_PATTERNS: Array<[RegExp, string]> = [
+  // 英文
   [/100% stacked bar chart/gi, '/charts/stacked-bar-chart'],
   [/stacked bar chart/gi, '/charts/stacked-bar-chart'],
   [/double bar chart/gi, '/charts/double-bar-chart'],
@@ -22,6 +23,17 @@ const CHART_LINK_PATTERNS: Array<[RegExp, string]> = [
   [/bar chart race/gi, '/charts/bar-chart-race'],
   [/regular bar chart/gi, '/charts/bar-chart'],
   [/bar chart/gi, '/charts/bar-chart'],
+
+  // 中文
+  [/100%堆叠柱状图/gi, '/charts/stacked-bar-chart'],
+  [/百分百堆叠柱状图/gi, '/charts/stacked-bar-chart'],
+  [/堆叠柱状图/gi, '/charts/stacked-bar-chart'],
+  [/双柱状图/gi, '/charts/double-bar-chart'],
+  [/雷达图/gi, '/charts/radar-chart'],
+  [/折线图/gi, '/charts/line-chart'],
+  [/动态排序柱状图/gi, '/charts/bar-chart-race'],
+  [/常规柱状图/gi, '/charts/bar-chart'],
+  [/柱状图/gi, '/charts/bar-chart'],
 ];
 
 // 页面内联快捷链接的统一样式

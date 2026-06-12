@@ -1,6 +1,7 @@
 import { Link } from '~/i18n/routing';
+import { useTranslations } from 'next-intl';
 
-import { chartTypeItems } from '~/config/charts';
+import { chartTypeItems, type ChartTypeItem } from '~/config/charts';
 
 // 友情链接配置列表（支持直接传入 HTML 代码）
 export const friendLinks: string[] = [
@@ -23,7 +24,33 @@ export const friendLinks: string[] = [
   `<a href="https://saastool.site/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://saastool.site/badges/saastool-light.svg" alt="Featured on SaaSTool.site" height = "54px" width = "auto" /></a>`,
 ];
 
+function FooterChartLink({ item }: { item: ChartTypeItem }) {
+  const nameMatch = item.href.match(/\/charts\/(.+)/);
+  const translationKey = nameMatch?.[1]
+    ? nameMatch[1]
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join('')
+    : 'LineChart';
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const itemT = useTranslations(translationKey as any);
+
+  return (
+    <li>
+      <Link
+        href={item.href}
+        className="text-sm text-[#888888] hover:text-[#171717] transition-colors"
+      >
+        {itemT('heroEyebrow')}
+      </Link>
+    </li>
+  );
+}
+
 export function GlobalFooter() {
+  const t = useTranslations('Footer');
+
   return (
     <footer className="border-t border-[#ebebeb] bg-white text-[#4d4d4d]">
       <div className={`container-box pt-8 xl:pt-10`}>
@@ -35,22 +62,14 @@ export function GlobalFooter() {
             MakeGraph
           </Link>
           <p className="mt-3 text-[#888888] text-sm leading-6">
-            A fast online chart maker. Upload your data, get automatic chart
-            suggestions, and export as PNG instantly, free with no signup.
+            {t('description')}
           </p>
         </div>
 
         <div className="mb-8">
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
             {chartTypeItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  href={item.href}
-                  className="text-sm text-[#888888] hover:text-[#171717] transition-colors"
-                >
-                  {item.name} Maker
-                </Link>
-              </li>
+              <FooterChartLink key={item.name} item={item} />
             ))}
           </ul>
         </div>
@@ -65,7 +84,7 @@ export function GlobalFooter() {
                 href="/privacy-policy"
                 className="text-xs text-[#888888] hover:text-[#171717] transition-colors"
               >
-                Privacy Policy
+                {t('privacyPolicy')}
               </Link>
             </li>
             <li>
@@ -73,7 +92,7 @@ export function GlobalFooter() {
                 href="/terms-of-service"
                 className="text-xs text-[#888888] hover:text-[#171717] transition-colors"
               >
-                Terms of Service
+                {t('termsOfService')}
               </Link>
             </li>
           </ul>
