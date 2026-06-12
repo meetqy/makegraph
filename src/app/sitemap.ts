@@ -14,6 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${siteUrl}/charts/line-chart`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${siteUrl}/charts/bar-chart`,
       lastModified: now,
       changeFrequency: 'monthly',
@@ -33,6 +39,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteUrl}/charts/stacked-bar-chart`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/charts/radar-chart`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,

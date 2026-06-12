@@ -18,6 +18,14 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/line-chart-og-image.png',
   },
   {
+    name: 'Radar Chart',
+    description:
+      'Free online radar chart maker. Compare strengths across multiple dimensions, customize labels and colors, and preview results instantly for reports and presentations.',
+    href: '/charts/radar-chart',
+    icon: BarChart3,
+    image: '/charts/radar-chart-og-image.png',
+  },
+  {
     name: 'Bar Chart',
     description:
       'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.',
