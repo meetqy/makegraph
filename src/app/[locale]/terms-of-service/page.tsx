@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Link } from '~/i18n/routing';
+import { getMetadataAlternates } from '~/lib/utils';
 
 // 页面元信息：Title 不超过 60 字符，Description 不超过 160 字符
 const heroEyebrow = 'Legal';
@@ -10,6 +11,7 @@ const heroDescription =
 export const metadata: Metadata = {
   title: 'Terms of Service | MakeGraph',
   description: heroDescription,
+  alternates: getMetadataAlternates('/terms-of-service'),
 };
 
 const lastUpdated = 'June 9, 2026';

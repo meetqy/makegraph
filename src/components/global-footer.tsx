@@ -25,6 +25,8 @@ export const friendLinks: string[] = [
   `<a href="https://toolfame.com/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" style="height: 54px; width: auto;" /></a>`,
   `<a href="https://turbo0.com/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://img.turbo0.com/badge-listed-light.svg" alt="Listed on Turbo0" style="height: 54px; width: auto;" /></a>`,
   `<a href="https://drchecker.net/item/makegraph.org" target="_blank" rel="noopener noreferrer"> <img src="https://drchecker.net/api/badge?domain=makegraph.org" alt="Monitor your Domain Rating with DRChecker " style="height: 54px; width: auto;"/></a>`,
+  `<a href="https://agentwork.tools" target="_blank"><img src="https://agentwork.tools/badge/badge_light.svg" alt="Featured on AgentWork.Tools" width="200" height="54" /></a>`,
+  `<a href="https://fazier.com/launches/makegraph.org" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" width=250 alt="Fazier badge" /></a>`,
 ];
 
 function FooterChartLink({ item }: { item: ChartTypeItem }) {

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
 import {
   BarChartMaker,
   type ChartDataRow,
@@ -6,17 +7,16 @@ import {
 } from '~/app/[locale]/charts/bar-chart/_components/bar-chart-maker';
 import { ChartHero } from '~/components/chart-hero';
 import { ChartList } from '~/components/chart-list';
-import { generateChartTitle } from '~/lib/utils';
+import { generateChartTitle, getMetadataAlternates } from '~/lib/utils';
 import { getChartItemsByPaths } from '~/config/charts';
 
-const heroEyebrow = 'Capcom Franchise Sales Template';
-const heroTitle = 'Capcom Game Series Sales Units Bar Chart Maker';
 const heroDescription =
-  'A ready-to-use bar chart race template with fixed Capcom franchises. Fill in the sales units over time to animate the history of Resident Evil, Monster Hunter, Street Fighter, and more.';
+  'A ready-to-use bar chart template with fixed Capcom franchises. Fill in the sales units over time to animate the history of Resident Evil, Monster Hunter, Street Fighter, and more.';
 
 export const metadata: Metadata = {
-  title: generateChartTitle('Capcom Game Series Sales Race'),
+  title: generateChartTitle('Capcom Game Series Sales'),
   description: heroDescription,
+  alternates: getMetadataAlternates('/templates/capcom-game-series-sales'),
   openGraph: {
     images: ['/templates/capcom-game-series-sales-og-image.png'],
   },
@@ -58,12 +58,27 @@ const initialSettings: ChartSettings = {
 };
 
 export default function CapcomSalesTemplatePage() {
+  const t = useTranslations('TemplateCapcom');
+  const tBarChartRace = useTranslations('BarChartRace');
+  const tBarChart = useTranslations('BarChart');
+
+  const getTranslation = (href: string) => {
+    switch (href) {
+      case '/charts/bar-chart':
+        return tBarChart;
+      case '/charts/bar-chart-race':
+        return tBarChartRace;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="flex flex-col bg-transparent">
       <ChartHero
-        eyebrow={heroEyebrow}
-        title={heroTitle}
-        description={heroDescription}
+        eyebrow={t('heroEyebrow')}
+        title={t('heroTitle')}
+        description={t('heroDescription')}
       />
 
       <div className="relative w-full bg-white p-4">
@@ -79,48 +94,35 @@ export default function CapcomSalesTemplatePage() {
         <section className={`container-box py-16 sm:py-20`}>
           <div className="max-w-3xl">
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-              About this template
+              {t('aboutEyebrow')}
             </p>
             <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-              Data Source & Community Discussion
+              {t('aboutTitle')}
             </h2>
             <div className="mt-6 space-y-4 text-base leading-7 text-[#4d4d4d] sm:text-[18px] sm:leading-[28px]">
               <p>
-                This template is inspired by a popular post in the
-                r/breathoffire Reddit community:
+                {t('aboutP1')}
                 <a
                   href="https://www.reddit.com/r/breathoffire/comments/1t3in7o/in_case_youve_ever_wondered_how_breath_of_fire/"
                   target="_blank"
                   rel="noreferrer"
                   className="font-medium text-[#171717] underline underline-offset-4 hover:text-blue-600 transition-colors ml-1"
                 >
-                  "In case you've ever wondered how Breath of Fire series' sales
-                  historically stack up to other Capcom franchises, here's a bar
-                  chart!"
+                  {t('aboutLink1')}
                 </a>
               </p>
               <p>
-                The original official sales data is sourced from the Capcom
-                Investor Relations page:
+                {t('aboutP2')}
                 <a
                   href="https://www.capcom.co.jp/ir/english/business/salesdata.html"
                   target="_blank"
                   rel="noreferrer"
                   className="font-medium text-[#171717] underline underline-offset-4 hover:text-blue-600 transition-colors ml-1"
                 >
-                  Capcom Sales Data
+                  {t('aboutLink2')}
                 </a>
               </p>
-              <p>
-                In the community discussions, many players expressed surprise at
-                the relative position of the <em>Breath of Fire</em> series
-                within Capcom's historical sales. Despite its loyal fanbase, the
-                total sales volume remained lower than many expected. At the
-                same time, fans passionately discussed the fate of other classic
-                franchises like <em>Dino Crisis</em>, <em>Okami</em>, and{' '}
-                <em>Final Fight</em>. This bar chart provides a clear visual
-                comparison of the sales gaps between these classic IPs.
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: t.raw('aboutP3') }} />
             </div>
           </div>
         </section>
@@ -132,16 +134,19 @@ export default function CapcomSalesTemplatePage() {
             items={getChartItemsByPaths([
               '/charts/bar-chart',
               '/charts/bar-chart-race',
-            ]).map((chart) => ({
-              title: chart.name,
-              description: chart.description,
-              href: chart.href,
-              image: chart.image,
-              icon: chart.icon,
-            }))}
-            eyebrow="Other charts you might like"
-            title="Explore more chart makers for your data."
-            description="Try different chart types to find the best way to visualize and communicate your data story."
+            ]).map((chart) => {
+              const ct = getTranslation(chart.href);
+              return {
+                title: ct ? ct('heroTitle') : chart.name,
+                description: ct ? ct('heroDescription') : chart.description,
+                href: chart.href,
+                image: chart.image,
+                icon: chart.icon,
+              };
+            })}
+            eyebrow={t('otherChartsEyebrow')}
+            title={t('otherChartsTitle')}
+            description={t('otherChartsDescription')}
           />
         </section>
       </div>

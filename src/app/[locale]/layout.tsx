@@ -7,12 +7,12 @@ import { Geist } from 'next/font/google';
 import { GlobalBackground } from '~/components/global-background';
 import { GlobalFooter } from '~/components/global-footer';
 import { GlobalHeader } from '~/components/global-header';
-import { googleAnalyticsId } from '~/lib/site';
+import { googleAnalyticsId, siteUrl } from '~/lib/site';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { TRPCReactProvider } from '~/trpc/react';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://makegraph.org'),
+  metadataBase: siteUrl ? new URL(siteUrl) : undefined,
   title: 'MakeGraph - Free Online Chart Maker',
   description:
     'Turn your Excel or CSV data into clear charts in 1 minute. Free online chart maker.',

@@ -18,5 +18,27 @@
     "createChartBtn": "在线创建图表",
     "viewExamplesBtn": "查看柱状图、折线图、饼图示例",
     "heroFooter": "免费图表制作 · 无需注册 · 支持 PNG/SVG 导出"
+  },
+  "Templates": {
+    "heroEyebrow": "MakeGraph • 图表模板",
+    "heroTitle": "开箱即用的图表模板",
+    "heroDescription": "探索预填结构和配置的数据驱动故事。只需输入你的数据，即可立即生成精美、可分享的图表。",
+    "capcomGameSeriesSalesTitle": "Capcom 游戏系列销量柱状图",
+    "capcomGameSeriesSalesDescription": "这是一个开箱即用的柱状图模板，预设了 Capcom 经典游戏系列。填入历年销量数据，即可生成生化危机、怪物猎人、街头霸王等系列的销量变迁动画。"
+  },
+  "TemplateCapcom": {
+    "heroEyebrow": "Capcom 游戏销量模板",
+    "heroTitle": "Capcom 游戏系列销量柱状图",
+    "heroDescription": "这是一个开箱即用的柱状图模板，预设了 Capcom 经典游戏系列。填入历年销量数据，即可生成生化危机、怪物猎人、街头霸王等系列的销量变迁动画。",
+    "aboutEyebrow": "关于此模板",
+    "aboutTitle": "数据来源与社区讨论",
+    "aboutP1": "此模板的灵感来源于 Reddit 的 r/breathoffire 社区中的一个热门帖子：",
+    "aboutLink1": "“如果你曾好奇《龙战士》系列的销量在 Capcom 的历史中排名如何，这里有一张柱状图！”",
+    "aboutP2": "最初的官方销量数据来源于 Capcom 的投资者关系页面：",
+    "aboutLink2": "Capcom 销量数据",
+    "aboutP3": "在社区讨论中，许多玩家对 <em>龙战士 (Breath of Fire)</em> 系列在 Capcom 历史销量中的相对位置感到惊讶。尽管它拥有忠实的粉丝群，但总销量仍低于许多人的预期。与此同时，粉丝们也热烈讨论了 <em>恐龙危机 (Dino Crisis)</em>、<em>大神 (Okami)</em> 和 <em>快打旋风 (Final Fight)</em> 等其他经典系列的命运。这张柱状图提供了这些经典 IP 之间销量差距的清晰直观的比较。",
+    "otherChartsEyebrow": "你可能喜欢的其他图表",
+    "otherChartsTitle": "为你的数据探索更多图表制作工具。",
+    "otherChartsDescription": "尝试不同的图表类型，找到可视化和传达数据故事的最佳方式。"
   }
 }

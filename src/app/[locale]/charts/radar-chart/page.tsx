@@ -6,7 +6,11 @@ import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
 import { getBlogItemsByChartPath } from '~/config/blogs';
 import { getTranslations } from 'next-intl/server';
-import { generateChartTitle, withChartLinks } from '~/lib/utils';
+import {
+  generateChartTitle,
+  withChartLinks,
+  getMetadataAlternates,
+} from '~/lib/utils';
 
 const currentPath = '/charts/radar-chart';
 
@@ -19,6 +23,7 @@ const relatedBlogs = getBlogItemsByChartPath(currentPath);
 export const metadata: Metadata = {
   title: generateChartTitle('Radar Chart'),
   description: heroDescription,
+  alternates: getMetadataAlternates('/charts/radar-chart'),
   openGraph: {
     images: ['/charts/radar-chart-og-image.png'],
   },

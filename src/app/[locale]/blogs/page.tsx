@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ChartList } from '~/components/chart-list';
 import { HeroBackground } from '~/components/hero-background';
 import { blogItems } from '~/config/blogs';
-import { siteUrl } from '~/lib/site';
+import { getMetadataAlternates } from '~/lib/utils';
 
 const heroTitle = 'Blog';
 const heroDescription =
@@ -12,9 +12,7 @@ const heroDescription =
 export const metadata: Metadata = {
   title: 'Blog | MakeGraph',
   description: heroDescription,
-  alternates: {
-    canonical: `${siteUrl}/blogs`,
-  },
+  alternates: getMetadataAlternates('/blogs'),
 };
 
 export default function BlogsPage() {

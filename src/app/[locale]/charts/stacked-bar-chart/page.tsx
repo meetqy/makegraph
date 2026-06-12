@@ -6,7 +6,11 @@ import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
 import { getBlogItemsByChartPath } from '~/config/blogs';
 import { getTranslations } from 'next-intl/server';
-import { generateChartTitle, withChartLinks } from '~/lib/utils';
+import {
+  generateChartTitle,
+  withChartLinks,
+  getMetadataAlternates,
+} from '~/lib/utils';
 
 // 当前页面路径：用于在 withChartLinks 中跳过指向自身的链接
 const currentPath = '/charts/stacked-bar-chart';
@@ -21,6 +25,7 @@ const relatedBlogs = getBlogItemsByChartPath(currentPath);
 export const metadata: Metadata = {
   title: generateChartTitle('Stacked Bar Chart'),
   description: heroDescription,
+  alternates: getMetadataAlternates('/charts/stacked-bar-chart'),
   openGraph: {
     images: ['/charts/stacked-bar-chart-og-image.png'],
   },

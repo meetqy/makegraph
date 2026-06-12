@@ -77,12 +77,14 @@ export function GlobalHeader() {
             >
               {t('templates')}
             </Link>
-            <Link
-              href="/blogs"
-              className="rounded-full px-3 py-2 text-sm text-[#4d4d4d] transition-colors hover:bg-[#f5f5f5] hover:text-[#171717]"
-            >
-              {t('blogs')}
-            </Link>
+            {locale === 'en' && (
+              <Link
+                href="/blogs"
+                className="rounded-full px-3 py-2 text-sm text-[#4d4d4d] transition-colors hover:bg-[#f5f5f5] hover:text-[#171717]"
+              >
+                {t('blogs')}
+              </Link>
+            )}
           </nav>
           <div className="flex items-center gap-2">
             <Select value={locale} onValueChange={handleLocaleChange}>

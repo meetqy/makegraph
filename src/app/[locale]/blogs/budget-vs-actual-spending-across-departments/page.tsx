@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from '~/components/ui/table';
-import { siteUrl } from '~/lib/site';
+import { getMetadataAlternates } from '~/lib/utils';
 
 // 页面元信息：围绕用户真实任务来写，保持自然，不堆砌关键词
 const heroEyebrow = 'Blog';
@@ -27,13 +27,13 @@ const currentBlogImage = currentBlog?.image ?? '/og.png';
 export const metadata: Metadata = {
   title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
   description: heroDescription,
-  alternates: {
-    canonical: `${siteUrl}/blogs/budget-vs-actual-spending-across-departments`,
-  },
+  alternates: getMetadataAlternates(
+    '/blogs/budget-vs-actual-spending-across-departments'
+  ),
   openGraph: {
     title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
     description: heroDescription,
-    url: `${siteUrl}/blogs/budget-vs-actual-spending-across-departments`,
+    url: '/blogs/budget-vs-actual-spending-across-departments',
     images: [currentBlogImage],
   },
   twitter: {

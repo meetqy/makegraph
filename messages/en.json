@@ -18,5 +18,27 @@
     "createChartBtn": "Create Chart Online",
     "viewExamplesBtn": "View Bar, Line, Pie Examples",
     "heroFooter": "Free chart maker · No signup · PNG/SVG export"
+  },
+  "Templates": {
+    "heroEyebrow": "MakeGraph • Chart Templates",
+    "heroTitle": "Ready-to-use chart templates",
+    "heroDescription": "Explore data-driven stories with pre-filled structures and configurations. Just input your numbers to instantly generate beautiful, shareable charts.",
+    "capcomGameSeriesSalesTitle": "Capcom Game Series Sales Units Bar Chart Maker",
+    "capcomGameSeriesSalesDescription": "A ready-to-use bar chart template with fixed Capcom franchises. Fill in the sales units over time to animate the history of Resident Evil, Monster Hunter, Street Fighter, and more."
+  },
+  "TemplateCapcom": {
+    "heroEyebrow": "Capcom Franchise Sales Template",
+    "heroTitle": "Capcom Game Series Sales Units Bar Chart Maker",
+    "heroDescription": "A ready-to-use bar chart template with fixed Capcom franchises. Fill in the sales units over time to animate the history of Resident Evil, Monster Hunter, Street Fighter, and more.",
+    "aboutEyebrow": "About this template",
+    "aboutTitle": "Data Source & Community Discussion",
+    "aboutP1": "This template is inspired by a popular post in the r/breathoffire Reddit community: ",
+    "aboutLink1": "\"In case you've ever wondered how Breath of Fire series' sales historically stack up to other Capcom franchises, here's a bar chart!\"",
+    "aboutP2": "The original official sales data is sourced from the Capcom Investor Relations page: ",
+    "aboutLink2": "Capcom Sales Data",
+    "aboutP3": "In the community discussions, many players expressed surprise at the relative position of the <em>Breath of Fire</em> series within Capcom's historical sales. Despite its loyal fanbase, the total sales volume remained lower than many expected. At the same time, fans passionately discussed the fate of other classic franchises like <em>Dino Crisis</em>, <em>Okami</em>, and <em>Final Fight</em>. This bar chart provides a clear visual comparison of the sales gaps between these classic IPs.",
+    "otherChartsEyebrow": "Other charts you might like",
+    "otherChartsTitle": "Explore more chart makers for your data.",
+    "otherChartsDescription": "Try different chart types to find the best way to visualize and communicate your data story."
   }
 }

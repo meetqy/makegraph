@@ -5,7 +5,11 @@ import { ChartList } from '~/components/chart-list';
 import { ChartHero } from '~/components/chart-hero';
 import { getBlogItemsByChartPath } from '~/config/blogs';
 import { getTranslations } from 'next-intl/server';
-import { generateChartTitle, withChartLinks } from '~/lib/utils';
+import {
+  generateChartTitle,
+  withChartLinks,
+  getMetadataAlternates,
+} from '~/lib/utils';
 
 const currentPath = '/charts/bar-chart-race';
 
@@ -18,6 +22,7 @@ const relatedBlogs = getBlogItemsByChartPath(currentPath);
 export const metadata: Metadata = {
   title: generateChartTitle('Bar Chart Race'),
   description: heroDescription,
+  alternates: getMetadataAlternates('/charts/bar-chart-race'),
   openGraph: {
     images: [{ url: '/charts/bar-chart-race-og-image.png' }],
   },
