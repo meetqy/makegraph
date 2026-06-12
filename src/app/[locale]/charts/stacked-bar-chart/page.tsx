@@ -15,9 +15,6 @@ import {
 // 当前页面路径：用于在 withChartLinks 中跳过指向自身的链接
 const currentPath = '/charts/stacked-bar-chart';
 
-// 英雄区文案
-const heroEyebrow = 'Online Stacked Bar Chart Tool';
-const heroTitle = 'Free Online Stacked Bar Chart Maker.';
 const heroDescription =
   'Free online stacked bar chart maker. Compare totals and composition at a glance, switch to 100% stacked, customize colors, and preview instantly for reports.';
 const relatedBlogs = getBlogItemsByChartPath(currentPath);
