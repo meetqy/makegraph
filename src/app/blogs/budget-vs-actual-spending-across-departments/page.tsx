@@ -13,7 +13,6 @@ import {
   TableHeader,
   TableRow,
 } from '~/components/ui/table';
-import { boxContainerClassName } from '~/lib/layout';
 import { siteUrl } from '~/lib/site';
 
 // 页面元信息：围绕用户真实任务来写，保持自然，不堆砌关键词
@@ -206,7 +205,7 @@ export default function BudgetVsActualSpendingAcrossDepartmentsPage() {
       {/* 正文区域：使用目录 + 分节排版，避免堆叠厚重卡片 */}
       <div className="relative border-t border-[#ebebeb] bg-white">
         <section
-          className={`${boxContainerClassName} grid gap-12 py-16 sm:py-20 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-16`}
+          className={`container-box grid gap-12 py-16 sm:py-20 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-16`}
         >
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">

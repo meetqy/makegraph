@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { BarChartRaceMaker } from './_components/bar-chart-race-maker';
-import { boxContainerClassName } from '~/lib/layout';
 import { ChartList } from '~/components/chart-list';
 import { ChartHero } from '~/components/chart-hero';
 import { getBlogItemsByChartPath } from '~/config/blogs';
@@ -130,7 +129,7 @@ export default function BarChartRacePage() {
 
       <div className="relative border-t border-[#ebebeb] bg-white">
         <section
-          className={`${boxContainerClassName} flex flex-col divide-y divide-[#ebebeb] py-16 sm:py-20`}
+          className={`container-box flex flex-col divide-y divide-[#ebebeb] py-16 sm:py-20`}
         >
           <section className="py-16 first:pt-0">
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">

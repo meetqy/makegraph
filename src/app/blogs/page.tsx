@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { ChartList } from '~/components/chart-list';
 import { HeroBackground } from '~/components/hero-background';
 import { blogItems } from '~/config/blogs';
-import { boxContainerClassName } from '~/lib/layout';
 import { siteUrl } from '~/lib/site';
 
 const heroTitle = 'Blog';
@@ -23,7 +22,7 @@ export default function BlogsPage() {
     <div className="relative isolate flex flex-col bg-transparent text-[#171717]">
       <HeroBackground bleedTop />
       <section
-        className={`${boxContainerClassName} relative z-10 flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36`}
+        className={`container-box relative z-10 flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36`}
       >
         <p className="mb-8 rounded-full border border-[#ebebeb] bg-white/90 px-4 py-1 font-mono text-[#4d4d4d] text-[12px] uppercase tracking-[0.12em] backdrop-blur">
           MakeGraph • Chart Guides & Tutorials
@@ -41,7 +40,7 @@ export default function BlogsPage() {
 
       {/* 博客列表区域 */}
       <div className="relative bg-white">
-        <section className={`${boxContainerClassName} py-16 sm:py-20`}>
+        <section className={`container-box py-16 sm:py-20`}>
           <ChartList
             items={blogItems.map((blog) => ({
               title: blog.title,

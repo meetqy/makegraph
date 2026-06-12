@@ -2,18 +2,13 @@ import Link from 'next/link';
 
 import { HeroBackground } from '~/components/hero-background';
 import { Button } from '~/components/ui/button';
-import { boxContainerClassName } from '~/lib/layout';
 import { HomeChartList } from './home-chart-list';
-
-const sectionContainerClassName = `relative ${boxContainerClassName}`;
 
 export function HomeHero() {
   return (
     <main className="relative isolate min-h-screen text-[#171717]">
       <HeroBackground bleedTop />
-      <section
-        className={`${sectionContainerClassName} relative z-10 flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36`}
-      >
+      <section className="relative container-box z-10 flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36">
         <p className="mb-8 rounded-full border border-[#ebebeb] bg-white/90 px-4 py-1 font-mono text-[#4d4d4d] text-[12px] uppercase tracking-[0.12em] backdrop-blur">
           MakeGraph • Free Online Chart Maker
         </p>
@@ -47,7 +42,7 @@ export function HomeHero() {
         </p>
       </section>
 
-      <HomeChartList className={sectionContainerClassName} />
+      <HomeChartList className="relative container-box" />
     </main>
   );
 }

@@ -213,6 +213,12 @@
   }
 }
 
+@layer utilities {
+  .container-box {
+    @apply mx-auto w-full max-w-screen-2xl px-6 lg:px-8;
+  }
+}
+
 /* 覆盖 react-color CompactPicker 的自带外层阴影 */
 .compact-picker-container > div > div {
   box-shadow: none !important;

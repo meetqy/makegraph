@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import { chartTypeItems } from '~/config/charts';
-import { boxContainerClassName } from '~/lib/layout';
 
 // 友情链接配置列表（支持直接传入 HTML 代码）
 export const friendLinks: string[] = [
@@ -24,7 +23,7 @@ export const friendLinks: string[] = [
 export function GlobalFooter() {
   return (
     <footer className="border-t border-[#ebebeb] bg-white text-[#4d4d4d]">
-      <div className={`${boxContainerClassName} pt-8 xl:pt-10`}>
+      <div className={`container-box pt-8 xl:pt-10`}>
         <div className="mb-8 max-w-2xl">
           <Link
             href="/"

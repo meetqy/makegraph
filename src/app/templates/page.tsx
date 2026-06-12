@@ -2,9 +2,6 @@ import type { Metadata } from 'next';
 import { BarChart3 } from 'lucide-react';
 import { ChartList } from '~/components/chart-list';
 import { HeroBackground } from '~/components/hero-background';
-import { boxContainerClassName } from '~/lib/layout';
-
-const sectionContainerClassName = `relative ${boxContainerClassName}`;
 
 export const metadata: Metadata = {
   title: 'Templates | MakeGraph',
@@ -27,9 +24,7 @@ export default function TemplatesPage() {
   return (
     <main className="relative isolate min-h-screen text-[#171717]">
       <HeroBackground bleedTop />
-      <section
-        className={`${sectionContainerClassName} relative z-10 flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36`}
-      >
+      <section className="relative container-box z-10 flex flex-col items-center pt-24 pb-20 text-center sm:pt-28 lg:pt-36">
         <p className="mb-8 rounded-full border border-[#ebebeb] bg-white/90 px-4 py-1 font-mono text-[#4d4d4d] text-[12px] uppercase tracking-[0.12em] backdrop-blur">
           MakeGraph • Chart Templates
         </p>
@@ -46,7 +41,7 @@ export default function TemplatesPage() {
       </section>
 
       <ChartList
-        className={`${sectionContainerClassName} pb-24 lg:pb-28`}
+        className="relative container-box pb-24 lg:pb-28"
         items={templateItems}
       />
     </main>

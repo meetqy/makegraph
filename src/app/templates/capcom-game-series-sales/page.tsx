@@ -7,7 +7,6 @@ import {
 import { ChartHero } from '~/components/chart-hero';
 import { ChartList } from '~/components/chart-list';
 import { generateChartTitle } from '~/lib/utils';
-import { boxContainerClassName } from '~/lib/layout';
 import { getChartItemsByPaths } from '~/config/charts';
 
 const heroEyebrow = 'Capcom Franchise Sales Template';
@@ -77,7 +76,7 @@ export default function CapcomSalesTemplatePage() {
       </div>
 
       <div className="relative border-t border-[#ebebeb] bg-white">
-        <section className={`${boxContainerClassName} py-16 sm:py-20`}>
+        <section className={`container-box py-16 sm:py-20`}>
           <div className="max-w-3xl">
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
               About this template
@@ -128,7 +127,7 @@ export default function CapcomSalesTemplatePage() {
       </div>
 
       <div className="relative border-t border-[#ebebeb] bg-white">
-        <section className={`${boxContainerClassName} py-16 sm:py-20`}>
+        <section className={`container-box py-16 sm:py-20`}>
           <ChartList
             items={getChartItemsByPaths([
               '/charts/bar-chart',

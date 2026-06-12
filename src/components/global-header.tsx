@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '~/components/ui/button';
-import { boxContainerClassName } from '~/lib/layout';
 
 export function GlobalHeader() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -31,9 +30,7 @@ export function GlobalHeader() {
         WebkitBackdropFilter: `blur(${scrollProgress * 12}px)`,
       }}
     >
-      <div
-        className={`${boxContainerClassName} flex h-16 items-center justify-between`}
-      >
+      <div className={`container-box flex h-16 items-center justify-between`}>
         <div className="flex items-center gap-6">
           <Link href="/" className="flex shrink-0 items-center">
             <Image

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { boxContainerClassName } from '~/lib/layout';
-
 // 页面元信息：Title 不超过 60 字符，Description 不超过 160 字符
 const heroEyebrow = 'Legal';
 const heroTitle = 'Privacy Policy.';
@@ -189,10 +187,10 @@ export default function PrivacyPolicyPage() {
         </div>
       </div>
 
-      {/* 正文区域：使用 boxContainerClassName 约束最大宽度 */}
+      {/* 正文区域：使用 container-box 约束最大宽度 */}
       <div className="relative border-t border-[#ebebeb] bg-white">
         <section
-          className={`${boxContainerClassName} grid gap-12 py-16 sm:py-20 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-16`}
+          className={`container-box grid gap-12 py-16 sm:py-20 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-16`}
         >
           {/* 左侧目录：sticky 滚动跟随，避免与正文产生重复分割线 */}
           <aside className="lg:sticky lg:top-24 lg:self-start">
