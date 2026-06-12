@@ -7,6 +7,8 @@ import { Geist } from 'next/font/google';
 import { GlobalBackground } from '~/components/global-background';
 import { GlobalFooter } from '~/components/global-footer';
 import { GlobalHeader } from '~/components/global-header';
+import { googleAnalyticsId } from '~/lib/site';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { TRPCReactProvider } from '~/trpc/react';
 
 export const metadata: Metadata = {
@@ -42,6 +44,7 @@ export default function RootLayout({
           <GlobalHeader />
           <div className="flex-1">{children}</div>
           <GlobalFooter />
+          <GoogleAnalytics gaId={googleAnalyticsId} />
         </body>
       </TRPCReactProvider>
     </html>

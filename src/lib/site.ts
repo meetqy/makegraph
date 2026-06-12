@@ -3,3 +3,4 @@ export const siteUrl = 'https://makegraph.org';
 export const siteName = 'MakeGraph';
 export const siteDescription =
   'Turn your Excel or CSV data into clear charts in 1 minute. Free online chart maker.';
+export const googleAnalyticsId = 'G-E8QRZDGEBD';
