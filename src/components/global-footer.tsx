@@ -56,7 +56,7 @@ function FooterChartLink({ item }: { item: ChartTypeItem }) {
 export function GlobalFooter() {
   const t = useTranslations('Footer');
   const friendLinkListClassName =
-    'flex w-max shrink-0 items-center gap-2 text-xs text-[#888888] [&_a]:inline-flex [&_a]:shrink-0 [&_a]:items-center [&_a]:transition-colors hover:[&_a]:text-[#171717] [&_img]:block [&_img]:shrink-0 [&_img]:!h-9 [&_img]:!w-auto [&_img]:max-w-none [&_li]:shrink-0';
+    'flex w-max shrink-0 items-center pr-2 gap-2 text-xs text-[#888888] [&_a]:inline-flex [&_a]:shrink-0 [&_a]:items-center [&_a]:transition-colors hover:[&_a]:text-[#171717] [&_img]:block [&_img]:shrink-0 [&_img]:!h-9 [&_img]:!w-auto [&_img]:max-w-none [&_li]:shrink-0';
 
   return (
     <footer className="border-t border-[#ebebeb] bg-white text-[#4d4d4d]">
