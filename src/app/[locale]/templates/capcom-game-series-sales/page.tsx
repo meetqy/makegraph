@@ -3,7 +3,7 @@ import {
   BarChartMaker,
   type ChartDataRow,
   type ChartSettings,
-} from '~/app/charts/bar-chart/_components/bar-chart-maker';
+} from '~/app/[locale]/charts/bar-chart/_components/bar-chart-maker';
 import { ChartHero } from '~/components/chart-hero';
 import { ChartList } from '~/components/chart-list';
 import { generateChartTitle } from '~/lib/utils';

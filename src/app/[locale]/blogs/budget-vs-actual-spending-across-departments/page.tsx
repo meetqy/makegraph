@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from '~/i18n/routing';
 
 import { ChartList } from '~/components/chart-list';
 import { Button } from '~/components/ui/button';

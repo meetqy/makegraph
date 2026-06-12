@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from '~/i18n/routing';
 
 // 页面元信息：Title 不超过 60 字符，Description 不超过 160 字符
 const heroEyebrow = 'Legal';

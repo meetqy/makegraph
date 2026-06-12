@@ -13,14 +13,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '~/components/ui/sheet';
-import { ChartConfigPanel } from '~/app/charts/bar-chart-race/_components/chart-config';
-import { ChartPreview } from '~/app/charts/bar-chart-race/_components/chart-preview';
+import { ChartConfigPanel } from '~/app/[locale]/charts/bar-chart-race/_components/chart-config';
+import { ChartPreview } from '~/app/[locale]/charts/bar-chart-race/_components/chart-preview';
 import type {
   CategoryColorEntry,
   CategoryColorMap,
   ChartDataRow,
   ChartSettings,
-} from '~/app/charts/bar-chart-race/_components/types';
+} from '~/app/[locale]/charts/bar-chart-race/_components/types';
 
 // 默认调色板：用户没有手动调整时按出现顺序依次分配
 const defaultPalette = [

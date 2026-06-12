@@ -2,11 +2,23 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link, usePathname, useRouter } from '~/i18n/routing';
 import { Button } from '~/components/ui/button';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '~/components/ui/select';
+import { useTranslations, useLocale } from 'next-intl';
 
 export function GlobalHeader() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const t = useTranslations('Header');
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +31,10 @@ export function GlobalHeader() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleLocaleChange = (nextLocale: string) => {
+    router.replace(pathname, { locale: nextLocale });
+  };
 
   return (
     <header
@@ -53,27 +69,38 @@ export function GlobalHeader() {
               href="/#charts"
               className="rounded-full px-3 py-2 text-sm text-[#4d4d4d] transition-colors hover:bg-[#f5f5f5] hover:text-[#171717]"
             >
-              Charts
+              {t('charts')}
             </Link>
             <Link
               href="/templates"
               className="rounded-full px-3 py-2 text-sm text-[#4d4d4d] transition-colors hover:bg-[#f5f5f5] hover:text-[#171717]"
             >
-              Templates
+              {t('templates')}
             </Link>
             <Link
               href="/blogs"
               className="rounded-full px-3 py-2 text-sm text-[#4d4d4d] transition-colors hover:bg-[#f5f5f5] hover:text-[#171717]"
             >
-              Blogs
+              {t('blogs')}
             </Link>
           </nav>
+          <div className="flex items-center gap-2">
+            <Select value={locale} onValueChange={handleLocaleChange}>
+              <SelectTrigger className="h-8 border-none bg-transparent shadow-none hover:bg-[#f5f5f5] text-[#4d4d4d] focus:ring-0">
+                <SelectValue placeholder="Language" />
+              </SelectTrigger>
+              <SelectContent align="end">
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="zh">中文</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="hidden items-center gap-2">
             <Button asChild variant="secondary" size="sm" className="h-7 px-3">
-              <Link href="/login">Log In</Link>
+              <Link href="/login">{t('login')}</Link>
             </Button>
             <Button asChild variant="default" size="sm" className="h-7 px-3">
-              <Link href="/signup">Sign Up</Link>
+              <Link href="/signup">{t('signup')}</Link>
             </Button>
           </div>
         </div>

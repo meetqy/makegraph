@@ -12,6 +12,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { TRPCReactProvider } from '~/trpc/react';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://makegraph.org'),
   title: 'MakeGraph - Free Online Chart Maker',
   description:
     'Turn your Excel or CSV data into clear charts in 1 minute. Free online chart maker.',
@@ -30,22 +31,46 @@ const geist = Geist({
   variable: '--font-geist-sans',
 });
 
-export default function RootLayout({
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { routing } from '~/i18n/routing';
+import { notFound } from 'next/navigation';
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  params,
+}: Readonly<{
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}>) {
+  const { locale } = await params;
+
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
+  const messages = await getMessages();
+
   return (
-    <html className={`${geist.variable}`} lang="en">
+    <html className={`${geist.variable}`} lang={locale}>
       <head>
         <meta name="stackscope-claim" content="aZyd5K4q" />
       </head>
       <TRPCReactProvider>
-        <body className="relative flex min-h-screen flex-col bg-white">
-          <GlobalBackground />
-          <GlobalHeader />
-          <div className="flex-1">{children}</div>
-          <GlobalFooter />
-          <GoogleAnalytics gaId={googleAnalyticsId} />
-        </body>
+        <NextIntlClientProvider messages={messages}>
+          <body className="relative flex min-h-screen flex-col bg-white">
+            <GlobalBackground />
+            <GlobalHeader />
+            <div className="flex-1">{children}</div>
+            <GlobalFooter />
+            <GoogleAnalytics gaId={googleAnalyticsId} />
+          </body>
+        </NextIntlClientProvider>
       </TRPCReactProvider>
     </html>
   );

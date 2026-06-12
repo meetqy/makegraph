@@ -41,5 +41,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "prisma.pinToPrisma6": true
+  "prisma.pinToPrisma6": true,
+  "i18n-ally.localesPaths": ["messages", "src/i18n"]
 }

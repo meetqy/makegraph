@@ -1,0 +1,9 @@
+{
+  "Header": {
+    "charts": "Charts",
+    "templates": "Templates",
+    "blogs": "Blogs",
+    "login": "Log In",
+    "signup": "Sign Up"
+  }
+}
