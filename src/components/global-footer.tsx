@@ -22,6 +22,9 @@ export const friendLinks: string[] = [
   `<a href="https://newtool.site/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://newtool.site/badges/newtool-light.svg" alt="Featured on NewTool.site" height = "54px" width = "auto" /></a>`,
   `<a href="https://saasfame.com/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://saasfame.com/badge-light.svg" alt="Featured on saasfame.com" style="height: 54px; width: auto;" /></a>`,
   `<a href="https://saastool.site/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://saastool.site/badges/saastool-light.svg" alt="Featured on SaaSTool.site" height = "54px" width = "auto" /></a>`,
+  `<a href="https://toolfame.com/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" style="height: 54px; width: auto;" /></a>`,
+  `<a href="https://turbo0.com/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://img.turbo0.com/badge-listed-light.svg" alt="Listed on Turbo0" style="height: 54px; width: auto;" /></a>`,
+  `<a href="https://drchecker.net/item/makegraph.org" target="_blank" rel="noopener noreferrer"> <img src="https://drchecker.net/api/badge?domain=makegraph.org" alt="Monitor your Domain Rating with DRChecker " style="height: 54px; width: auto;"/></a>`,
 ];
 
 function FooterChartLink({ item }: { item: ChartTypeItem }) {

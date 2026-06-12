@@ -10,5 +10,13 @@
     "description": "A fast online chart maker. Upload your data, get automatic chart suggestions, and export as PNG instantly, free with no signup.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
+  },
+  "Home": {
+    "heroEyebrow": "MakeGraph • Free Online Chart Maker",
+    "heroTitle": "Free online chart maker for Excel and CSV data",
+    "heroDescription": "Upload or paste your spreadsheet, generate bar charts, line charts, and pie charts in 1 minute, then export PNG or SVG instantly. No signup, no registration, completely free.",
+    "createChartBtn": "Create Chart Online",
+    "viewExamplesBtn": "View Bar, Line, Pie Examples",
+    "heroFooter": "Free chart maker · No signup · PNG/SVG export"
   }
 }

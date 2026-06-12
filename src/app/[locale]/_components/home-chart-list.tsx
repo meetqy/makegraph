@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { ChartList } from '~/components/chart-list';
 import { chartTypeItems } from '~/config/charts';
 
@@ -6,17 +7,46 @@ type HomeChartListProps = {
 };
 
 export function HomeChartList({ className }: HomeChartListProps) {
+  const tLine = useTranslations('LineChart');
+  const tRadar = useTranslations('RadarChart');
+  const tBar = useTranslations('BarChart');
+  const tBarRace = useTranslations('BarChartRace');
+  const tDoubleBar = useTranslations('DoubleBarChart');
+  const tStackedBar = useTranslations('StackedBarChart');
+
+  const getTranslation = (href: string) => {
+    switch (href) {
+      case '/charts/line-chart':
+        return tLine;
+      case '/charts/radar-chart':
+        return tRadar;
+      case '/charts/bar-chart':
+        return tBar;
+      case '/charts/bar-chart-race':
+        return tBarRace;
+      case '/charts/double-bar-chart':
+        return tDoubleBar;
+      case '/charts/stacked-bar-chart':
+        return tStackedBar;
+      default:
+        return null;
+    }
+  };
+
   return (
     <ChartList
       id="charts"
       className={`${className} pb-24 lg:pb-28`}
-      items={chartTypeItems.map((item) => ({
-        title: item.name,
-        description: item.description,
-        href: item.href,
-        image: item.image,
-        icon: item.icon,
-      }))}
+      items={chartTypeItems.map((item) => {
+        const t = getTranslation(item.href);
+        return {
+          title: t ? t('heroTitle') : item.name,
+          description: t ? t('heroDescription') : item.description,
+          href: item.href,
+          image: item.image,
+          icon: item.icon,
+        };
+      })}
     />
   );
 }

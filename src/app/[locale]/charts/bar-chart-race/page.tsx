@@ -4,6 +4,7 @@ import { BarChartRaceMaker } from './_components/bar-chart-race-maker';
 import { ChartList } from '~/components/chart-list';
 import { ChartHero } from '~/components/chart-hero';
 import { getBlogItemsByChartPath } from '~/config/blogs';
+import { getTranslations } from 'next-intl/server';
 import { generateChartTitle, withChartLinks } from '~/lib/utils';
 
 const currentPath = '/charts/bar-chart-race';
@@ -112,13 +113,19 @@ const faqs = [
   },
 ];
 
-export default function BarChartRacePage() {
+export default async function BarChartRacePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'BarChartRace' });
   return (
     <div className="flex flex-col bg-transparent">
       <ChartHero
-        eyebrow={heroEyebrow}
-        title={heroTitle}
-        description={heroDescription}
+        eyebrow={t('heroEyebrow')}
+        title={t('heroTitle')}
+        description={t('heroDescription')}
       />
 
       <div className="relative w-full bg-white p-4">
@@ -135,7 +142,7 @@ export default function BarChartRacePage() {
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                  Why Bar Chart Races Work
+                  {t('whyItWorksEyebrow')}
                 </p>
                 <h2 className="mt-4 max-w-3xl text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
                   Turn changing rankings into a visual story people can follow.

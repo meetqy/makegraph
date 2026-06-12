@@ -5,6 +5,7 @@ import { ChartList } from '~/components/chart-list';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
 import { getBlogItemsByChartPath } from '~/config/blogs';
+import { getTranslations } from 'next-intl/server';
 import { generateChartTitle, withChartLinks } from '~/lib/utils';
 
 const currentPath = '/charts/radar-chart';
@@ -119,13 +120,19 @@ const faqs = [
   },
 ];
 
-export default function RadarChartPage() {
+export default async function RadarChartPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'RadarChart' });
   return (
     <div className="flex flex-col bg-transparent">
       <ChartHero
-        eyebrow={heroEyebrow}
-        title={heroTitle}
-        description={heroDescription}
+        eyebrow={t('heroEyebrow')}
+        title={t('heroTitle')}
+        description={t('heroDescription')}
       />
       <div className="relative w-full bg-white p-4">
         <div className="h-[calc(100svh-12rem)] w-full overflow-hidden rounded-md border border-[#ebebeb] bg-white">
@@ -140,7 +147,7 @@ export default function RadarChartPage() {
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                  Why Radar Charts Work
+                  {t('whyItWorksEyebrow')}
                 </p>
                 <h2 className="mt-4 max-w-3xl text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
                   Compare multiple dimensions in one balanced view.
