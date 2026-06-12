@@ -55,6 +55,8 @@ function FooterChartLink({ item }: { item: ChartTypeItem }) {
 
 export function GlobalFooter() {
   const t = useTranslations('Footer');
+  const friendLinkListClassName =
+    'flex w-max shrink-0 items-center gap-2 text-xs text-[#888888] [&_a]:inline-flex [&_a]:shrink-0 [&_a]:items-center [&_a]:transition-colors hover:[&_a]:text-[#171717] [&_img]:block [&_img]:shrink-0 [&_img]:!h-9 [&_img]:!w-auto [&_img]:max-w-none [&_li]:shrink-0';
 
   return (
     <footer className="border-t border-[#ebebeb] bg-white text-[#4d4d4d]">
@@ -71,7 +73,7 @@ export function GlobalFooter() {
           </p>
         </div>
 
-        <div className="mb-8">
+        <div className="border-t py-4">
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
             {chartTypeItems.map((item) => (
               <FooterChartLink key={item.name} item={item} />
@@ -79,7 +81,7 @@ export function GlobalFooter() {
           </ul>
         </div>
 
-        <div className="flex flex-col border-[#ebebeb] border-t pt-4 pb-4 md:flex-row md:items-center md:justify-between xl:pb-6">
+        <div className="flex flex-col border-[#ebebeb] border-t py-4 md:flex-row md:items-center md:justify-between xl:pb-6">
           <p className="text-[#888888] text-xs leading-5">
             &copy; {new Date().getFullYear()} MakeGraph. All rights reserved.
           </p>
@@ -104,12 +106,19 @@ export function GlobalFooter() {
         </div>
 
         {friendLinks.length > 0 && (
-          <div className="border-[#ebebeb] border-t pt-3 pb-6 flex flex-col md:flex-row md:items-center gap-3">
-            <ul className="flex flex-wrap items-center gap-3 text-xs text-[#888888] [&_a]:transition-colors hover:[&_a]:text-[#171717] [&_img]:!h-9 [&_img]:!w-auto">
-              {friendLinks.map((html, index) => (
-                <li key={index} dangerouslySetInnerHTML={{ __html: html }} />
-              ))}
-            </ul>
+          <div className="group overflow-hidden border-t border-[#ebebeb] py-4">
+            <div className="flex w-max shrink-0 animate-marquee items-center whitespace-nowrap group-hover:paused">
+              <ul className={friendLinkListClassName}>
+                {friendLinks.map((html, index) => (
+                  <li key={index} dangerouslySetInnerHTML={{ __html: html }} />
+                ))}
+              </ul>
+              <ul className={friendLinkListClassName} aria-hidden="true">
+                {friendLinks.map((html, index) => (
+                  <li key={index} dangerouslySetInnerHTML={{ __html: html }} />
+                ))}
+              </ul>
+            </div>
           </div>
         )}
       </div>
