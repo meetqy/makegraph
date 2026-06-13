@@ -12,6 +12,7 @@ MakeGraph is a free online chart maker that turns spreadsheet data into clear, p
 ## Charts (English)
 
 - [Line Chart Maker](${siteUrl}/charts/line-chart): Plot trends over time, customize labels and colors, and preview results instantly for reports and presentations.
+- [Tree Map Chart Maker](${siteUrl}/charts/tree-map-chart): Compare part-to-whole values with nested rectangles, adjust labels and color, and preview the treemap layout instantly.
 - [Bar Chart Maker](${siteUrl}/charts/bar-chart): Compare values across categories. Edit data in a built-in table, customize labels, colors, legend, and grid, and export as PNG.
 - [Bar Chart Race Maker](${siteUrl}/charts/bar-chart-race): Animate rankings over time, edit time-series data, and preview smooth race playback instantly.
 - [Double Bar Chart Maker](${siteUrl}/charts/double-bar-chart): Place two data series side by side within each category. Useful for year-over-year, plan vs actual, or A/B comparisons.
@@ -21,6 +22,7 @@ MakeGraph is a free online chart maker that turns spreadsheet data into clear, p
 ## Charts (中文)
 
 - [折线图制作工具](${siteUrl}/zh/charts/line-chart)
+- [树图制作工具](${siteUrl}/zh/charts/tree-map-chart)
 - [柱状图制作工具](${siteUrl}/zh/charts/bar-chart)
 - [动态排序柱状图制作工具](${siteUrl}/zh/charts/bar-chart-race)
 - [双柱状图制作工具](${siteUrl}/zh/charts/double-bar-chart)

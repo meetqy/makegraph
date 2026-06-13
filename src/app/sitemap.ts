@@ -44,6 +44,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${siteUrl}/charts/tree-map-chart`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: getI18nAlternates('/charts/tree-map-chart'),
+      },
+    },
+    {
       url: `${siteUrl}/charts/bar-chart`,
       lastModified: now,
       changeFrequency: 'monthly',

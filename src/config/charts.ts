@@ -26,6 +26,14 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/radar-chart-og-image.png',
   },
   {
+    name: 'Free Online Tree Map Chart Maker.',
+    description:
+      'Free online tree map chart maker. Compare part-to-whole values with nested rectangles, customize labels and color, and preview the layout instantly.',
+    href: '/charts/tree-map-chart',
+    icon: BarChart3,
+    image: '/charts/tree-map-chart-og-image.png',
+  },
+  {
     name: 'Free Online Bar Chart Maker.',
     description:
       'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.',
