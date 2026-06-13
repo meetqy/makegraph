@@ -1,5 +1,6 @@
 {
   "LineChart": {
+    "chartName": "折线图",
     "heroEyebrow": "在线折线图工具",
     "heroTitle": "免费在线折线图制作工具",
     "heroDescription": "免费在线折线图制作工具，可绘制时间趋势、自定义标签和颜色并即时预览，适用于报告和演示。",

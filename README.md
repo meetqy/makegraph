@@ -35,7 +35,7 @@ The current chart OG images are listed below.
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![Bar Chart](public/charts/bar-graph-og-image.png)](https://makegraph.org/charts/bar-chart)<br/>[Bar Chart](https://makegraph.org/charts/bar-chart)                                         | [![Bar Chart Race](public/charts/bar-chart-race-og-image.png)](https://makegraph.org/charts/bar-chart-race)<br/>[Bar Chart Race](https://makegraph.org/charts/bar-chart-race) | [![Double Bar Chart](public/charts/double-bar-chart-og-image.png)](https://makegraph.org/charts/double-bar-chart)<br/>[Double Bar Chart](https://makegraph.org/charts/double-bar-chart) |
 | [![Line Chart](public/charts/line-chart-og-image.png)](https://makegraph.org/charts/line-chart)<br/>[Line Chart](https://makegraph.org/charts/line-chart)                                    | [![Radar Chart](public/charts/radar-chart-og-image.png)](https://makegraph.org/charts/radar-chart)<br/>[Radar Chart](https://makegraph.org/charts/radar-chart)                | [![Scatter Chart](public/charts/scatter-chart-og-image.png)](https://makegraph.org/charts/scatter-chart)<br/>[Scatter Chart](https://makegraph.org/charts/scatter-chart)                |
-| [![Stacked Bar Chart](public/charts/stacked-bar-chart-og-image.png)](https://makegraph.org/charts/stacked-bar-chart)<br/>[Stacked Bar Chart](https://makegraph.org/charts/stacked-bar-chart) | [![Tree Map Chart](public/charts/tree-map-chart-og-image.png)](https://makegraph.org/charts/tree-map-chart)<br/>[Tree Map Chart](https://makegraph.org/charts/tree-map-chart) |                                                                                                                                                                                         |
+| [![Stacked Bar Chart](public/charts/stacked-bar-chart-og-image.png)](https://makegraph.org/charts/stacked-bar-chart)<br/>[Stacked Bar Chart](https://makegraph.org/charts/stacked-bar-chart) | [![Tree Map Chart](public/charts/tree-map-chart-og-image.png)](https://makegraph.org/charts/tree-map-chart)<br/>[Tree Map Chart](https://makegraph.org/charts/tree-map-chart) | [![Waterfall Bar Chart](public/charts/waterfall-bar-chart-og-image.png)](https://makegraph.org/charts/waterfall-bar-chart)<br/>[Waterfall Bar Chart](https://makegraph.org/charts/waterfall-bar-chart) |
 
 ## Tech Stack
 
@@ -63,6 +63,7 @@ The current app includes editors and landing pages for:
 - Scatter Chart
 - Stacked Bar Chart
 - Tree Map Chart
+- Waterfall Bar Chart
 
 ## Environment Variables
 

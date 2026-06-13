@@ -1,5 +1,6 @@
 {
   "ScatterChart": {
+    "chartName": "散点图",
     "heroEyebrow": "在线散点图工具",
     "heroTitle": "免费在线散点图制作工具",
     "heroDescription": "免费在线散点图制作工具，可展示两个数值变量之间的关系、在表格中编辑 x 和 y 数据并即时预览结果。",

@@ -7,6 +7,9 @@
 ## 2. 设计与组件规范
 
 - 设计样式必须遵守 DESIGN.md 规则。
+- 统计图相关页面、图表预览和图表组件统一使用扁平化风格，避免拟物化、厚重阴影、强渐变和过度装饰。
+- 统计图的 Legend 默认放在统计图下方，除非用户明确提出其他位置要求。
+- 统计图（ECharts）的 X 轴标签（axisLabel）统一使用 `rotate: 45` 倾斜显示，并且需要增加 grid bottom 边距（例如 82）以防文字被截断。
 - components/ui 中已存在的组件应直接复用。
 - app 中页面私有组件放在对应页面的 \_components 下（例如 demo/\_components）。
 - landing page 或说明内容区默认优先使用 section / band / 分栏排版，不要默认堆大量 cards。

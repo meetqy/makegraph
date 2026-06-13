@@ -10,7 +10,7 @@ export type ChartTypeItem = {
 
 export const chartTypeItems: ChartTypeItem[] = [
   {
-    name: 'Free Online Line Chart Maker.',
+    name: 'Line Chart',
     description:
       'Free online line chart maker. Plot trends over time, customize labels and colors, and preview results instantly for reports and presentations.',
     href: '/charts/line-chart',
@@ -18,7 +18,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/line-chart-og-image.png',
   },
   {
-    name: 'Free Online Scatter Chart Maker.',
+    name: 'Scatter Chart',
     description:
       'Free online scatter chart maker. Plot relationships between two numeric variables, edit x and y values in a table, and preview the result instantly.',
     href: '/charts/scatter-chart',
@@ -26,7 +26,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/scatter-chart-og-image.png',
   },
   {
-    name: 'Free Online Radar Chart Maker.',
+    name: 'Radar Chart',
     description:
       'Free online radar chart maker. Compare strengths across multiple dimensions, customize labels and colors, and preview results instantly for reports and presentations.',
     href: '/charts/radar-chart',
@@ -34,7 +34,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/radar-chart-og-image.png',
   },
   {
-    name: 'Tree Map Chart Maker',
+    name: 'Tree Map Chart',
     description:
       'Free online tree map chart maker. Compare part-to-whole values with nested rectangles, customize labels and color, and preview the layout instantly.',
     href: '/charts/tree-map-chart',
@@ -42,7 +42,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/tree-map-chart-og-image.png',
   },
   {
-    name: 'Free Online Bar Chart Maker.',
+    name: 'Bar Chart',
     description:
       'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.',
     href: '/charts/bar-chart',
@@ -50,7 +50,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/bar-graph-og-image.png',
   },
   {
-    name: 'Free Online Bar Chart Race Maker.',
+    name: 'Bar Chart Race',
     description:
       'Free online bar chart race maker. Animate rankings over time, edit data in a table, and preview a smooth racing chart instantly.',
     href: '/charts/bar-chart-race',
@@ -58,7 +58,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/bar-chart-race-og-image.png',
   },
   {
-    name: 'Free Online Double Bar Chart Maker.',
+    name: 'Double Bar Chart',
     description:
       'Free online double bar chart maker. Compare two data sets side by side, customize colors, and preview instantly for dashboards and presentations.',
     href: '/charts/double-bar-chart',
@@ -66,12 +66,20 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/double-bar-chart-og-image.png',
   },
   {
-    name: 'Free Online Stacked Bar Chart Maker.',
+    name: 'Stacked Bar Chart',
     description:
       'Free online stacked bar chart maker. Compare totals and composition at a glance, switch to 100% stacked, customize colors, and preview instantly for reports.',
     href: '/charts/stacked-bar-chart',
     icon: BarChart3,
     image: '/charts/stacked-bar-chart-og-image.png',
+  },
+  {
+    name: 'Waterfall Bar Chart',
+    description:
+      'Free online waterfall bar chart maker. Show how positive and negative changes build to a final total, customize colors, and preview the bridge instantly.',
+    href: '/charts/waterfall-bar-chart',
+    icon: BarChart3,
+    image: '/charts/waterfall-bar-chart-og-image.png',
   },
 ];
 

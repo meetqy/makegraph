@@ -1,5 +1,6 @@
 {
   "DoubleBarChart": {
+    "chartName": "双组柱状图",
     "heroEyebrow": "在线双组柱状图工具",
     "heroTitle": "免费在线双组柱状图制作工具",
     "heroDescription": "免费在线双组柱状图制作工具，可并排比较两组数据、自定义颜色并即时预览，适用于仪表板和演示。",

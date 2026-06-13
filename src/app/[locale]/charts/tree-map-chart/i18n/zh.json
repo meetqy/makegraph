@@ -1,5 +1,6 @@
 {
   "TreeMapChart": {
+    "chartName": "树状图",
     "heroEyebrow": "在线树图工具",
     "heroTitle": "矩形树图生成器",
     "heroDescription": "免费在线树图制作工具，可用矩形面积比较各分类在整体中的占比，并支持自定义标签、颜色和即时预览布局。",

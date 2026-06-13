@@ -137,12 +137,14 @@ Users always understand why a chart is recommended.
 ## Supported Chart Types
 
 - Bar Charts
-- Horizontal Bar Charts
 - Line Charts
-- Area Charts
-- Pie Charts
-- Donut Charts
+- Bar Chart Race
+- Double Bar Charts
+- Radar Charts
 - Scatter Plots
+- Stacked Bar Charts
+- Tree Map Charts
+- Waterfall Bar Charts
 
 Additional chart types may be introduced over time while maintaining the product's simplicity.
 

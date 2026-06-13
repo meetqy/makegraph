@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '~/i18n/routing';
 
 import { ChartList } from '~/components/chart-list';
@@ -51,9 +51,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const lastUpdated = 'June 10, 2026';
-const recommendedCharts = getChartItemsByPaths(
-  currentBlog?.mentionedChartPaths ?? []
-);
 
 type ContentSection = {
   id: string;
@@ -170,7 +167,68 @@ const buildSteps = [
   'Export the chart for your report, presentation, or dashboard.',
 ];
 
-export default function BudgetVsActualSpendingAcrossDepartmentsPage() {
+export default async function BudgetVsActualSpendingAcrossDepartmentsPage() {
+  const locale = await getLocale();
+
+  // Get translations for all chart types
+  const tBar = await getTranslations({ locale, namespace: 'BarChart' });
+  const tDoubleBar = await getTranslations({
+    locale,
+    namespace: 'DoubleBarChart',
+  });
+  const tStackedBar = await getTranslations({
+    locale,
+    namespace: 'StackedBarChart',
+  });
+  const tWaterfallBar = await getTranslations({
+    locale,
+    namespace: 'WaterfallBarChart',
+  });
+  const tLine = await getTranslations({ locale, namespace: 'LineChart' });
+  const tScatter = await getTranslations({ locale, namespace: 'ScatterChart' });
+  const tRadar = await getTranslations({ locale, namespace: 'RadarChart' });
+  const tTreeMap = await getTranslations({ locale, namespace: 'TreeMapChart' });
+  const tBarRace = await getTranslations({ locale, namespace: 'BarChartRace' });
+
+  const getChartTranslation = (href: string) => {
+    switch (href) {
+      case '/charts/bar-chart':
+        return tBar;
+      case '/charts/double-bar-chart':
+        return tDoubleBar;
+      case '/charts/stacked-bar-chart':
+        return tStackedBar;
+      case '/charts/waterfall-bar-chart':
+        return tWaterfallBar;
+      case '/charts/line-chart':
+        return tLine;
+      case '/charts/scatter-chart':
+        return tScatter;
+      case '/charts/radar-chart':
+        return tRadar;
+      case '/charts/tree-map-chart':
+        return tTreeMap;
+      case '/charts/bar-chart-race':
+        return tBarRace;
+      default:
+        return null;
+    }
+  };
+
+  const recommendedCharts = getChartItemsByPaths(
+    currentBlog?.mentionedChartPaths ?? []
+  );
+
+  const chartListItems = recommendedCharts.map((item) => {
+    const ct = getChartTranslation(item.href);
+    return {
+      title: ct ? ct('chartName') : item.name,
+      description: ct ? ct('heroDescription') : item.description,
+      href: item.href,
+      image: item.image,
+      icon: item.icon,
+    };
+  });
   return (
     <div className="flex flex-col bg-transparent">
       {/* 英雄区：直接聚焦用户任务与图表动作 */}
@@ -487,13 +545,7 @@ export default function BudgetVsActualSpendingAcrossDepartmentsPage() {
 
             <section id="final" className="scroll-mt-24 py-12">
               <ChartList
-                items={recommendedCharts.map((item) => ({
-                  title: item.name,
-                  description: item.description,
-                  href: item.href,
-                  image: item.image,
-                  icon: item.icon,
-                }))}
+                items={chartListItems}
                 eyebrow="Recommended charts"
                 title="Build this analysis with the right chart templates."
                 description="Start with the double bar chart for budget vs. actual comparison, then explore other chart types that help present totals, structure, or supporting comparisons."

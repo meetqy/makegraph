@@ -29,6 +29,7 @@ export const friendLinks: string[] = [
   `<a href="https://drchecker.net/item/makegraph.org" target="_blank" rel="noopener noreferrer"> <img src="https://drchecker.net/api/badge?domain=makegraph.org" alt="Monitor your Domain Rating with DRChecker " style="height: 54px; width: auto;"/></a>`,
   `<a href="https://agentwork.tools" target="_blank"><img src="https://agentwork.tools/badge/badge_light.svg" alt="Featured on AgentWork.Tools" width="200" height="54" /></a>`,
   `<a href="https://fazier.com/launches/makegraph.org" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" width=250 alt="Fazier badge" /></a>`,
+  `<a href="https://huzzler.so/products/xh9LqPFi1k/makegraph?utm_source=huzzler_product_website&utm_medium=badge&utm_campaign=free_listing" target="_blank" rel="noopener noreferrer"><img alt="Huzzler Embed Badge" src="https://huzzler.so/assets/images/embeddable-badges/featured.png" width="159" height="55" /></a>`,
 ];
 
 function FooterChartLink({ item }: { item: ChartTypeItem }) {

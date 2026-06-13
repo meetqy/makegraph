@@ -145,7 +145,7 @@ export default function CapcomSalesTemplatePage() {
             ]).map((chart) => {
               const ct = getTranslation(chart.href);
               return {
-                title: ct ? ct('heroTitle') : chart.name,
+                title: ct ? ct('chartName') : chart.name,
                 description: ct ? ct('heroDescription') : chart.description,
                 href: chart.href,
                 image: chart.image,

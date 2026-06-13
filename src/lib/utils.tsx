@@ -49,6 +49,8 @@ const CHART_LINK_PATTERNS: Array<[RegExp, string]> = [
   // 英文
   [/100% stacked bar chart/gi, '/charts/stacked-bar-chart'],
   [/stacked bar chart/gi, '/charts/stacked-bar-chart'],
+  [/waterfall bar chart/gi, '/charts/waterfall-bar-chart'],
+  [/waterfall chart/gi, '/charts/waterfall-bar-chart'],
   [/double bar chart/gi, '/charts/double-bar-chart'],
   [/tree map chart/gi, '/charts/tree-map-chart'],
   [/tree map/gi, '/charts/tree-map-chart'],
@@ -64,6 +66,8 @@ const CHART_LINK_PATTERNS: Array<[RegExp, string]> = [
   [/100%堆叠柱状图/gi, '/charts/stacked-bar-chart'],
   [/百分百堆叠柱状图/gi, '/charts/stacked-bar-chart'],
   [/堆叠柱状图/gi, '/charts/stacked-bar-chart'],
+  [/瀑布柱状图/gi, '/charts/waterfall-bar-chart'],
+  [/瀑布图/gi, '/charts/waterfall-bar-chart'],
   [/双柱状图/gi, '/charts/double-bar-chart'],
   [/矩形树图/gi, '/charts/tree-map-chart'],
   [/树图/gi, '/charts/tree-map-chart'],

@@ -1,5 +1,6 @@
 {
   "StackedBarChart": {
+    "chartName": "堆叠柱状图",
     "heroEyebrow": "在线堆叠柱状图工具",
     "heroTitle": "免费在线堆叠柱状图制作工具",
     "heroDescription": "免费在线堆叠柱状图制作工具，可一目了然地比较总数和构成，支持切换为 100% 堆叠、自定义颜色并即时预览以用于报告。",

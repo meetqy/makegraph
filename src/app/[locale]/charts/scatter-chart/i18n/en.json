@@ -1,5 +1,6 @@
 {
   "ScatterChart": {
+    "chartName": "Scatter Chart",
     "heroEyebrow": "Online Scatter Chart Tool",
     "heroTitle": "Free Online Scatter Chart Maker.",
     "heroDescription": "Plot relationships between two numeric variables, edit x and y values in a table, and preview the result instantly.",

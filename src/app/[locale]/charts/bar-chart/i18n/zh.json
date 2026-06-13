@@ -1,5 +1,6 @@
 {
   "BarChart": {
+    "chartName": "柱状图",
     "heroEyebrow": "在线柱状图工具",
     "heroTitle": "免费在线柱状图制作工具",
     "heroDescription": "免费在线柱状图制作工具，可轻松比较分类数据、自定义标签和颜色并即时预览结果，适用于报告和演示。",

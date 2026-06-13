@@ -15,6 +15,7 @@ export function HomeChartList({ className }: HomeChartListProps) {
   const tBarRace = useTranslations('BarChartRace');
   const tDoubleBar = useTranslations('DoubleBarChart');
   const tStackedBar = useTranslations('StackedBarChart');
+  const tWaterfallBar = useTranslations('WaterfallBarChart');
 
   const getTranslation = (href: string) => {
     switch (href) {
@@ -34,6 +35,8 @@ export function HomeChartList({ className }: HomeChartListProps) {
         return tDoubleBar;
       case '/charts/stacked-bar-chart':
         return tStackedBar;
+      case '/charts/waterfall-bar-chart':
+        return tWaterfallBar;
       default:
         return null;
     }
@@ -46,7 +49,7 @@ export function HomeChartList({ className }: HomeChartListProps) {
       items={chartTypeItems.map((item) => {
         const t = getTranslation(item.href);
         return {
-          title: t ? t('heroTitle') : item.name,
+          title: t ? t('chartName') : item.name,
           description: t ? t('heroDescription') : item.description,
           href: item.href,
           image: item.image,
