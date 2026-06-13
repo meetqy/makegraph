@@ -1,6 +1,14 @@
 # MakeGraph
 
+[English](README.md) | [中文](README_ZH.md)
+
 MakeGraph 是 [makegraph.org](https://makegraph.org) 的代码仓库。项目基于 Next.js、TypeScript 和 React 构建，主要面向图表生成、图表落地页和相关内容页面。
+
+![MakeGraph 预览图](public/og.png)
+
+## 项目概览
+
+MakeGraph 主要关注一条相对明确的链路：把结构化数据转成图表页面和可编辑的图表体验，并尽量降低接入和使用成本。
 
 当前仓库包含：
 
@@ -9,6 +17,25 @@ MakeGraph 是 [makegraph.org](https://makegraph.org) 的代码仓库。项目基
 - 与图表互相关联的博客、模板页
 - 通用 UI 组件、图表工具函数和表格编辑能力
 - 后续产品能力可复用的鉴权与数据库基础设施
+
+## 功能概览
+
+- 全屏图表编辑器与实时预览
+- 图表内容导出为 PNG
+- 基于 `next-intl` 的多语言图表页面
+- 可复用的数据表格编辑能力
+- 图表页、博客页、模板页之间的关联能力
+- 面向落地页和编辑面板的共享 UI 体系
+
+## 预览
+
+当前已存在的统计图预览如下。
+
+|                                                                                                                                                                                |                                                                                                                                                                       |                                                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![柱状图](public/charts/bar-graph-og-image.png)](https://makegraph.org/charts/bar-chart)<br/>[柱状图](https://makegraph.org/charts/bar-chart)                                 | [![柱状图竞赛](public/charts/bar-chart-race-og-image.png)](https://makegraph.org/charts/bar-chart-race)<br/>[柱状图竞赛](https://makegraph.org/charts/bar-chart-race) | [![双向柱状图](public/charts/double-bar-chart-og-image.png)](https://makegraph.org/charts/double-bar-chart)<br/>[双向柱状图](https://makegraph.org/charts/double-bar-chart) |
+| [![折线图](public/charts/line-chart-og-image.png)](https://makegraph.org/charts/line-chart)<br/>[折线图](https://makegraph.org/charts/line-chart)                              | [![雷达图](public/charts/radar-chart-og-image.png)](https://makegraph.org/charts/radar-chart)<br/>[雷达图](https://makegraph.org/charts/radar-chart)                  | [![散点图](public/charts/scatter-chart-og-image.png)](https://makegraph.org/charts/scatter-chart)<br/>[散点图](https://makegraph.org/charts/scatter-chart)                  |
+| [![堆叠柱状图](public/charts/stacked-bar-chart-og-image.png)](https://makegraph.org/charts/stacked-bar-chart)<br/>[堆叠柱状图](https://makegraph.org/charts/stacked-bar-chart) | [![矩形树图](public/charts/tree-map-chart-og-image.png)](https://makegraph.org/charts/tree-map-chart)<br/>[矩形树图](https://makegraph.org/charts/tree-map-chart)     |                                                                                                                                                                             |
 
 ## 技术栈
 
@@ -36,6 +63,15 @@ MakeGraph 是 [makegraph.org](https://makegraph.org) 的代码仓库。项目基
 - 散点图
 - 堆叠柱状图
 - 矩形树图
+
+## 环境变量
+
+复制 `.env.example` 为 `.env` 后，至少需要配置以下变量：
+
+- `DATABASE_URL`：PostgreSQL 连接字符串
+- `BETTER_AUTH_SECRET`：Better Auth 使用的密钥
+- `NEXT_PUBLIC_SITE_URL`：站点公开访问地址，例如 `http://localhost:3001`
+- `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID`：可选的分析统计 ID
 
 ## 本地开发
 
@@ -72,6 +108,15 @@ pnpm dev
 ```
 
 默认访问地址为 `http://localhost:3001`。
+
+## 部署说明
+
+这个项目本质上是一个依赖 PostgreSQL 的标准 Next.js 应用。
+
+- 在部署平台中配置必需的环境变量
+- 确保目标数据库可访问
+- 生产环境构建使用 `pnpm build`
+- 将 `NEXT_PUBLIC_SITE_URL` 设置为实际部署域名
 
 ## 常用脚本
 
@@ -114,6 +159,13 @@ pnpm dev
 - 原先偏营销风格的 README 已移动到：
   - `docs/marketing/README.md`
   - `docs/marketing/README_ZH.md`
+
+## 后续方向
+
+- 在保持编辑器轻量的前提下继续补充更多图表类型
+- 增加更多可复用的模板页面和示例
+- 继续完善图表页文案、SEO 和站内关联
+- 逐步接入现有的鉴权和数据库基础设施，承载后续产品流程
 
 ## 参与开发
 

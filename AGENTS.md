@@ -24,6 +24,8 @@
 - 注释默认使用中文。
 - 统计图目录下的说明性 markdown 文案默认使用中文。
 - 统计图相关的 markdown 文件放在对应的 chart 目录下（例如 src/app/charts/bar-chart/），不放在 docs 目录中。
+- 当前仓库中已存在的统计图包括：`bar-chart`、`bar-chart-race`、`double-bar-chart`、`line-chart`、`radar-chart`、`scatter-chart`、`stacked-bar-chart`、`tree-map-chart`。
+- 后续新增统计图时，必须先对照上述清单判断是否为新增 chart；如为新增，除页面、配置、翻译、OG 路径外，还必须检查并按需同步更新相关 markdown 文档，包括该 chart 目录下的说明性 `.md` 文件、根目录 `README.md`、根目录 `README_ZH.md`，以及任何明确列举统计图清单或预览图的 markdown 文档，禁止只改页面和配置而遗漏文档更新。
 - 非统计图页面的文案、需求、SEO 相关参考资料统一放在 docs 目录下。
 - blog 与对应 chart 必须建立双向关联：blog 底部展示对应 chart，chart 底部也展示对应 blog，并支持相互跳转。
 - blog 底部展示的 chart 列表只能包含正文中明确提到、且站内实际存在的 chart；没有提到的 chart 不得展示。
