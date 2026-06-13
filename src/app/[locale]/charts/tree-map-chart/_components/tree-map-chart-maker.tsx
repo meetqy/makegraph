@@ -33,37 +33,33 @@ export type TreeMapChartMakerProps = {
   initialSettings?: ChartSettings;
 };
 
+const DEFAULT_INITIAL_DATA: ChartDataRow[] = [
+  { name: 'Cloud Infrastructure', value: 420 },
+  { name: 'Analytics', value: 300 },
+  { name: 'CRM', value: 260 },
+  { name: 'Security', value: 220 },
+  { name: 'Marketing', value: 180 },
+  { name: 'Support', value: 150 },
+  { name: 'Finance', value: 130 },
+  { name: 'HR', value: 90 },
+];
+
+const DEFAULT_INITIAL_SETTINGS: ChartSettings = {
+  title: 'Software Budget Allocation',
+  color: '#171717',
+  colorful: false,
+};
+
 export function TreeMapChartMaker({
   initialData: providedData,
   initialSettings: providedSettings,
 }: TreeMapChartMakerProps = {}) {
   const t = useTranslations('TreeMapChart');
-  const localizedInitialData = useMemo<ChartDataRow[]>(
-    () => [
-      { name: t('editorSampleName1'), value: 420 },
-      { name: t('editorSampleName2'), value: 300 },
-      { name: t('editorSampleName3'), value: 260 },
-      { name: t('editorSampleName4'), value: 220 },
-      { name: t('editorSampleName5'), value: 180 },
-      { name: t('editorSampleName6'), value: 150 },
-      { name: t('editorSampleName7'), value: 130 },
-      { name: t('editorSampleName8'), value: 90 },
-    ],
-    [t]
-  );
-  const localizedInitialSettings = useMemo<ChartSettings>(
-    () => ({
-      title: t('editorDefaultChartTitle'),
-      color: '#171717',
-      colorful: false,
-    }),
-    [t]
-  );
   const [data, setData] = useState<ChartDataRow[]>(
-    providedData ?? localizedInitialData
+    providedData ?? DEFAULT_INITIAL_DATA
   );
   const [settings, setSettings] = useState<ChartSettings>(
-    providedSettings ?? localizedInitialSettings
+    providedSettings ?? DEFAULT_INITIAL_SETTINGS
   );
 
   const [columns, setColumns] = useState<DataTableColumn<ChartDataRow>[]>(
@@ -85,10 +81,10 @@ export function TreeMapChartMaker({
 
   const defaultNewRow = useMemo(
     () => () => ({
-      name: `${t('editorNewItemPrefix')} ${data.length + 1}`,
+      name: `Item ${data.length + 1}`,
       value: 100,
     }),
-    [data.length, t]
+    [data.length]
   );
 
   return (

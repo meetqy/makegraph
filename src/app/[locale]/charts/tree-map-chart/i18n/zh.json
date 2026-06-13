@@ -71,20 +71,10 @@
     "editorEmptyState": "至少添加一个大于 0 的数值后，才能生成树图。",
     "editorColumnLabel": "A（标签）",
     "editorColumnValue": "B（数值）",
-    "editorNewItemPrefix": "项目",
-    "editorDefaultChartTitle": "软件预算分配",
     "editorExport": "导出",
     "editorExporting": "导出中...",
     "editorExportAriaLabel": "导出图表为 PNG",
     "editorExportErrorMissing": "未找到图表容器。",
-    "editorExportErrorFailed": "导出失败。",
-    "editorSampleName1": "云基础设施",
-    "editorSampleName2": "数据分析",
-    "editorSampleName3": "客户关系管理",
-    "editorSampleName4": "安全",
-    "editorSampleName5": "市场营销",
-    "editorSampleName6": "客户支持",
-    "editorSampleName7": "财务",
-    "editorSampleName8": "人力资源"
+    "editorExportErrorFailed": "导出失败。"
   }
 }

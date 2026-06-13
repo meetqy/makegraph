@@ -93,7 +93,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={chartData}
-                margin={{ top: 20, right: 0, left: 0, bottom: 20 }}
+                margin={{ top: 20, right: 0, left: 0, bottom: 24 }}
               >
                 {settings.showGrid && (
                   <CartesianGrid
@@ -106,8 +106,15 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
                   dataKey="name"
                   tickLine={false}
                   axisLine={false}
-                  tick={{ fill: '#888888', fontSize: 13 }}
+                  tick={{
+                    fill: '#888888',
+                    fontSize: 13,
+                    angle: -45,
+                    textAnchor: 'end',
+                  }}
+                  interval={0}
                   dy={10}
+                  height={80}
                 />
                 <YAxis
                   tickLine={false}

@@ -72,9 +72,6 @@
     "editorEmptyState": "Add at least one valid label and numeric change to render the waterfall chart.",
     "editorColumnLabel": "A (Step Label)",
     "editorColumnValue": "B (Change Value)",
-    "editorNewItemPrefix": "Step",
-    "editorDefaultChartTitle": "Quarterly Revenue Bridge",
-    "editorDefaultTotalLabel": "Net Total",
     "editorExport": "Export",
     "editorExporting": "Exporting...",
     "editorExportAriaLabel": "Export chart as PNG",
@@ -83,12 +80,6 @@
     "editorTooltipChange": "Change",
     "editorTooltipStart": "Start",
     "editorTooltipEnd": "End",
-    "editorTooltipTotal": "Total",
-    "editorSampleName1": "Starting Revenue",
-    "editorSampleName2": "Discounts",
-    "editorSampleName3": "Expansion Sales",
-    "editorSampleName4": "Refunds",
-    "editorSampleName5": "Service Costs",
-    "editorSampleName6": "Upsell Programs"
+    "editorTooltipTotal": "Total"
   }
 }

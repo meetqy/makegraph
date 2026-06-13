@@ -239,7 +239,7 @@ export function ChartPreview({
       grid: {
         top: 8,
         right: 80,
-        bottom: 18,
+        bottom: 56,
         left: 12,
         containLabel: true,
       },
@@ -272,6 +272,7 @@ export function ChartPreview({
         axisLabel: {
           color: '#888888',
           fontSize: 12,
+          rotate: 45,
           formatter: (value: number) => formatNumber(value),
         },
         axisLine: {

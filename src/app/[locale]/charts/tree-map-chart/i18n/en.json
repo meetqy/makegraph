@@ -71,20 +71,10 @@
     "editorEmptyState": "Add at least one positive value to render the tree map.",
     "editorColumnLabel": "A (Label)",
     "editorColumnValue": "B (Value)",
-    "editorNewItemPrefix": "Item",
-    "editorDefaultChartTitle": "Software Budget Allocation",
     "editorExport": "Export",
     "editorExporting": "Exporting...",
     "editorExportAriaLabel": "Export chart as PNG",
     "editorExportErrorMissing": "Chart container not found.",
-    "editorExportErrorFailed": "Export failed.",
-    "editorSampleName1": "Cloud Infrastructure",
-    "editorSampleName2": "Analytics",
-    "editorSampleName3": "CRM",
-    "editorSampleName4": "Security",
-    "editorSampleName5": "Marketing",
-    "editorSampleName6": "Support",
-    "editorSampleName7": "Finance",
-    "editorSampleName8": "HR"
+    "editorExportErrorFailed": "Export failed."
   }
 }

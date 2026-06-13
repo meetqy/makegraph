@@ -71,6 +71,8 @@ type WaterfallPoint = {
   isTotal: boolean;
 };
 
+const DEFAULT_TOTAL_SERIES_LABEL = 'Net Total';
+
 const numberFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 2,
 });
@@ -121,7 +123,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
     });
 
     steps.push({
-      category: settings.totalSeriesLabel || t('editorDefaultTotalLabel'),
+      category: settings.totalSeriesLabel || DEFAULT_TOTAL_SERIES_LABEL,
       helper: 0,
       value: runningTotal,
       rawValue: runningTotal,
@@ -131,7 +133,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
     });
 
     return steps;
-  }, [normalizedData, settings.totalSeriesLabel, t]);
+  }, [normalizedData, settings.totalSeriesLabel]);
 
   const connectorData = useMemo(
     () =>
@@ -219,7 +221,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
       helperSeries,
       {
         type: 'bar',
-        name: settings.totalSeriesLabel || t('editorDefaultTotalLabel'),
+        name: settings.totalSeriesLabel || DEFAULT_TOTAL_SERIES_LABEL,
         stack: 'total',
         itemStyle: {
           color: (params: any) => {

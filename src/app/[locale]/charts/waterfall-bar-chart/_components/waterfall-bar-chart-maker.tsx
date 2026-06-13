@@ -36,38 +36,36 @@ export type WaterfallBarChartMakerProps = {
   initialSettings?: ChartSettings;
 };
 
+const DEFAULT_TOTAL_SERIES_LABEL = 'Net Total';
+
+const DEFAULT_INITIAL_DATA: ChartDataRow[] = [
+  { name: 'Starting Revenue', value: 420 },
+  { name: 'Discounts', value: -90 },
+  { name: 'Expansion Sales', value: 180 },
+  { name: 'Refunds', value: -55 },
+  { name: 'Service Costs', value: -40 },
+  { name: 'Upsell Programs', value: 120 },
+];
+
+const DEFAULT_INITIAL_SETTINGS: ChartSettings = {
+  title: 'Quarterly Revenue Bridge',
+  totalSeriesLabel: DEFAULT_TOTAL_SERIES_LABEL,
+  color: '#3b82f6',
+  showGrid: true,
+  showValues: true,
+  showConnector: true,
+};
+
 export function WaterfallBarChartMaker({
   initialData: providedData,
   initialSettings: providedSettings,
 }: WaterfallBarChartMakerProps = {}) {
   const t = useTranslations('WaterfallBarChart');
-  const localizedInitialData = useMemo<ChartDataRow[]>(
-    () => [
-      { name: t('editorSampleName1'), value: 420 },
-      { name: t('editorSampleName2'), value: -90 },
-      { name: t('editorSampleName3'), value: 180 },
-      { name: t('editorSampleName4'), value: -55 },
-      { name: t('editorSampleName5'), value: -40 },
-      { name: t('editorSampleName6'), value: 120 },
-    ],
-    [t]
-  );
-  const localizedInitialSettings = useMemo<ChartSettings>(
-    () => ({
-      title: t('editorDefaultChartTitle'),
-      totalSeriesLabel: t('editorDefaultTotalLabel'),
-      color: '#3b82f6',
-      showGrid: true,
-      showValues: true,
-      showConnector: true,
-    }),
-    [t]
-  );
   const [data, setData] = useState<ChartDataRow[]>(
-    providedData ?? localizedInitialData
+    providedData ?? DEFAULT_INITIAL_DATA
   );
   const [settings, setSettings] = useState<ChartSettings>(
-    providedSettings ?? localizedInitialSettings
+    providedSettings ?? DEFAULT_INITIAL_SETTINGS
   );
 
   const [columns, setColumns] = useState<DataTableColumn<ChartDataRow>[]>(
@@ -89,10 +87,10 @@ export function WaterfallBarChartMaker({
 
   const defaultNewRow = useMemo(
     () => () => ({
-      name: `${t('editorNewItemPrefix')} ${data.length + 1}`,
+      name: `Step ${data.length + 1}`,
       value: 50,
     }),
-    [data.length, t]
+    [data.length]
   );
 
   return (

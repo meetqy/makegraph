@@ -72,9 +72,6 @@
     "editorEmptyState": "至少添加一条有效标签和数值变化后，才能生成瀑布柱状图。",
     "editorColumnLabel": "A（步骤标签）",
     "editorColumnValue": "B（变化值）",
-    "editorNewItemPrefix": "步骤",
-    "editorDefaultChartTitle": "季度收入桥接图",
-    "editorDefaultTotalLabel": "净结果",
     "editorExport": "导出",
     "editorExporting": "导出中...",
     "editorExportAriaLabel": "导出图表为 PNG",
@@ -83,12 +80,6 @@
     "editorTooltipChange": "变化值",
     "editorTooltipStart": "起点",
     "editorTooltipEnd": "终点",
-    "editorTooltipTotal": "总计",
-    "editorSampleName1": "期初收入",
-    "editorSampleName2": "折扣",
-    "editorSampleName3": "扩张销售",
-    "editorSampleName4": "退款",
-    "editorSampleName5": "服务成本",
-    "editorSampleName6": "增购项目"
+    "editorTooltipTotal": "总计"
   }
 }

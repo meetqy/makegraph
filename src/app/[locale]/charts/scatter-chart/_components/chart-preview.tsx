@@ -56,7 +56,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
       grid: {
         top: 24,
         right: 28,
-        bottom: 32,
+        bottom: 82,
         left: 56,
       },
       tooltip: {
@@ -107,6 +107,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
         axisLabel: {
           color: '#888888',
           fontSize: 12,
+          rotate: 45,
         },
       },
       yAxis: {
