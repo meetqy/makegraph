@@ -1,129 +1,41 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { RadarChartMaker } from './_components/radar-chart-maker';
-import { ChartList } from '~/components/chart-list';
-import { ChartHero } from '~/components/chart-hero';
-import { Button } from '~/components/ui/button';
-import { getBlogItemsByChartPath } from '~/config/blogs';
 import { getTranslations } from 'next-intl/server';
 import {
   generateChartTitle,
   withChartLinks,
   getMetadataAlternates,
 } from '~/lib/utils';
+import { RadarChartMaker } from './_components/radar-chart-maker';
+import { ChartList } from '~/components/chart-list';
+import { ChartHero } from '~/components/chart-hero';
+import { Button } from '~/components/ui/button';
+import { getBlogItemsByChartPath } from '~/config/blogs';
 
 const currentPath = '/charts/radar-chart';
-
-const heroEyebrow = 'Online Radar Chart Tool';
-const heroTitle = 'Free Online Radar Chart Maker.';
-const heroDescription =
-  'Free online radar chart maker. Compare strengths across multiple dimensions, customize labels and colors, and preview results instantly for reports and presentations.';
 const relatedBlogs = getBlogItemsByChartPath(currentPath);
 
-export const metadata: Metadata = {
-  title: generateChartTitle('Radar Chart'),
-  description: heroDescription,
-  alternates: getMetadataAlternates('/charts/radar-chart'),
-  openGraph: {
-    images: ['/charts/radar-chart-og-image.png'],
-  },
-  twitter: {
-    images: ['/charts/radar-chart-og-image.png'],
-  },
-};
+// 服务器端 metadata 生成
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'RadarChart' });
 
-const comparisonPoints = [
-  'Show how one subject performs across several dimensions in a single shape.',
-  'Make strengths, gaps, and balance easier to compare than with a plain table.',
-  'Turn scorecards, capability reviews, and multi-factor assessments into a chart people can scan fast.',
-];
-
-const featureHighlights = [
-  {
-    title: 'Edit dimensions directly',
-    description:
-      'Update labels and values in a built-in table without leaving the chart workflow.',
-  },
-  {
-    title: 'Preview the shape instantly',
-    description:
-      'Adjust data and immediately see how the radar chart expands, contracts, and rebalances in the preview panel.',
-  },
-  {
-    title: 'Customize chart styling',
-    description:
-      'Control the chart title, legend label, color theme, fill opacity, legend visibility, and polar grid display.',
-  },
-  {
-    title: 'Work well on desktop and mobile',
-    description:
-      'Use the three-column editor on larger screens or the bottom sheet controls on smaller devices.',
-  },
-];
-
-const useCases = [
-  'Compare team skills, candidate evaluations, or performance review categories.',
-  'Visualize product scorecards across usability, reliability, pricing, and support.',
-  'Show brand, vendor, or tool comparisons across several weighted criteria.',
-  'Present self-assessments, maturity models, or capability benchmarks.',
-  'Summarize survey results where each axis represents a separate dimension.',
-  'Explain balance across factors when one total score would hide the real story.',
-];
-
-const decisionGuide = [
-  {
-    title: 'Use a radar chart when',
-    items: [
-      'You need to compare one item or a few items across multiple dimensions at once.',
-      'Your main goal is to reveal strengths, weaknesses, and overall balance.',
-      'Each axis represents a comparable score, rating, or level.',
-      'Readers should see shape differences faster than scanning a table.',
-    ],
-  },
-  {
-    title: 'Choose another chart when',
-    items: [
-      'You want to compare many independent categories and a bar chart fits better.',
-      'You need to show change over time and a line chart is clearer.',
-      'You want precise value comparison across many items, where the radial layout becomes harder to read.',
-      'Your data is part-to-whole, so a stacked bar chart may communicate the relationship more clearly.',
-    ],
-  },
-];
-
-const faqs = [
-  {
-    question: 'What is a radar chart best for?',
-    answer:
-      'A radar chart is best for comparing strengths, weaknesses, and overall balance across several dimensions at the same time. It is especially useful for scorecards and multi-criteria comparisons.',
-  },
-  {
-    question: 'What kind of data works well in a radar chart?',
-    answer:
-      'Radar charts work best with comparable metrics such as scores, ratings, percentages, or maturity levels where each axis represents a different dimension of the same subject.',
-  },
-  {
-    question: 'How many categories should a radar chart have?',
-    answer:
-      'A radar chart is usually easiest to read with around 5 to 8 axes. Too many dimensions can make labels crowded and the shape harder to interpret.',
-  },
-  {
-    question: 'How is a radar chart different from a bar chart?',
-    answer:
-      'A radar chart emphasizes overall shape and balance across dimensions, while a bar chart is usually better when readers need precise comparisons between separate categories.',
-  },
-  {
-    question: 'When should I avoid using a radar chart?',
-    answer:
-      'Avoid it when you have many categories, need exact value reading, or want to show change over time. In those cases, a bar chart or line chart is often more effective.',
-  },
-  {
-    question:
-      'Why use an online radar chart maker instead of a spreadsheet chart?',
-    answer:
-      'A lightweight online radar chart maker is faster when your goal is to enter data, preview the shape instantly, adjust styling quickly, and export a clean chart without a heavier spreadsheet workflow.',
-  },
-];
+  return {
+    title: generateChartTitle('Radar Chart'),
+    description: t('heroDescription'),
+    alternates: getMetadataAlternates('/charts/radar-chart'),
+    openGraph: {
+      images: ['/charts/radar-chart-og-image.png'],
+    },
+    twitter: {
+      images: ['/charts/radar-chart-og-image.png'],
+    },
+  };
+}
 
 export default async function RadarChartPage({
   params,
@@ -132,12 +44,99 @@ export default async function RadarChartPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'RadarChart' });
+
+  const heroEyebrow = t('heroEyebrow');
+  const heroTitle = t('heroTitle');
+  const heroDescription = t('heroDescription');
+
+  const comparisonPoints = [
+    t('comparisonPoint1'),
+    t('comparisonPoint2'),
+    t('comparisonPoint3'),
+  ];
+
+  const featureHighlights = [
+    {
+      title: t('feature1Title'),
+      description: t('feature1Description'),
+    },
+    {
+      title: t('feature2Title'),
+      description: t('feature2Description'),
+    },
+    {
+      title: t('feature3Title'),
+      description: t('feature3Description'),
+    },
+    {
+      title: t('feature4Title'),
+      description: t('feature4Description'),
+    },
+  ];
+
+  const useCases = [
+    t('useCase1'),
+    t('useCase2'),
+    t('useCase3'),
+    t('useCase4'),
+    t('useCase5'),
+    t('useCase6'),
+  ];
+
+  const decisionGuide = [
+    {
+      title: t('decisionGuide1Title'),
+      items: [
+        t('decisionGuide1Point1'),
+        t('decisionGuide1Point2'),
+        t('decisionGuide1Point3'),
+        t('decisionGuide1Point4'),
+      ],
+    },
+    {
+      title: t('decisionGuide2Title'),
+      items: [
+        t('decisionGuide2Point1'),
+        t('decisionGuide2Point2'),
+        t('decisionGuide2Point3'),
+        t('decisionGuide2Point4'),
+      ],
+    },
+  ];
+
+  const faqs = [
+    {
+      question: t('faq1Question'),
+      answer: t('faq1Answer'),
+    },
+    {
+      question: t('faq2Question'),
+      answer: t('faq2Answer'),
+    },
+    {
+      question: t('faq3Question'),
+      answer: t('faq3Answer'),
+    },
+    {
+      question: t('faq4Question'),
+      answer: t('faq4Answer'),
+    },
+    {
+      question: t('faq5Question'),
+      answer: t('faq5Answer'),
+    },
+    {
+      question: t('faq6Question'),
+      answer: t('faq6Answer'),
+    },
+  ];
+
   return (
     <div className="flex flex-col bg-transparent">
       <ChartHero
-        eyebrow={t('heroEyebrow')}
-        title={t('heroTitle')}
-        description={t('heroDescription')}
+        eyebrow={heroEyebrow}
+        title={heroTitle}
+        description={heroDescription}
       />
       <div className="relative w-full bg-white p-4">
         <div className="h-[calc(100svh-12rem)] w-full overflow-hidden rounded-md border border-[#ebebeb] bg-white">
@@ -155,14 +154,10 @@ export default async function RadarChartPage({
                   {t('whyItWorksEyebrow')}
                 </p>
                 <h2 className="mt-4 max-w-3xl text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                  Compare multiple dimensions in one balanced view.
+                  {t('whyItWorksTitle')}
                 </h2>
                 <p className="mt-6 max-w-2xl text-base leading-7 text-[#4d4d4d] sm:text-[18px]">
-                  Radar charts help readers understand how one subject performs
-                  across several criteria at once. Instead of scanning one score
-                  after another, people can quickly see where the shape
-                  stretches, where it falls short, and whether the overall
-                  profile looks balanced.
+                  {t('whyItWorksDescription')}
                 </p>
               </div>
               <div className="space-y-5 lg:pl-8">
@@ -192,11 +187,10 @@ export default async function RadarChartPage({
           <section className="py-16">
             <div className="max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                Product Highlights
+                {t('productHighlightsEyebrow')}
               </p>
               <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                Built for fast editing, instant preview, and lightweight
-                multi-factor comparison.
+                {t('productHighlightsTitle')}
               </h2>
             </div>
             <div className="mt-10 grid gap-x-8 gap-y-8 md:grid-cols-2">
@@ -217,11 +211,10 @@ export default async function RadarChartPage({
             <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                  Common Use Cases
+                  {t('useCasesEyebrow')}
                 </p>
                 <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                  Use it for scorecards, capability reviews, and side-by-side
-                  criteria comparison.
+                  {t('useCasesTitle')}
                 </h2>
                 <div className="mt-6 space-y-3">
                   {useCases.map((item) => (
@@ -260,10 +253,10 @@ export default async function RadarChartPage({
           <section className="py-16">
             <div className="max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                Frequently Asked Questions
+                {t('faqEyebrow')}
               </p>
               <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                Everything people usually ask before making a radar chart.
+                {t('faqTitle')}
               </h2>
             </div>
             <div className="mt-10 grid gap-10 md:grid-cols-2">
@@ -291,17 +284,15 @@ export default async function RadarChartPage({
           <section className="py-16">
             <div className="rounded-2xl bg-[#171717] px-6 py-8 text-white sm:px-8 sm:py-10">
               <p className="font-mono text-xs uppercase tracking-[0.12em] text-white/60">
-                Ready To Start
+                {t('ctaEyebrow')}
               </p>
               <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                 <div className="max-w-3xl">
                   <h2 className="text-balance font-semibold text-3xl tracking-[-0.96px] sm:text-4xl sm:tracking-[-1.28px]">
-                    Build a clear radar chart in minutes.
+                    {t('ctaTitle')}
                   </h2>
                   <p className="mt-4 text-base leading-7 text-white/70 sm:text-[18px]">
-                    Enter your dimensions, adjust the styling, and use the live
-                    preview above to turn raw scores into a chart that is easy
-                    to present and easy to compare.
+                    {t('ctaDescription')}
                   </p>
                 </div>
                 <Button
@@ -309,7 +300,7 @@ export default async function RadarChartPage({
                   className="h-11 rounded-full bg-white px-5 text-[#171717] hover:bg-white/90"
                   size="lg"
                 >
-                  <a href="#">Start With The Editor</a>
+                  <a href="#">{t('ctaButton')}</a>
                 </Button>
               </div>
             </div>

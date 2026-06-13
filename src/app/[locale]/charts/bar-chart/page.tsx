@@ -1,129 +1,41 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { BarChartMaker } from './_components/bar-chart-maker';
-import { ChartList } from '~/components/chart-list';
-import { ChartHero } from '~/components/chart-hero';
-import { Button } from '~/components/ui/button';
-import { getBlogItemsByChartPath } from '~/config/blogs';
 import { getTranslations } from 'next-intl/server';
 import {
   generateChartTitle,
   withChartLinks,
   getMetadataAlternates,
 } from '~/lib/utils';
+import { BarChartMaker } from './_components/bar-chart-maker';
+import { ChartList } from '~/components/chart-list';
+import { ChartHero } from '~/components/chart-hero';
+import { Button } from '~/components/ui/button';
+import { getBlogItemsByChartPath } from '~/config/blogs';
 
-// 当前页面路径：用于在 withChartLinks 中跳过指向自身的链接
 const currentPath = '/charts/bar-chart';
-
-const heroEyebrow = 'Online Bar Chart Tool';
-const heroTitle = 'Free Online Bar Chart Maker.';
-const heroDescription =
-  'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.';
 const relatedBlogs = getBlogItemsByChartPath(currentPath);
 
-export const metadata: Metadata = {
-  title: generateChartTitle('Bar Chart'),
-  description: heroDescription,
-  alternates: getMetadataAlternates('/charts/bar-chart'),
-  openGraph: {
-    images: ['/charts/bar-graph-og-image.png'],
-  },
-  twitter: {
-    images: ['/charts/bar-graph-og-image.png'],
-  },
-};
+// 服务器端 metadata 生成
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'BarChart' });
 
-const comparisonPoints = [
-  'See which category leads, trails, or changes rank at a glance.',
-  'Turn grouped counts, sums, averages, or percentages into a chart people can read fast.',
-  'Create clean visuals for sales, survey, traffic, performance, and reporting workflows.',
-];
-
-const featureHighlights = [
-  {
-    title: 'Edit data directly',
-    description:
-      'Update category names and values in a built-in table without leaving the chart workflow.',
-  },
-  {
-    title: 'Preview changes instantly',
-    description:
-      'Adjust data and immediately see how the bar chart responds in the preview panel.',
-  },
-  {
-    title: 'Customize the presentation',
-    description:
-      'Control the chart title, legend name, color theme, legend visibility, and background grid.',
-  },
-  {
-    title: 'Work well on desktop and mobile',
-    description:
-      'Use the three-column editor on larger screens or the bottom sheet controls on smaller devices.',
-  },
-];
-
-const useCases = [
-  'Compare product sales across categories or regions.',
-  'Summarize survey responses by answer option.',
-  'Show traffic, users, or conversions by channel.',
-  'Review monthly or quarterly performance by team, market, or campaign.',
-  'Present average scores, completion rates, or category-based percentages.',
-  'Highlight top and bottom performers in a ranked comparison.',
-];
-
-const decisionGuide = [
-  {
-    title: 'Use a bar chart when',
-    items: [
-      'Your data is organized into clear categories.',
-      'Your main goal is to compare values across groups.',
-      'Readers need to spot the highest, lowest, or ranked items quickly.',
-      'You are charting grouped metrics like count, sum, average, or percentage.',
-    ],
-  },
-  {
-    title: 'Choose another chart when',
-    items: [
-      'You want to show change over continuous time and a line chart fits better.',
-      'You want to show the distribution of continuous values and need a histogram.',
-      'You only care about part-to-whole share and a pie chart or 100% stacked bar chart is clearer.',
-      'You have too many categories and labels become crowded or hard to scan.',
-    ],
-  },
-];
-
-const faqs = [
-  {
-    question: 'What is a bar chart best for?',
-    answer:
-      'A bar chart is best for comparing values across categories. It helps people quickly understand which group is larger, smaller, or more important in a ranked comparison.',
-  },
-  {
-    question: 'What kind of data works well in a bar chart?',
-    answer:
-      'Bar charts work best with grouped or categorical data such as products, countries, channels, months, devices, or survey answers.',
-  },
-  {
-    question: 'Can I use a bar chart for percentages?',
-    answer:
-      'Yes. If percentages are grouped by category, a bar chart is often a clear way to compare them side by side.',
-  },
-  {
-    question: 'When should I use a horizontal bar chart instead?',
-    answer:
-      'A horizontal layout is usually easier to read when labels are long or when you need to compare many categories in one chart.',
-  },
-  {
-    question: 'How is a bar chart different from a line chart?',
-    answer:
-      'A bar chart focuses on category comparison, while a line chart is usually better for showing continuous trends over time.',
-  },
-  {
-    question: 'Why not just use a more complex spreadsheet chart?',
-    answer:
-      'A lightweight online bar chart maker is faster when your goal is to enter data, preview changes instantly, and create a clean chart without a heavier spreadsheet workflow.',
-  },
-];
+  return {
+    title: generateChartTitle('Bar Chart'),
+    description: t('heroDescription'),
+    alternates: getMetadataAlternates('/charts/bar-chart'),
+    openGraph: {
+      images: ['/charts/bar-graph-og-image.png'],
+    },
+    twitter: {
+      images: ['/charts/bar-graph-og-image.png'],
+    },
+  };
+}
 
 export default async function BarChartPage({
   params,
@@ -132,15 +44,102 @@ export default async function BarChartPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'BarChart' });
+
+  const heroEyebrow = t('heroEyebrow');
+  const heroTitle = t('heroTitle');
+  const heroDescription = t('heroDescription');
+
+  const comparisonPoints = [
+    t('comparisonPoint1'),
+    t('comparisonPoint2'),
+    t('comparisonPoint3'),
+  ];
+
+  const featureHighlights = [
+    {
+      title: t('feature1Title'),
+      description: t('feature1Description'),
+    },
+    {
+      title: t('feature2Title'),
+      description: t('feature2Description'),
+    },
+    {
+      title: t('feature3Title'),
+      description: t('feature3Description'),
+    },
+    {
+      title: t('feature4Title'),
+      description: t('feature4Description'),
+    },
+  ];
+
+  const useCases = [
+    t('useCase1'),
+    t('useCase2'),
+    t('useCase3'),
+    t('useCase4'),
+    t('useCase5'),
+    t('useCase6'),
+  ];
+
+  const decisionGuide = [
+    {
+      title: t('decisionGuide1Title'),
+      items: [
+        t('decisionGuide1Point1'),
+        t('decisionGuide1Point2'),
+        t('decisionGuide1Point3'),
+        t('decisionGuide1Point4'),
+      ],
+    },
+    {
+      title: t('decisionGuide2Title'),
+      items: [
+        t('decisionGuide2Point1'),
+        t('decisionGuide2Point2'),
+        t('decisionGuide2Point3'),
+        t('decisionGuide2Point4'),
+      ],
+    },
+  ];
+
+  const faqs = [
+    {
+      question: t('faq1Question'),
+      answer: t('faq1Answer'),
+    },
+    {
+      question: t('faq2Question'),
+      answer: t('faq2Answer'),
+    },
+    {
+      question: t('faq3Question'),
+      answer: t('faq3Answer'),
+    },
+    {
+      question: t('faq4Question'),
+      answer: t('faq4Answer'),
+    },
+    {
+      question: t('faq5Question'),
+      answer: t('faq5Answer'),
+    },
+    {
+      question: t('faq6Question'),
+      answer: t('faq6Answer'),
+    },
+  ];
+
   return (
     <div className="flex flex-col bg-transparent">
       <ChartHero
-        eyebrow={t('heroEyebrow')}
-        title={t('heroTitle')}
-        description={t('heroDescription')}
+        eyebrow={heroEyebrow}
+        title={heroTitle}
+        description={heroDescription}
       />
       <div className="relative w-full bg-white p-4">
-        <div className="h-[calc(100svh-12rem)] rounded-md w-full overflow-hidden border border-[#ebebeb] bg-white">
+        <div className="h-[calc(100svh-12rem)] w-full overflow-hidden rounded-md border border-[#ebebeb] bg-white">
           <BarChartMaker />
         </div>
       </div>
@@ -155,13 +154,10 @@ export default async function BarChartPage({
                   {t('whyItWorksEyebrow')}
                 </p>
                 <h2 className="mt-4 max-w-3xl text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                  Compare categories with less effort and more clarity.
+                  {t('whyItWorksTitle')}
                 </h2>
                 <p className="mt-6 max-w-2xl text-base leading-7 text-[#4d4d4d] sm:text-[18px]">
-                  Bar charts are one of the simplest ways to explain
-                  category-based differences. They make it easy to show ranking,
-                  gaps, and relative size without forcing readers to decode a
-                  complicated visual.
+                  {t('whyItWorksDescription')}
                 </p>
               </div>
               <div className="space-y-5 lg:pl-8">
@@ -176,13 +172,13 @@ export default async function BarChartPage({
               </div>
             </div>
             <div className="mt-12">
-              <div className="flex w-full items-center justify-center rounded-2xl border border-[#ebebeb] bg-[#fafafa] overflow-hidden">
+              <div className="flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#ebebeb] bg-[#fafafa]">
                 <Image
                   src="/charts/bar-graph-og-image.png"
                   alt="Bar Chart Example"
                   width={1200}
                   height={630}
-                  className="w-full h-auto object-cover"
+                  className="h-auto w-full object-cover"
                 />
               </div>
             </div>
@@ -191,11 +187,10 @@ export default async function BarChartPage({
           <section className="py-16">
             <div className="max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                Product Highlights
+                {t('productHighlightsEyebrow')}
               </p>
               <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                Built for fast editing, instant preview, and lightweight chart
-                customization.
+                {t('productHighlightsTitle')}
               </h2>
             </div>
             <div className="mt-10 grid gap-x-8 gap-y-8 md:grid-cols-2">
@@ -216,11 +211,10 @@ export default async function BarChartPage({
             <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                  Common Use Cases
+                  {t('useCasesEyebrow')}
                 </p>
                 <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                  Use it for reports, dashboards, campaigns, and survey
-                  summaries.
+                  {t('useCasesTitle')}
                 </h2>
                 <div className="mt-6 space-y-3">
                   {useCases.map((item) => (
@@ -259,10 +253,10 @@ export default async function BarChartPage({
           <section className="py-16">
             <div className="max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                Frequently Asked Questions
+                {t('faqEyebrow')}
               </p>
               <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                Everything people usually ask before making a bar chart.
+                {t('faqTitle')}
               </h2>
             </div>
             <div className="mt-10 grid gap-10 md:grid-cols-2">
@@ -290,17 +284,15 @@ export default async function BarChartPage({
           <section className="py-16">
             <div className="rounded-2xl bg-[#171717] px-6 py-8 text-white sm:px-8 sm:py-10">
               <p className="font-mono text-xs uppercase tracking-[0.12em] text-white/60">
-                Ready To Start
+                {t('ctaEyebrow')}
               </p>
               <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                 <div className="max-w-3xl">
                   <h2 className="text-balance font-semibold text-3xl tracking-[-0.96px] sm:text-4xl sm:tracking-[-1.28px]">
-                    Build a clean bar chart in minutes.
+                    {t('ctaTitle')}
                   </h2>
                   <p className="mt-4 text-base leading-7 text-white/70 sm:text-[18px]">
-                    Enter your categories, adjust the presentation, and use the
-                    live preview above to turn raw numbers into a chart that is
-                    easy to share and easy to understand.
+                    {t('ctaDescription')}
                   </p>
                 </div>
                 <Button
@@ -308,7 +300,7 @@ export default async function BarChartPage({
                   className="h-11 rounded-full bg-white px-5 text-[#171717] hover:bg-white/90"
                   size="lg"
                 >
-                  <a href="#">Start With The Editor</a>
+                  <a href="#">{t('ctaButton')}</a>
                 </Button>
               </div>
             </div>
