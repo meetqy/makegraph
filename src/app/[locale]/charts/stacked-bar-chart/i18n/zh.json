@@ -2,7 +2,7 @@
   "StackedBarChart": {
     "heroEyebrow": "在线堆叠柱状图工具",
     "heroTitle": "免费在线堆叠柱状图制作工具",
-    "heroDescription": "免费在线堆叠柱状图制作工具。一目了然地比较总数和构成，支持切换为100%堆叠，自定义颜色，并即时预览以用于报告。",
+    "heroDescription": "免费在线堆叠柱状图制作工具，可一目了然地比较总数和构成，支持切换为 100% 堆叠、自定义颜色并即时预览以用于报告。",
     "whyItWorksEyebrow": "堆叠柱状图的优势",
     "whyItWorksTitle": "同时看总量和构成，占比关系更清楚",
     "whyItWorksDescription": "堆叠柱状图不仅能告诉你哪个类别的总值最大，还能清晰展示每个总值是由哪些部分组成的。",

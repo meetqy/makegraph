@@ -2,7 +2,7 @@
   "TreeMapChart": {
     "heroEyebrow": "在线树图工具",
     "heroTitle": "矩形树图生成器",
-    "heroDescription": "免费在线树图制作工具。用矩形面积比较各分类在整体中的占比，支持自定义标签与颜色，并可即时预览布局。",
+    "heroDescription": "免费在线树图制作工具，可用矩形面积比较各分类在整体中的占比，并支持自定义标签、颜色和即时预览布局。",
     "whyItWorksEyebrow": "为什么适合",
     "whyItWorksTitle": "为什么树图适合这类数据",
     "whyItWorksDescription": "树图能把大量分类压缩进一个紧凑视图里，让你不用滚动长表格，也能快速看出谁占得最多、谁影响最小。",
