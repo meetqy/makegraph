@@ -177,4 +177,4 @@ This project is a standard Next.js application with a PostgreSQL dependency.
 
 ## License
 
-No license file is included in this repository yet.
+This project is licensed under the GNU Affero General Public License v3.0 - see the [LICENSE](LICENSE) file for details.

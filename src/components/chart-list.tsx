@@ -57,7 +57,7 @@ export function ChartList({
         </div>
       )}
 
-      <div className="grid gap-3 pt-6 sm:grid-cols-2 lg:pt-8 xl:grid-cols-3">
+      <div className="grid gap-4 pt-6 sm:grid-cols-2 lg:pt-8 xl:grid-cols-3">
         {items.map((item) => (
           <Link
             key={item.href}

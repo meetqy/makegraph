@@ -9,7 +9,8 @@
   "Footer": {
     "description": "A fast online chart maker. Upload your data, get automatic chart suggestions, and export as PNG instantly, free with no signup.",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "github": "GitHub"
   },
   "Home": {
     "heroEyebrow": "MakeGraph • Free Online Chart Maker",

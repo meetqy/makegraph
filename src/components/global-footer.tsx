@@ -1,7 +1,9 @@
-import { Link } from '~/i18n/routing';
 import { useTranslations } from 'next-intl';
+import { Button } from '~/components/ui/button';
+import { Link } from '~/i18n/routing';
 
 import { chartTypeItems, type ChartTypeItem } from '~/config/charts';
+import { GithubIcon } from './icons';
 
 // 友情链接配置列表（支持直接传入 HTML 代码）
 export const friendLinks: string[] = [
@@ -61,16 +63,34 @@ export function GlobalFooter() {
   return (
     <footer className="border-t border-[#ebebeb] bg-white text-[#4d4d4d]">
       <div className={`container-box pt-8 xl:pt-10`}>
-        <div className="mb-8 max-w-2xl">
+        <div className="mb-8">
           <Link
             href="/"
             className="font-mono text-[#171717] text-sm uppercase tracking-[0.12em]"
           >
             MakeGraph
           </Link>
-          <p className="mt-3 text-[#888888] text-sm leading-6">
-            {t('description')}
-          </p>
+          <div className="mt-3 flex items-start justify-between gap-3">
+            <p className="max-w-2xl text-[#888888] text-sm leading-6">
+              {t('description')}
+            </p>
+            <Button
+              asChild
+              variant="ghost"
+              size="icon-sm"
+              className="shrink-0 rounded-full text-[#888888] hover:bg-[#f5f5f5] hover:text-[#171717]"
+            >
+              <a
+                href="https://github.com/meetqy/makegraph"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t('github')}
+                title={t('github')}
+              >
+                <GithubIcon className="size-6" />
+              </a>
+            </Button>
+          </div>
         </div>
 
         <div className="border-t py-4">
