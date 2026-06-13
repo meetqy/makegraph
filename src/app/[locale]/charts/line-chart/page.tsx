@@ -3,13 +3,11 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { generateChartTitle, withChartLinks } from '~/lib/utils';
 import { LineChartMaker } from './_components/line-chart-maker';
-import { ChartList } from '~/components/chart-list';
+import { ChartRelatedBlogs } from '~/components/chart-related-blogs';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
-import { getBlogItemsByChartPath } from '~/config/blogs';
 
 const currentPath = '/charts/line-chart';
-const relatedBlogs = getBlogItemsByChartPath(currentPath);
 
 // 服务器端 metadata 生成
 export async function generateMetadata({
@@ -301,23 +299,7 @@ export default async function LineChartPage({
             </div>
           </section>
 
-          {relatedBlogs.length > 0 && (
-            <section className="py-16">
-              <ChartList
-                items={relatedBlogs.map((blog) => ({
-                  title: blog.title,
-                  description: blog.description,
-                  href: blog.href,
-                  image: blog.image,
-                  icon: blog.icon,
-                  meta: blog.date,
-                }))}
-                eyebrow="Related blog"
-                title="See a business use case for this chart."
-                description="Open the related guide to understand the scenario, the example data, and the reporting questions behind this chart choice."
-              />
-            </section>
-          )}
+          <ChartRelatedBlogs chartPath={currentPath} locale={locale} />
         </section>
       </div>
     </div>
