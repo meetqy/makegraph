@@ -13,6 +13,11 @@ type ChartExporterProps = {
   targetRef: RefObject<HTMLElement | null>;
   /** 下载文件名前缀（不含扩展名） */
   filename?: string;
+  exportLabel?: string;
+  exportingLabel?: string;
+  exportAriaLabel?: string;
+  missingContainerError?: string;
+  exportFailedError?: string;
 };
 
 // 通用文件下载辅助
@@ -37,6 +42,11 @@ async function exportPng(container: HTMLElement, filename: string) {
 export function ChartExporter({
   targetRef,
   filename = 'chart',
+  exportLabel = 'Export',
+  exportingLabel = 'Exporting...',
+  exportAriaLabel = 'Export chart as PNG',
+  missingContainerError = 'Chart container not found.',
+  exportFailedError = 'Export failed.',
 }: ChartExporterProps) {
   const [isExporting, setIsExporting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,7 +54,7 @@ export function ChartExporter({
   const handleClick = async () => {
     const target = targetRef.current;
     if (!target) {
-      setError('Chart container not found.');
+      setError(missingContainerError);
       return;
     }
     setIsExporting(true);
@@ -52,7 +62,7 @@ export function ChartExporter({
     try {
       await exportPng(target, filename);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Export failed.');
+      setError(err instanceof Error ? err.message : exportFailedError);
     } finally {
       setIsExporting(false);
     }
@@ -65,10 +75,10 @@ export function ChartExporter({
       onClick={handleClick}
       disabled={isExporting}
       className="h-8 shadow-none border-[#ebebeb]"
-      aria-label={error ?? 'Export chart as PNG'}
+      aria-label={error ?? exportAriaLabel}
     >
       <Download className="mr-2 size-3.5" />
-      {isExporting ? 'Exporting...' : 'Export'}
+      {isExporting ? exportingLabel : exportLabel}
     </Button>
   );
 }

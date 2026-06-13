@@ -23,6 +23,7 @@ export type DataTableColumn<T> = {
 
 type DataTableEditorProps<T extends Record<string, unknown>> = {
   title?: string;
+  importCsvLabel?: string;
   data: T[];
   onChange: (data: T[]) => void;
   columns: DataTableColumn<T>[];
@@ -32,6 +33,7 @@ type DataTableEditorProps<T extends Record<string, unknown>> = {
 
 export function DataTableEditor<T extends Record<string, unknown>>({
   title = 'Data Editor',
+  importCsvLabel = 'Import CSV',
   data,
   onChange,
   columns,
@@ -204,7 +206,7 @@ export function DataTableEditor<T extends Record<string, unknown>>({
             size="sm"
             className="h-7 text-xs px-2 text-[#4d4d4d] hover:bg-[#fafafa]"
           >
-            <Upload className="mr-1 size-3.5" /> Import CSV
+            <Upload className="mr-1 size-3.5" /> {importCsvLabel}
           </Button>
         </div>
       </div>

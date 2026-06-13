@@ -1,4 +1,5 @@
 import { useMemo, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import { ResponsiveContainer, Treemap } from 'recharts';
 import { ChartExporter } from '~/components/chart-exporter';
 import type { ChartDataRow, ChartSettings } from './tree-map-chart-maker';
@@ -165,6 +166,7 @@ function CustomizedContentFactory(settings: ChartSettings, colors: string[]) {
 }
 
 export function ChartPreview({ data, settings }: ChartPreviewProps) {
+  const t = useTranslations('TreeMapChart');
   const exportTargetRef = useRef<HTMLDivElement>(null);
   const chartData = useMemo(
     () =>
@@ -189,9 +191,17 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
     <div className="flex flex-1 flex-col overflow-hidden bg-white">
       <div className="flex h-14 shrink-0 items-center justify-between border-b border-[#ebebeb] px-6">
         <h2 className="font-medium text-[#171717] text-sm uppercase tracking-wide">
-          Graph
+          {t('editorGraphTitle')}
         </h2>
-        <ChartExporter targetRef={exportTargetRef} filename="tree-map-chart" />
+        <ChartExporter
+          targetRef={exportTargetRef}
+          filename="tree-map-chart"
+          exportLabel={t('editorExport')}
+          exportingLabel={t('editorExporting')}
+          exportAriaLabel={t('editorExportAriaLabel')}
+          missingContainerError={t('editorExportErrorMissing')}
+          exportFailedError={t('editorExportErrorFailed')}
+        />
       </div>
 
       <div className="flex w-full flex-1 overflow-x-auto">
@@ -208,7 +218,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
           <div className="flex w-full flex-1 flex-col">
             {chartData.length === 0 ? (
               <div className="flex flex-1 items-center justify-center rounded-2xl border border-dashed border-[#d4d4d4] bg-[#fafafa] px-6 text-center text-sm leading-6 text-[#4d4d4d] sm:text-base">
-                Add at least one positive value to render the tree map.
+                {t('editorEmptyState')}
               </div>
             ) : (
               <div className="flex-1 rounded-2xl border border-[#ebebeb] bg-[#fafafa] p-3 sm:p-4">

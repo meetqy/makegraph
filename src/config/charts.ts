@@ -34,7 +34,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/radar-chart-og-image.png',
   },
   {
-    name: 'Free Online Tree Map Chart Maker.',
+    name: 'Tree Map Chart Maker',
     description:
       'Free online tree map chart maker. Compare part-to-whole values with nested rectangles, customize labels and color, and preview the layout instantly.',
     href: '/charts/tree-map-chart',

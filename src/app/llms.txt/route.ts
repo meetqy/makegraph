@@ -22,7 +22,7 @@ MakeGraph is a free online chart maker that turns spreadsheet data into clear, p
 ## Charts (中文)
 
 - [折线图制作工具](${siteUrl}/zh/charts/line-chart)
-- [树图制作工具](${siteUrl}/zh/charts/tree-map-chart)
+- [矩形树图生成器](${siteUrl}/zh/charts/tree-map-chart)
 - [柱状图制作工具](${siteUrl}/zh/charts/bar-chart)
 - [动态排序柱状图制作工具](${siteUrl}/zh/charts/bar-chart-race)
 - [双柱状图制作工具](${siteUrl}/zh/charts/double-bar-chart)
