@@ -18,6 +18,14 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/line-chart-og-image.png',
   },
   {
+    name: 'Free Online Scatter Chart Maker.',
+    description:
+      'Free online scatter chart maker. Plot x and y relationships, switch between Recharts and ECharts, and preview bubble sizing instantly.',
+    href: '/charts/scatter-chart',
+    icon: BarChart3,
+    image: '/charts/scatter-chart-og-image.svg',
+  },
+  {
     name: 'Free Online Radar Chart Maker.',
     description:
       'Free online radar chart maker. Compare strengths across multiple dimensions, customize labels and colors, and preview results instantly for reports and presentations.',
