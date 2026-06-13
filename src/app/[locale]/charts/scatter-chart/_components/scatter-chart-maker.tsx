@@ -17,11 +17,8 @@ import { ChartConfigPanel } from './chart-config';
 import { ChartPreview } from './chart-preview';
 
 export type ChartDataRow = {
-  label: string;
   x: number;
   y: number;
-  group: string;
-  size: number;
 };
 
 export type ChartSettings = {
@@ -32,18 +29,17 @@ export type ChartSettings = {
   color: string;
   showLegend: boolean;
   showGrid: boolean;
-  useBubbleSize: boolean;
 };
 
 const initialData: ChartDataRow[] = [
-  { label: 'Search / US', x: 42, y: 3.8, group: 'Paid Search', size: 18 },
-  { label: 'Search / EU', x: 34, y: 3.2, group: 'Paid Search', size: 15 },
-  { label: 'Social / US', x: 26, y: 2.5, group: 'Paid Social', size: 21 },
-  { label: 'Social / EU', x: 18, y: 2.1, group: 'Paid Social', size: 14 },
-  { label: 'Email / VIP', x: 12, y: 5.4, group: 'Lifecycle', size: 10 },
-  { label: 'Email / New', x: 9, y: 4.7, group: 'Lifecycle', size: 8 },
-  { label: 'Organic / Blog', x: 15, y: 3.4, group: 'Organic', size: 16 },
-  { label: 'Organic / Landing', x: 21, y: 4.1, group: 'Organic', size: 19 },
+  { x: 42, y: 3.8 },
+  { x: 34, y: 3.2 },
+  { x: 26, y: 2.5 },
+  { x: 18, y: 2.1 },
+  { x: 12, y: 5.4 },
+  { x: 9, y: 4.7 },
+  { x: 15, y: 3.4 },
+  { x: 21, y: 4.1 },
 ];
 
 const initialSettings: ChartSettings = {
@@ -54,7 +50,6 @@ const initialSettings: ChartSettings = {
   color: '#171717',
   showLegend: true,
   showGrid: true,
-  useBubbleSize: true,
 };
 
 export function ScatterChartMaker() {
@@ -63,43 +58,22 @@ export function ScatterChartMaker() {
 
   const [columns, setColumns] = useState<DataTableColumn<ChartDataRow>[]>([
     {
-      key: 'label',
-      title: 'A (Label)',
-      type: 'text',
-      minWidth: 150,
-    },
-    {
       key: 'x',
-      title: 'B (X Value)',
+      title: 'A (X Value)',
       type: 'number',
       minWidth: 120,
     },
     {
       key: 'y',
-      title: 'C (Y Value)',
+      title: 'B (Y Value)',
       type: 'number',
       minWidth: 120,
-    },
-    {
-      key: 'group',
-      title: 'D (Group)',
-      type: 'text',
-      minWidth: 140,
-    },
-    {
-      key: 'size',
-      title: 'E (Size)',
-      type: 'number',
-      minWidth: 110,
     },
   ]);
 
   const defaultNewRow = () => ({
-    label: `Point ${data.length + 1}`,
     x: 10,
     y: 10,
-    group: 'Series',
-    size: 12,
   });
 
   return (

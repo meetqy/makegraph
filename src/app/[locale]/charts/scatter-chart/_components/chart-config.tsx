@@ -138,22 +138,6 @@ export function ChartConfigPanel({
               />
               <span className="text-[#4d4d4d] text-sm">Show Grid</span>
             </label>
-
-            <label
-              htmlFor="use-bubble-size"
-              className="flex cursor-pointer items-center gap-3"
-            >
-              <Checkbox
-                id="use-bubble-size"
-                checked={settings.useBubbleSize}
-                onCheckedChange={(checked) =>
-                  updateSetting('useBubbleSize', !!checked)
-                }
-              />
-              <span className="text-[#4d4d4d] text-sm">
-                Use Size Column For Bubble Radius
-              </span>
-            </label>
           </div>
         </div>
       </div>
