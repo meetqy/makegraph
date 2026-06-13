@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
 import { Link } from '~/i18n/routing';
 import { getMetadataAlternates } from '~/lib/utils';
 
@@ -8,11 +9,15 @@ const heroTitle = 'Terms of Service.';
 const heroDescription =
   'The rules and conditions for using MakeGraph, our free online chart maker for creating, editing, and exporting charts.';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service | MakeGraph',
-  description: heroDescription,
-  alternates: getMetadataAlternates('/terms-of-service'),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return {
+    title: 'Terms of Service | MakeGraph',
+    description: heroDescription,
+    alternates: getMetadataAlternates('/terms-of-service', locale),
+  };
+}
 
 const lastUpdated = 'June 9, 2026';
 

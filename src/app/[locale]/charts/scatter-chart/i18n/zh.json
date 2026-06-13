@@ -2,7 +2,7 @@
   "ScatterChart": {
     "heroEyebrow": "在线散点图工具",
     "heroTitle": "免费在线散点图制作工具",
-    "heroDescription": "展示两个数值变量之间的关系，按大小缩放点位，在 Recharts 和 ECharts 之间切换，并即时预览结果。",
+    "heroDescription": "展示两个数值变量之间的关系，在表格中编辑 x 和 y 数据，并即时预览结果。",
     "whyItWorksEyebrow": "为什么好用",
     "whyItWorksTitle": "一张图看出相关性、聚类和异常点",
     "whyItWorksDescription": "散点图帮助人们看清两个数值指标是否一起变化、是否形成明显分群，以及哪些异常点值得进一步排查。",

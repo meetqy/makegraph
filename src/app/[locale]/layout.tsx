@@ -12,7 +12,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { TRPCReactProvider } from '~/trpc/react';
 
 export const metadata: Metadata = {
-  metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+  metadataBase: new URL(siteUrl ?? 'http://localhost:3001'),
   title: 'MakeGraph - Free Online Chart Maker',
   description:
     'Turn your Excel or CSV data into clear charts in 1 minute. Free online chart maker.',

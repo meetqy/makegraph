@@ -20,10 +20,10 @@ export const chartTypeItems: ChartTypeItem[] = [
   {
     name: 'Free Online Scatter Chart Maker.',
     description:
-      'Free online scatter chart maker. Plot x and y relationships, switch between Recharts and ECharts, and preview bubble sizing instantly.',
+      'Free online scatter chart maker. Plot relationships between two numeric variables, edit x and y values in a table, and preview the result instantly.',
     href: '/charts/scatter-chart',
     icon: BarChart3,
-    image: '/charts/scatter-chart-og-image.svg',
+    image: '/charts/scatter-chart-og-image.png',
   },
   {
     name: 'Free Online Radar Chart Maker.',

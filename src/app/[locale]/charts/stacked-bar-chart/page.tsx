@@ -25,7 +25,7 @@ export async function generateMetadata({
   return {
     title: generateChartTitle('Stacked Bar Chart'),
     description: t('heroDescription'),
-    alternates: getMetadataAlternates('/charts/stacked-bar-chart'),
+    alternates: getMetadataAlternates('/charts/stacked-bar-chart', locale),
     openGraph: {
       images: ['/charts/stacked-bar-chart-og-image.png'],
     },

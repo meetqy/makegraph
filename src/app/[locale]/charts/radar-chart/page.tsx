@@ -25,7 +25,7 @@ export async function generateMetadata({
   return {
     title: generateChartTitle('Radar Chart'),
     description: t('heroDescription'),
-    alternates: getMetadataAlternates('/charts/radar-chart'),
+    alternates: getMetadataAlternates('/charts/radar-chart', locale),
     openGraph: {
       images: ['/charts/radar-chart-og-image.png'],
     },

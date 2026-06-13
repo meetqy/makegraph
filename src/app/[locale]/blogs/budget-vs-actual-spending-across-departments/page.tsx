@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
 import { Link } from '~/i18n/routing';
 
 import { ChartList } from '~/components/chart-list';
@@ -24,25 +25,30 @@ const currentBlogHref = '/blogs/budget-vs-actual-spending-across-departments';
 const currentBlog = blogItems.find((item) => item.href === currentBlogHref);
 const currentBlogImage = currentBlog?.image ?? '/og.png';
 
-export const metadata: Metadata = {
-  title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
-  description: heroDescription,
-  alternates: getMetadataAlternates(
-    '/blogs/budget-vs-actual-spending-across-departments'
-  ),
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return {
     title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
     description: heroDescription,
-    url: '/blogs/budget-vs-actual-spending-across-departments',
-    images: [currentBlogImage],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
-    description: heroDescription,
-    images: [currentBlogImage],
-  },
-};
+    alternates: getMetadataAlternates(
+      '/blogs/budget-vs-actual-spending-across-departments',
+      locale
+    ),
+    openGraph: {
+      title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
+      description: heroDescription,
+      url: '/blogs/budget-vs-actual-spending-across-departments',
+      images: [currentBlogImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
+      description: heroDescription,
+      images: [currentBlogImage],
+    },
+  };
+}
 
 const lastUpdated = 'June 10, 2026';
 const recommendedCharts = getChartItemsByPaths(

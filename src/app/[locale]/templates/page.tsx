@@ -1,16 +1,21 @@
 import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { BarChart3 } from 'lucide-react';
 import { ChartList } from '~/components/chart-list';
 import { HeroBackground } from '~/components/hero-background';
 import { getMetadataAlternates } from '~/lib/utils';
 
-export const metadata: Metadata = {
-  title: 'Templates | MakeGraph',
-  description:
-    'Explore ready-to-use chart templates with pre-filled data and configurations.',
-  alternates: getMetadataAlternates('/templates'),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return {
+    title: 'Templates | MakeGraph',
+    description:
+      'Explore ready-to-use chart templates with pre-filled data and configurations.',
+    alternates: getMetadataAlternates('/templates', locale),
+  };
+}
 
 export default function TemplatesPage() {
   const t = useTranslations('Templates');

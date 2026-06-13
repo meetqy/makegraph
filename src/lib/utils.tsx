@@ -8,32 +8,33 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+function getLocalizedPath(path: string, locale: string) {
+  if (
+    locale === routing.defaultLocale &&
+    routing.localePrefix === 'as-needed'
+  ) {
+    return path || '/';
+  }
+
+  return `/${locale}${path}`;
+}
+
 /**
  * 通用方法处理 Metadata 的 canonical 和 alternates.languages 链接
  * 传入页面路径（例如 '/blogs'），根据 i18n 路由配置自动生成相对路径的 canonical 和多语言 hreflang 链接。
  * 配合 root layout 中的 metadataBase 使用，Next.js 会自动将其转为绝对路径。
  */
-export function getMetadataAlternates(path: string) {
+export function getMetadataAlternates(path: string, locale?: string) {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  // 如果是根路径，则替换为空字符串
   const cleanPath = normalizedPath === '/' ? '' : normalizedPath;
-
   const languages: Record<string, string> = {};
 
   routing.locales.forEach((locale) => {
-    // 根据 i18n/routing.ts 配置，默认语言且配置了 as-needed 时不加语言前缀
-    if (
-      locale === routing.defaultLocale &&
-      routing.localePrefix === 'as-needed'
-    ) {
-      languages[locale] = cleanPath || '/';
-    } else {
-      languages[locale] = `/${locale}${cleanPath}`;
-    }
+    languages[locale] = getLocalizedPath(cleanPath, locale);
   });
 
   return {
-    canonical: cleanPath || '/',
+    canonical: locale ? getLocalizedPath(cleanPath, locale) : cleanPath || '/',
     languages,
   };
 }

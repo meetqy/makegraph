@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
 
 import { ChartList } from '~/components/chart-list';
 import { HeroBackground } from '~/components/hero-background';
@@ -9,11 +10,15 @@ const heroTitle = 'Blog';
 const heroDescription =
   'Practical guides to help you turn data into clear charts for reports, presentations, and dashboards.';
 
-export const metadata: Metadata = {
-  title: 'Blog | MakeGraph',
-  description: heroDescription,
-  alternates: getMetadataAlternates('/blogs'),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return {
+    title: 'Blog | MakeGraph',
+    description: heroDescription,
+    alternates: getMetadataAlternates('/blogs', locale),
+  };
+}
 
 export default function BlogsPage() {
   return (

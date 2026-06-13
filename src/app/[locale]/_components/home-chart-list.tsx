@@ -8,6 +8,7 @@ type HomeChartListProps = {
 
 export function HomeChartList({ className }: HomeChartListProps) {
   const tLine = useTranslations('LineChart');
+  const tScatter = useTranslations('ScatterChart');
   const tRadar = useTranslations('RadarChart');
   const tTreeMap = useTranslations('TreeMapChart');
   const tBar = useTranslations('BarChart');
@@ -19,6 +20,8 @@ export function HomeChartList({ className }: HomeChartListProps) {
     switch (href) {
       case '/charts/line-chart':
         return tLine;
+      case '/charts/scatter-chart':
+        return tScatter;
       case '/charts/radar-chart':
         return tRadar;
       case '/charts/tree-map-chart':

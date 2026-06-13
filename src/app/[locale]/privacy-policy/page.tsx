@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
 import { Link } from '~/i18n/routing';
 import { getMetadataAlternates } from '~/lib/utils';
 
@@ -8,11 +9,15 @@ const heroTitle = 'Privacy Policy.';
 const heroDescription =
   'How MakeGraph collects, uses, and protects your information when you use our online chart maker.';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy | MakeGraph',
-  description: heroDescription,
-  alternates: getMetadataAlternates('/privacy-policy'),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return {
+    title: 'Privacy Policy | MakeGraph',
+    description: heroDescription,
+    alternates: getMetadataAlternates('/privacy-policy', locale),
+  };
+}
 
 const lastUpdated = 'June 9, 2026';
 

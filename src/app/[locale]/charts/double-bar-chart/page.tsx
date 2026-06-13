@@ -25,7 +25,7 @@ export async function generateMetadata({
   return {
     title: generateChartTitle('Double Bar Chart'),
     description: t('heroDescription'),
-    alternates: getMetadataAlternates('/charts/double-bar-chart'),
+    alternates: getMetadataAlternates('/charts/double-bar-chart', locale),
     openGraph: {
       images: ['/charts/double-bar-chart-og-image.png'],
     },

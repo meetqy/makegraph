@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { generateChartTitle, withChartLinks } from '~/lib/utils';
+import {
+  generateChartTitle,
+  getMetadataAlternates,
+  withChartLinks,
+} from '~/lib/utils';
 import { LineChartMaker } from './_components/line-chart-maker';
 import { ChartRelatedBlogs } from '~/components/chart-related-blogs';
 import { ChartHero } from '~/components/chart-hero';
@@ -21,6 +25,7 @@ export async function generateMetadata({
   return {
     title: generateChartTitle('Line Chart'),
     description: t('heroDescription'),
+    alternates: getMetadataAlternates(currentPath, locale),
     openGraph: {
       images: ['/charts/line-chart-og-image.png'],
     },

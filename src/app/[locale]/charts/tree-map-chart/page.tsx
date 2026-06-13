@@ -24,7 +24,7 @@ export async function generateMetadata({
   return {
     title: generateChartTitle('Tree Map Chart'),
     description: t('heroDescription'),
-    alternates: getMetadataAlternates(currentPath),
+    alternates: getMetadataAlternates(currentPath, locale),
     openGraph: {
       images: ['/charts/tree-map-chart-og-image.png'],
     },

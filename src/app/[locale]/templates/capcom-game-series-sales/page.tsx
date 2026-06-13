@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import {
   BarChartMaker,
@@ -13,18 +14,25 @@ import { getChartItemsByPaths } from '~/config/charts';
 const heroDescription =
   'A ready-to-use bar chart template with fixed Capcom franchises. Fill in the sales units over time to animate the history of Resident Evil, Monster Hunter, Street Fighter, and more.';
 
-export const metadata: Metadata = {
-  title: generateChartTitle('Capcom Game Series Sales'),
-  description: heroDescription,
-  alternates: getMetadataAlternates('/templates/capcom-game-series-sales'),
-  openGraph: {
-    images: ['/templates/capcom-game-series-sales-og-image.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: ['/templates/capcom-game-series-sales-og-image.png'],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return {
+    title: generateChartTitle('Capcom Game Series Sales'),
+    description: heroDescription,
+    alternates: getMetadataAlternates(
+      '/templates/capcom-game-series-sales',
+      locale
+    ),
+    openGraph: {
+      images: ['/templates/capcom-game-series-sales-og-image.png'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: ['/templates/capcom-game-series-sales-og-image.png'],
+    },
+  };
+}
 
 const initialData: ChartDataRow[] = [
   { name: 'Resident Evil', value: 183 },

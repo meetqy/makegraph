@@ -24,12 +24,12 @@ export async function generateMetadata({
   return {
     title: generateChartTitle('Scatter Chart'),
     description: t('heroDescription'),
-    alternates: getMetadataAlternates('/charts/scatter-chart'),
+    alternates: getMetadataAlternates('/charts/scatter-chart', locale),
     openGraph: {
-      images: ['/charts/scatter-chart-og-image.svg'],
+      images: ['/charts/scatter-chart-og-image.png'],
     },
     twitter: {
-      images: ['/charts/scatter-chart-og-image.svg'],
+      images: ['/charts/scatter-chart-og-image.png'],
     },
   };
 }
@@ -165,7 +165,7 @@ export default async function ScatterChartPage({
             <div className="mt-12">
               <div className="flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#ebebeb] bg-[#fafafa]">
                 <Image
-                  src="/charts/scatter-chart-og-image.svg"
+                  src="/charts/scatter-chart-og-image.png"
                   alt="Scatter Chart Example"
                   width={1200}
                   height={630}
