@@ -31,6 +31,7 @@ export const friendLinks: string[] = [
   `<a href="https://fazier.com/launches/makegraph.org" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" width=250 alt="Fazier badge" /></a>`,
   `<a href="https://huzzler.so/products/xh9LqPFi1k/makegraph?utm_source=huzzler_product_website&utm_medium=badge&utm_campaign=free_listing" target="_blank" rel="noopener noreferrer"><img alt="Huzzler Embed Badge" src="https://huzzler.so/assets/images/embeddable-badges/featured.png" width="159" height="55" /></a>`,
   `<a href="https://sellwithboost.com" target="_blank" rel="noopener noreferrer"><img src="https://sellwithboost.com/badge/listing.svg" alt="Listed on Sell With boost" style="height: 40px; width: auto;" /></a>`,
+  `<a href="https://shipstry.com/" target="_blank" rel="noopener noreferrer"><img src="https://shipstry.com/badges/featured.svg" alt="Featured on Shipstry" width="220" height="52"></a>`,
 ];
 
 function FooterChartLink({ item }: { item: ChartTypeItem }) {
