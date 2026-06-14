@@ -13,6 +13,7 @@ MakeGraph is a free online chart maker for Excel and CSV data. Users can upload 
 
 - [Line Chart Maker](${siteUrl}/charts/line-chart): Plot trends over time, customize labels and colors, and preview results instantly for reports and presentations.
 - [Tree Map Chart Maker](${siteUrl}/charts/tree-map-chart): Compare part-to-whole values with nested rectangles, adjust labels and color, and preview the treemap layout instantly.
+- [Sunburst Chart Maker](${siteUrl}/charts/sunburst-chart): Visualize hierarchical part-to-whole data with concentric rings, customize labels and colors, and preview the structure instantly.
 - [Bar Chart Maker](${siteUrl}/charts/bar-chart): Compare values across categories. Edit data in a built-in table, customize labels, colors, legend, and grid, and export as PNG.
 - [Bar Chart Race Maker](${siteUrl}/charts/bar-chart-race): Animate rankings over time, edit time-series data, and preview smooth race playback instantly.
 - [Double Bar Chart Maker](${siteUrl}/charts/double-bar-chart): Place two data series side by side within each category. Useful for year-over-year, plan vs actual, or A/B comparisons.
@@ -25,6 +26,7 @@ MakeGraph is a free online chart maker for Excel and CSV data. Users can upload 
 
 - [折线图制作工具](${siteUrl}/zh/charts/line-chart)
 - [矩形树图生成器](${siteUrl}/zh/charts/tree-map-chart)
+- [旭日图生成器](${siteUrl}/zh/charts/sunburst-chart)
 - [柱状图制作工具](${siteUrl}/zh/charts/bar-chart)
 - [动态排序柱状图制作工具](${siteUrl}/zh/charts/bar-chart-race)
 - [双柱状图制作工具](${siteUrl}/zh/charts/double-bar-chart)

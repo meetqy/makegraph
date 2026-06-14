@@ -11,6 +11,7 @@ export function HomeChartList({ className }: HomeChartListProps) {
   const tScatter = useTranslations('ScatterChart');
   const tRadar = useTranslations('RadarChart');
   const tTreeMap = useTranslations('TreeMapChart');
+  const tSunburst = useTranslations('SunburstChart');
   const tBar = useTranslations('BarChart');
   const tBarRace = useTranslations('BarChartRace');
   const tDoubleBar = useTranslations('DoubleBarChart');
@@ -28,6 +29,8 @@ export function HomeChartList({ className }: HomeChartListProps) {
         return tRadar;
       case '/charts/tree-map-chart':
         return tTreeMap;
+      case '/charts/sunburst-chart':
+        return tSunburst;
       case '/charts/bar-chart':
         return tBar;
       case '/charts/bar-chart-race':

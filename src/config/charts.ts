@@ -42,6 +42,13 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/tree-map-chart-og-image.png',
   },
   {
+    name: 'Sunburst Chart',
+    description:
+      'Free online sunburst chart maker. Visualize hierarchical part-to-whole data with concentric rings, customize labels and colors, and preview the structure instantly.',
+    href: '/charts/sunburst-chart',
+    icon: BarChart3,
+  },
+  {
     name: 'Bar Chart',
     description:
       'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.',

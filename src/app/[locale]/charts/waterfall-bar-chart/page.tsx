@@ -127,8 +127,8 @@ export default async function WaterfallBarChartPage({
         title={t('heroTitle')}
         description={t('heroDescription')}
       />
-      <div className="relative w-full bg-white p-4">
-        <div className="h-[calc(100svh-12rem)] w-full overflow-hidden rounded-md border border-[#ebebeb] bg-white">
+      <div className="chart-editor-shell">
+        <div className="chart-editor-frame">
           <WaterfallBarChartMaker />
         </div>
       </div>

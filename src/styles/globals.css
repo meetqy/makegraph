@@ -228,6 +228,14 @@
   .container-box {
     @apply mx-auto w-full max-w-screen-2xl px-6 lg:px-8;
   }
+
+  .chart-editor-shell {
+    @apply relative w-full bg-white p-4;
+  }
+
+  .chart-editor-frame {
+    @apply h-[calc(100svh-12rem)] w-full overflow-hidden rounded-md border border-[#ebebeb] bg-white;
+  }
 }
 
 /* 覆盖 react-color CompactPicker 的自带外层阴影 */

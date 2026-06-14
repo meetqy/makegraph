@@ -1,53 +1,48 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { withChartLinks, getMetadataAlternates } from '~/lib/utils';
-import { NegativeBarChartMaker } from './_components/negative-bar-chart-maker';
 import { ChartRelatedBlogs } from '~/components/chart-related-blogs';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
+import { getMetadataAlternates, withChartLinks } from '~/lib/utils';
+import { SunburstChartMaker } from './_components/sunburst-chart-maker';
 
-const currentPath = '/charts/negative-bar-chart';
+const currentPath = '/charts/sunburst-chart';
 
-// 服务器端 metadata 生成
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'NegativeBarChart' });
+  const t = await getTranslations({ locale, namespace: 'SunburstChart' });
 
   return {
     title: t('heroTitle').replace(/[.!。]+$/u, ''),
     description: t('heroDescription'),
-    alternates: getMetadataAlternates('/charts/negative-bar-chart', locale),
+    alternates: getMetadataAlternates(currentPath, locale),
     openGraph: {
-      images: ['/charts/negative-bar-chart-og-image.png'],
+      images: ['/charts/sunburst-chart-og-image.png'],
     },
     twitter: {
-      images: ['/charts/negative-bar-chart-og-image.png'],
+      images: ['/charts/sunburst-chart-og-image.png'],
     },
   };
 }
 
-export default async function NegativeBarChartPage({
+export default async function SunburstChartPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'NegativeBarChart' });
-
-  const heroEyebrow = t('heroEyebrow');
-  const heroTitle = t('heroTitle');
-  const heroDescription = t('heroDescription');
+  const t = await getTranslations({ locale, namespace: 'SunburstChart' });
 
   const comparisonPoints = [
     t('comparisonPoint1'),
     t('comparisonPoint2'),
     t('comparisonPoint3'),
-  ];
+  ].filter(Boolean);
 
   const featureHighlights = [
     {
@@ -128,19 +123,17 @@ export default async function NegativeBarChartPage({
   return (
     <div className="flex flex-col bg-transparent">
       <ChartHero
-        eyebrow={heroEyebrow}
-        title={heroTitle}
-        description={heroDescription}
+        eyebrow={t('heroEyebrow')}
+        title={t('heroTitle')}
+        description={t('heroDescription')}
       />
       <div className="chart-editor-shell">
         <div className="chart-editor-frame">
-          <NegativeBarChartMaker />
+          <SunburstChartMaker />
         </div>
       </div>
       <div className="relative border-t border-[#ebebeb] bg-white">
-        <section
-          className={`container-box flex flex-col divide-y divide-[#ebebeb] py-16 sm:py-20`}
-        >
+        <section className="container-box flex flex-col divide-y divide-[#ebebeb] py-16 sm:py-20">
           <section className="py-16 first:pt-0">
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
               <div>
@@ -155,12 +148,16 @@ export default async function NegativeBarChartPage({
                 </p>
               </div>
               <div className="space-y-5 lg:pl-8">
-                {comparisonPoints.map((point) => (
+                {comparisonPoints.map((point, pointIndex) => (
                   <p
                     className="text-sm leading-6 text-[#4d4d4d] sm:text-base"
-                    key={point}
+                    key={`comparison-${pointIndex}`}
                   >
-                    {point}
+                    {withChartLinks(
+                      point,
+                      `comparison-${pointIndex}`,
+                      currentPath
+                    )}
                   </p>
                 ))}
               </div>
@@ -168,8 +165,8 @@ export default async function NegativeBarChartPage({
             <div className="mt-12">
               <div className="flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#ebebeb] bg-[#fafafa]">
                 <Image
-                  src="/charts/negative-bar-chart-og-image.png"
-                  alt="Negative Bar Chart Example"
+                  src="/charts/sunburst-chart-og-image.png"
+                  alt="Sunburst Chart Example"
                   width={1200}
                   height={630}
                   className="h-auto w-full object-cover"
@@ -211,12 +208,16 @@ export default async function NegativeBarChartPage({
                   {t('useCasesTitle')}
                 </h2>
                 <div className="mt-6 space-y-3">
-                  {useCases.map((item) => (
+                  {useCases.map((item, itemIndex) => (
                     <p
                       className="text-sm leading-6 text-[#4d4d4d] sm:text-base"
-                      key={item}
+                      key={`use-case-${itemIndex}`}
                     >
-                      {item}
+                      {withChartLinks(
+                        item,
+                        `use-case-${itemIndex}`,
+                        currentPath
+                      )}
                     </p>
                   ))}
                 </div>

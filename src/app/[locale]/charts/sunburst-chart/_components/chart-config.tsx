@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CompactPicker } from 'react-color';
 import { ChartColorModeToggle } from '~/components/chart-color-mode-toggle';
+import { Checkbox } from '~/components/ui/checkbox';
 import { Input } from '~/components/ui/input';
-import type { ChartSettings } from './tree-map-chart-maker';
+import type { ChartSettings } from './sunburst-chart-maker';
 
 type ChartConfigPanelProps = {
   settings: ChartSettings;
@@ -14,7 +15,7 @@ export function ChartConfigPanel({
   settings,
   onChange,
 }: ChartConfigPanelProps) {
-  const t = useTranslations('TreeMapChart');
+  const t = useTranslations('SunburstChart');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -51,6 +52,20 @@ export function ChartConfigPanel({
           />
         </label>
 
+        <label htmlFor="metric-label" className="flex flex-col gap-2">
+          <span className="font-medium text-[#4d4d4d] text-xs">
+            {t('editorMetricLabelLabel')}
+          </span>
+          <Input
+            id="metric-label"
+            type="text"
+            value={settings.metricLabel}
+            onChange={(e) => updateSetting('metricLabel', e.target.value)}
+            placeholder={t('editorMetricLabelPlaceholder')}
+            className="h-9 w-full rounded-md border-[#ebebeb] bg-[#fafafa] px-3 py-2 text-sm shadow-none transition-colors focus-visible:border-[#171717] focus-visible:bg-white focus-visible:ring-0"
+          />
+        </label>
+
         <ChartColorModeToggle
           label={t('editorColorModeLabel')}
           colorful={settings.colorful}
@@ -66,7 +81,7 @@ export function ChartConfigPanel({
             {t('editorThemeColorLabel')}
           </span>
           {mounted ? (
-            <div className="rounded-md border border-[#ebebeb] bg-white p-2 compact-picker-container">
+            <div className="compact-picker-container rounded-md border border-[#ebebeb] bg-white p-2">
               <CompactPicker
                 color={settings.color}
                 onChange={(color) => updateSetting('color', color.hex)}
@@ -75,6 +90,24 @@ export function ChartConfigPanel({
           ) : (
             <div className="h-[90px]" />
           )}
+        </div>
+
+        <div className="border-t border-[#ebebeb] pt-5">
+          <label
+            htmlFor="show-labels"
+            className="flex cursor-pointer items-center gap-3"
+          >
+            <Checkbox
+              id="show-labels"
+              checked={settings.showLabels}
+              onCheckedChange={(checked) =>
+                updateSetting('showLabels', Boolean(checked))
+              }
+            />
+            <span className="text-[#4d4d4d] text-sm">
+              {t('editorShowLabelsLabel')}
+            </span>
+          </label>
         </div>
       </div>
     </div>
