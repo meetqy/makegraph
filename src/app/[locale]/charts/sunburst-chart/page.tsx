@@ -162,15 +162,33 @@ export default async function SunburstChartPage({
                 ))}
               </div>
             </div>
-            <div className="mt-12">
-              <div className="flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#ebebeb] bg-[#fafafa]">
-                <Image
-                  src="/charts/sunburst-chart-og-image.png"
-                  alt="Sunburst Chart Example"
-                  width={1200}
-                  height={630}
-                  className="h-auto w-full object-cover"
-                />
+            <div className="mt-12 rounded-2xl border border-[#ebebeb] bg-[#fafafa] p-6 sm:p-8">
+              <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+                <div className="flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#ebebeb] bg-white">
+                  <Image
+                    src="/charts/sunburst-chart-og-image.png"
+                    alt="Sunburst Chart Example"
+                    width={1200}
+                    height={630}
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+                <div className="space-y-4">
+                  <p className="text-base leading-7 text-[#4d4d4d] sm:text-[18px]">
+                    {withChartLinks(
+                      t('previewDescription1'),
+                      'preview-copy-1',
+                      currentPath
+                    )}
+                  </p>
+                  <p className="text-base leading-7 text-[#4d4d4d] sm:text-[18px]">
+                    {withChartLinks(
+                      t('previewDescription2'),
+                      'preview-copy-2',
+                      currentPath
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
           </section>

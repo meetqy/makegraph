@@ -47,6 +47,7 @@ export const chartTypeItems: ChartTypeItem[] = [
       'Free online sunburst chart maker. Visualize hierarchical part-to-whole data with concentric rings, customize labels and colors, and preview the structure instantly.',
     href: '/charts/sunburst-chart',
     icon: BarChart3,
+    image: '/charts/sunburst-chart-og-image.png',
   },
   {
     name: 'Bar Chart',
