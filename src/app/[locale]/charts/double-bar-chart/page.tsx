@@ -1,11 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import {
-  generateChartTitle,
-  withChartLinks,
-  getMetadataAlternates,
-} from '~/lib/utils';
+import { withChartLinks, getMetadataAlternates } from '~/lib/utils';
 import { DoubleBarChartMaker } from './_components/double-bar-chart-maker';
 import { ChartRelatedBlogs } from '~/components/chart-related-blogs';
 import { ChartHero } from '~/components/chart-hero';
@@ -23,7 +19,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'DoubleBarChart' });
 
   return {
-    title: generateChartTitle('Double Bar Chart'),
+    title: t('heroTitle').replace(/[.!。]+$/u, ''),
     description: t('heroDescription'),
     alternates: getMetadataAlternates('/charts/double-bar-chart', locale),
     openGraph: {

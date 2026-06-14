@@ -13,7 +13,10 @@ import { TRPCReactProvider } from '~/trpc/react';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl ?? 'http://localhost:3001'),
-  title: 'MakeGraph - Free Online Chart Maker',
+  title: {
+    default: 'MakeGraph - Free Online Chart Maker',
+    template: '%s | MakeGraph',
+  },
   description:
     'Turn your Excel or CSV data into clear charts in 1 minute. Free online chart maker.',
   icons: [{ rel: 'icon', url: '/favicon.ico' }],

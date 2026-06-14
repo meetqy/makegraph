@@ -1,11 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import {
-  generateChartTitle,
-  getMetadataAlternates,
-  withChartLinks,
-} from '~/lib/utils';
+import { getMetadataAlternates, withChartLinks } from '~/lib/utils';
 import { ChartHero } from '~/components/chart-hero';
 import { ChartRelatedBlogs } from '~/components/chart-related-blogs';
 import { Button } from '~/components/ui/button';
@@ -22,7 +18,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'ScatterChart' });
 
   return {
-    title: generateChartTitle('Scatter Chart'),
+    title: t('heroTitle').replace(/[.!。]+$/u, ''),
     description: t('heroDescription'),
     alternates: getMetadataAlternates('/charts/scatter-chart', locale),
     openGraph: {

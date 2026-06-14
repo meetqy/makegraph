@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
 
   return {
-    title: 'Templates | MakeGraph',
+    title: 'Templates',
     description:
       'Explore ready-to-use chart templates with pre-filled data and configurations.',
     alternates: getMetadataAlternates('/templates', locale),

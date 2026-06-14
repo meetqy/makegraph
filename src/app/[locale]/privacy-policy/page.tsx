@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
 
   return {
-    title: 'Privacy Policy | MakeGraph',
+    title: 'Privacy Policy',
     description: heroDescription,
     alternates: getMetadataAlternates('/privacy-policy', locale),
   };

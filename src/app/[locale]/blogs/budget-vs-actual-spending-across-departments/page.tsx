@@ -29,21 +29,21 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
 
   return {
-    title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
+    title: 'Budget vs. Actual Spending Across Departments',
     description: heroDescription,
     alternates: getMetadataAlternates(
       '/blogs/budget-vs-actual-spending-across-departments',
       locale
     ),
     openGraph: {
-      title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
+      title: 'Budget vs. Actual Spending Across Departments',
       description: heroDescription,
       url: '/blogs/budget-vs-actual-spending-across-departments',
       images: [currentBlogImage],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Budget vs. Actual Spending Across Departments | MakeGraph',
+      title: 'Budget vs. Actual Spending Across Departments',
       description: heroDescription,
       images: [currentBlogImage],
     },

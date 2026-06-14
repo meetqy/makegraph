@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
 
   return {
-    title: 'Terms of Service | MakeGraph',
+    title: 'Terms of Service',
     description: heroDescription,
     alternates: getMetadataAlternates('/terms-of-service', locale),
   };

@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
 
   return {
-    title: 'Blog | MakeGraph',
+    title: 'Blog',
     description: heroDescription,
     alternates: getMetadataAlternates('/blogs', locale),
   };

@@ -1,11 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import {
-  generateChartTitle,
-  getMetadataAlternates,
-  withChartLinks,
-} from '~/lib/utils';
+import { getMetadataAlternates, withChartLinks } from '~/lib/utils';
 import { ChartRelatedBlogs } from '~/components/chart-related-blogs';
 import { ChartHero } from '~/components/chart-hero';
 import { Button } from '~/components/ui/button';
@@ -22,7 +18,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'TreeMapChart' });
 
   return {
-    title: generateChartTitle('Tree Map Chart'),
+    title: t('heroTitle').replace(/[.!。]+$/u, ''),
     description: t('heroDescription'),
     alternates: getMetadataAlternates(currentPath, locale),
     openGraph: {

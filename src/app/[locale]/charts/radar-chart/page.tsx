@@ -1,11 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import {
-  generateChartTitle,
-  withChartLinks,
-  getMetadataAlternates,
-} from '~/lib/utils';
+import { withChartLinks, getMetadataAlternates } from '~/lib/utils';
 import { RadarChartMaker } from './_components/radar-chart-maker';
 import { ChartRelatedBlogs } from '~/components/chart-related-blogs';
 import { ChartHero } from '~/components/chart-hero';
@@ -23,7 +19,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'RadarChart' });
 
   return {
-    title: generateChartTitle('Radar Chart'),
+    title: t('heroTitle').replace(/[.!。]+$/u, ''),
     description: t('heroDescription'),
     alternates: getMetadataAlternates('/charts/radar-chart', locale),
     openGraph: {

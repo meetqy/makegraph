@@ -40,7 +40,7 @@ export function getMetadataAlternates(path: string, locale?: string) {
 }
 
 export function generateChartTitle(chartName: string) {
-  return `Free Online ${chartName} Maker | MakeGraph`;
+  return `Free Online ${chartName} Maker`;
 }
 
 // 已支持的统计图名称到对应页面的映射。
