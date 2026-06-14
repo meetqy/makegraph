@@ -15,7 +15,7 @@
 - landing page 或说明内容区默认优先使用 section / band / 分栏排版，不要默认堆大量 cards。
 - 如需使用 cards，只能少量用于承载局部重点信息，并且尽量减少厚重阴影。
 - landing page 中避免出现分割线紧挨分割线、重复叠线的情况；section 分隔与模块内部的分隔要错开处理。
-- landing page 及其说明内容区的最大宽度必须使用 `src/lib/layout.ts` 中的 `boxContainerClassName`，保持全站宽度一致，不要硬编码如 `max-w-[1200px]` 这样的类。
+- landing page 及其说明内容区的最大宽度统一使用项目封装的 `box-container` 通用类名，保持全站宽度一致，禁止硬编码如 `max-w-screen` 这类自定义宽度类。
 
 ## 3. 内容与资料规范
 
@@ -28,7 +28,8 @@
 - 注释默认使用中文。
 - 统计图目录下的说明性 markdown 文案默认使用中文。
 - 统计图相关的 markdown 文件放在对应的 chart 目录下（例如 src/app/charts/bar-chart/），不放在 docs 目录中。
-- 当前仓库中已存在的统计图包括：`bar-chart`、`bar-chart-race`、`double-bar-chart`、`line-chart`、`radar-chart`、`scatter-chart`、`stacked-bar-chart`、`tree-map-chart`。
+- 如果新增 chart 是基于已有 chart 复制而来，禁止只改路由、文件名或组件名；必须逐项检查并完整重写与新 chart 语义相关的文案，包括 `chartName`、`heroEyebrow`、`heroTitle`、`heroDescription`、SEO 文案、FAQ、CTA、图表列表描述以及对应 markdown 的标题和正文，确保标题格式、语气风格与现有 chart 保持一致，且内容准确反映当前 chart，而不是残留模板 chart 的表述。
+- 当前仓库中已存在的统计图包括：`bar-chart`、`bar-chart-race`、`double-bar-chart`、`line-chart`、`radar-chart`、`scatter-chart`、`stacked-bar-chart`、`tree-map-chart`、`waterfall-bar-chart`、`negative-bar-chart`。
 - 后续新增统计图时，必须先对照上述清单判断是否为新增 chart；如为新增，除页面、配置、翻译、OG 路径外，还必须检查并按需同步更新相关 markdown 文档，包括该 chart 目录下的说明性 `.md` 文件、根目录 `README.md`、根目录 `README_ZH.md`，以及任何明确列举统计图清单或预览图的 markdown 文档，禁止只改页面和配置而遗漏文档更新。
 - 非统计图页面的文案、需求、SEO 相关参考资料统一放在 docs 目录下。
 - blog 与对应 chart 必须建立双向关联：blog 底部展示对应 chart，chart 底部也展示对应 blog，并支持相互跳转。

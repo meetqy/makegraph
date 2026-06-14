@@ -107,6 +107,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${siteUrl}/charts/negative-bar-chart`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: getI18nAlternates('/charts/negative-bar-chart'),
+      },
+    },
+    {
       url: `${siteUrl}/templates`,
       lastModified: now,
       changeFrequency: 'weekly',

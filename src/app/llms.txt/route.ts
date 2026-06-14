@@ -19,6 +19,7 @@ MakeGraph is a free online chart maker for Excel and CSV data. Users can upload 
 - [Stacked Bar Chart Maker](${siteUrl}/charts/stacked-bar-chart): Show both the total and the parts of that total in a single view. Supports 100% stacked mode to focus on share instead of absolute values.
 - [Radar Chart Maker](${siteUrl}/charts/radar-chart): Compare strengths across multiple dimensions, customize labels and colors, and preview the radar shape instantly.
 - [Waterfall Bar Chart Maker](${siteUrl}/charts/waterfall-bar-chart): Explain how positive and negative changes accumulate into a final total. Useful for budget bridges, variance analysis, and KPI walk charts.
+- [Negative Bar Chart Maker](${siteUrl}/charts/negative-bar-chart): Display positive and negative values across categories. Useful for profit/loss, surplus/deficit, or sentiment analysis.
 
 ## Charts (中文)
 
@@ -30,6 +31,7 @@ MakeGraph is a free online chart maker for Excel and CSV data. Users can upload 
 - [堆叠柱状图制作工具](${siteUrl}/zh/charts/stacked-bar-chart)
 - [雷达图制作工具](${siteUrl}/zh/charts/radar-chart)
 - [瀑布柱状图制作工具](${siteUrl}/zh/charts/waterfall-bar-chart)
+- [交错正负轴标签柱状图制作工具](${siteUrl}/zh/charts/negative-bar-chart)
 
 ## Pages
 

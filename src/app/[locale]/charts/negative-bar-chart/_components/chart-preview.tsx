@@ -1,0 +1,126 @@
+import { useRef } from 'react';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+  LabelList,
+  ReferenceLine,
+} from 'recharts';
+import { ChartExporter } from '~/components/chart-exporter';
+import type { ChartDataRow, ChartSettings } from './negative-bar-chart-maker';
+
+type ChartPreviewProps = {
+  data: ChartDataRow[];
+  settings: ChartSettings;
+};
+
+export function ChartPreview({ data, settings }: ChartPreviewProps) {
+  // 导出目标容器：包含标题和图表本体，PNG 导出会基于这个容器渲染
+  const exportTargetRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div className="flex flex-1 flex-col bg-white overflow-hidden">
+      <div className="flex items-center justify-between border-[#ebebeb] border-b px-6 h-14 shrink-0">
+        <h2 className="font-medium text-[#171717] text-sm uppercase tracking-wide">
+          Graph
+        </h2>
+        <ChartExporter
+          targetRef={exportTargetRef}
+          filename="negative-bar-chart"
+        />
+      </div>
+
+      <div className="flex w-full flex-1 overflow-x-auto">
+        <div
+          ref={exportTargetRef}
+          className="flex flex-col items-center justify-center min-w-[700px] w-full h-full p-4 sm:p-6 mx-auto"
+        >
+          {settings.title && (
+            <h3 className="mb-6 font-medium text-[#171717] text-xl shrink-0">
+              {settings.title}
+            </h3>
+          )}
+
+          <div className="flex-1 w-full min-h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={data}
+                margin={{ top: 20, right: 0, left: 0, bottom: 82 }}
+              >
+                {settings.showGrid && (
+                  <CartesianGrid
+                    strokeDasharray="4 4"
+                    vertical={false}
+                    stroke="#ebebeb"
+                  />
+                )}
+                <XAxis
+                  dataKey="name"
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{
+                    fill: '#888888',
+                    fontSize: 12,
+                    angle: -45,
+                    textAnchor: 'end',
+                  }}
+                  interval={0}
+                  dy={10}
+                  height={80}
+                />
+                <YAxis
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fill: '#888888', fontSize: 13 }}
+                  dx={-10}
+                />
+                <Tooltip
+                  cursor={{ fill: '#fafafa' }}
+                  contentStyle={{
+                    borderRadius: '8px',
+                    border: '1px solid #ebebeb',
+                    boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+                    fontSize: '13px',
+                  }}
+                  itemStyle={{ color: '#171717', fontWeight: 500 }}
+                />
+                {settings.showLegend && (
+                  <Legend
+                    iconType="circle"
+                    wrapperStyle={{
+                      fontSize: '13px',
+                      color: '#4d4d4d',
+                      paddingTop: '20px',
+                    }}
+                  />
+                )}
+                <ReferenceLine y={0} stroke="#000" />
+                <Bar
+                  isAnimationActive={false}
+                  dataKey="value"
+                  name={settings.yAxisLabel || 'Value'}
+                  fill={settings.color}
+                  radius={[4, 4, 0, 0]}
+                >
+                  {settings.showValues && (
+                    <LabelList
+                      dataKey="value"
+                      position="top"
+                      fill="#4d4d4d"
+                      fontSize={12}
+                    />
+                  )}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

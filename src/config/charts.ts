@@ -81,6 +81,14 @@ export const chartTypeItems: ChartTypeItem[] = [
     icon: BarChart3,
     image: '/charts/waterfall-bar-chart-og-image.png',
   },
+  {
+    name: 'Negative Bar Chart',
+    description:
+      'Free online negative bar chart maker. Display positive and negative values across categories, customize labels and colors, and preview results instantly for reports and presentations.',
+    href: '/charts/negative-bar-chart',
+    icon: BarChart3,
+    image: '/charts/negative-bar-chart-og-image.png',
+  },
 ];
 
 export function getChartItemsByPaths(paths: string[]) {

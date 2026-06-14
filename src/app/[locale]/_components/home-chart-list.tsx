@@ -16,6 +16,7 @@ export function HomeChartList({ className }: HomeChartListProps) {
   const tDoubleBar = useTranslations('DoubleBarChart');
   const tStackedBar = useTranslations('StackedBarChart');
   const tWaterfallBar = useTranslations('WaterfallBarChart');
+  const tNegativeBar = useTranslations('NegativeBarChart');
 
   const getTranslation = (href: string) => {
     switch (href) {
@@ -37,6 +38,8 @@ export function HomeChartList({ className }: HomeChartListProps) {
         return tStackedBar;
       case '/charts/waterfall-bar-chart':
         return tWaterfallBar;
+      case '/charts/negative-bar-chart':
+        return tNegativeBar;
       default:
         return null;
     }

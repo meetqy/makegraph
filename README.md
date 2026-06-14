@@ -62,6 +62,7 @@ The current app includes editors and landing pages for:
 - Bar Chart Race
 - Double Bar Chart
 - Line Chart
+- Negative Bar Chart
 - Radar Chart
 - Scatter Chart
 - Stacked Bar Chart
