@@ -6,6 +6,7 @@ export type ChartTypeItem = {
   href: string;
   icon: LucideIcon;
   image?: string;
+  tags?: string[];
 };
 
 export const chartTypeItems: ChartTypeItem[] = [
@@ -16,6 +17,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/line-chart',
     icon: BarChart3,
     image: '/charts/line-chart-og-image.png',
+    tags: ['line-chart'],
   },
   {
     name: 'Scatter Chart',
@@ -24,6 +26,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/scatter-chart',
     icon: BarChart3,
     image: '/charts/scatter-chart-og-image.png',
+    tags: ['scatter-chart'],
   },
   {
     name: 'Radar Chart',
@@ -32,6 +35,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/radar-chart',
     icon: BarChart3,
     image: '/charts/radar-chart-og-image.png',
+    tags: ['radar-chart'],
   },
   {
     name: 'Tree Map Chart',
@@ -40,6 +44,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/tree-map-chart',
     icon: BarChart3,
     image: '/charts/tree-map-chart-og-image.png',
+    tags: ['tree-map-chart'],
   },
   {
     name: 'Sunburst Chart',
@@ -48,6 +53,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/sunburst-chart',
     icon: BarChart3,
     image: '/charts/sunburst-chart-og-image.png',
+    tags: ['sunburst-chart'],
   },
   {
     name: 'Bar Chart',
@@ -56,6 +62,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/bar-chart',
     icon: BarChart3,
     image: '/charts/bar-graph-og-image.png',
+    tags: ['bar-chart'],
   },
   {
     name: 'Bar Chart Race',
@@ -64,6 +71,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/bar-chart-race',
     icon: BarChart3,
     image: '/charts/bar-chart-race-og-image.png',
+    tags: ['bar-chart'],
   },
   {
     name: 'Double Bar Chart',
@@ -72,6 +80,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/double-bar-chart',
     icon: BarChart3,
     image: '/charts/double-bar-chart-og-image.png',
+    tags: ['bar-chart'],
   },
   {
     name: 'Stacked Bar Chart',
@@ -80,6 +89,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/stacked-bar-chart',
     icon: BarChart3,
     image: '/charts/stacked-bar-chart-og-image.png',
+    tags: ['bar-chart'],
   },
   {
     name: 'Waterfall Bar Chart',
@@ -88,6 +98,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/waterfall-bar-chart',
     icon: BarChart3,
     image: '/charts/waterfall-bar-chart-og-image.png',
+    tags: ['bar-chart'],
   },
   {
     name: 'Negative Bar Chart',
@@ -96,6 +107,7 @@ export const chartTypeItems: ChartTypeItem[] = [
     href: '/charts/negative-bar-chart',
     icon: BarChart3,
     image: '/charts/negative-bar-chart-og-image.png',
+    tags: ['bar-chart'],
   },
 ];
 

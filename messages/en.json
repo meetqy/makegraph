@@ -18,7 +18,14 @@
     "heroDescription": "Upload or paste your spreadsheet, generate bar charts, line charts, and pie charts in 1 minute, then export PNG or SVG instantly. No signup, no registration, completely free.",
     "createChartBtn": "Create Chart Online",
     "viewExamplesBtn": "View Bar, Line, Pie Examples",
-    "heroFooter": "Free chart maker · No signup · PNG/SVG export"
+    "heroFooter": "Free chart maker · No signup · PNG/SVG export",
+    "chartFilterAll": "All",
+    "chartFilterBar": "Bar Chart",
+    "chartFilterLine": "Line Chart",
+    "chartFilterScatter": "Scatter Chart",
+    "chartFilterRadar": "Radar Chart",
+    "chartFilterTreeMap": "Tree Map",
+    "chartFilterSunburst": "Sunburst"
   },
   "Templates": {
     "heroEyebrow": "MakeGraph • Chart Templates",

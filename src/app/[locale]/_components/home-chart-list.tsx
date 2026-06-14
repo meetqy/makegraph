@@ -1,12 +1,37 @@
+'use client';
+
+import { useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { ChartList } from '~/components/chart-list';
+import { Button } from '~/components/ui/button';
 import { chartTypeItems } from '~/config/charts';
+import { usePathname, useRouter } from '~/i18n/routing';
+
+const FILTER_QUERY_PARAM = 'tag';
+const FILTER_OPTIONS: Array<{ tag: string; labelKey: string }> = [
+  { tag: 'bar-chart', labelKey: 'chartFilterBar' },
+  { tag: 'line-chart', labelKey: 'chartFilterLine' },
+  { tag: 'scatter-chart', labelKey: 'chartFilterScatter' },
+  { tag: 'radar-chart', labelKey: 'chartFilterRadar' },
+  { tag: 'tree-map-chart', labelKey: 'chartFilterTreeMap' },
+  { tag: 'sunburst-chart', labelKey: 'chartFilterSunburst' },
+] as const;
+const FILTER_TAGS = new Set(FILTER_OPTIONS.map((option) => option.tag));
 
 type HomeChartListProps = {
   className: string;
+  showFilter?: boolean;
 };
 
-export function HomeChartList({ className }: HomeChartListProps) {
+export function HomeChartList({
+  className,
+  showFilter = false,
+}: HomeChartListProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tHome = useTranslations('Home');
   const tLine = useTranslations('LineChart');
   const tScatter = useTranslations('ScatterChart');
   const tRadar = useTranslations('RadarChart');
@@ -48,11 +73,20 @@ export function HomeChartList({ className }: HomeChartListProps) {
     }
   };
 
-  return (
-    <ChartList
-      id="charts"
-      className={`${className} pb-24 lg:pb-28`}
-      items={chartTypeItems.map((item) => {
+  const currentTag = searchParams.get(FILTER_QUERY_PARAM);
+  const activeTag =
+    currentTag && FILTER_TAGS.has(currentTag) ? currentTag : null;
+
+  const items = useMemo(() => {
+    return chartTypeItems
+      .filter((item) => {
+        if (!activeTag) {
+          return true;
+        }
+
+        return item.tags?.includes(activeTag) ?? false;
+      })
+      .map((item) => {
         const t = getTranslation(item.href);
         return {
           title: t ? t('chartName') : item.name,
@@ -61,7 +95,68 @@ export function HomeChartList({ className }: HomeChartListProps) {
           image: item.image,
           icon: item.icon,
         };
-      })}
-    />
+      });
+  }, [
+    activeTag,
+    tBar,
+    tBarRace,
+    tDoubleBar,
+    tLine,
+    tNegativeBar,
+    tRadar,
+    tScatter,
+    tStackedBar,
+    tSunburst,
+    tTreeMap,
+    tWaterfallBar,
+  ]);
+
+  const updateFilter = (nextTag: string | null) => {
+    const nextSearchParams = new URLSearchParams(searchParams.toString());
+
+    if (nextTag) {
+      nextSearchParams.set(FILTER_QUERY_PARAM, nextTag);
+    } else {
+      nextSearchParams.delete(FILTER_QUERY_PARAM);
+    }
+
+    const queryString = nextSearchParams.toString();
+    router.replace(queryString ? `${pathname}?${queryString}` : pathname, {
+      scroll: false,
+    });
+  };
+
+  return (
+    <section id="charts" className={`${className} pb-24 lg:pb-28`}>
+      {showFilter && (
+        <div className="flex flex-wrap items-center gap-2">
+          <Button
+            type="button"
+            size="sm"
+            variant={activeTag === null ? 'default' : 'outline'}
+            aria-pressed={activeTag === null}
+            onClick={() => updateFilter(null)}
+          >
+            {tHome('chartFilterAll')}
+          </Button>
+          {FILTER_OPTIONS.map((option) => (
+            <Button
+              key={option.tag}
+              type="button"
+              size="sm"
+              variant={activeTag === option.tag ? 'default' : 'outline'}
+              aria-pressed={activeTag === option.tag}
+              onClick={() =>
+                updateFilter(activeTag === option.tag ? null : option.tag)
+              }
+            >
+              {tHome(option.labelKey)}
+            </Button>
+          ))}
+        </div>
+      )}
+
+      <ChartList items={items} />
+    </section>
   );
 }

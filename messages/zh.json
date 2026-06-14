@@ -18,7 +18,14 @@
     "heroDescription": "上传或粘贴你的电子表格，1 分钟内生成柱状图、折线图和饼图，然后立即导出为 PNG 或 SVG。免登录、免注册，完全免费。",
     "createChartBtn": "在线创建图表",
     "viewExamplesBtn": "查看柱状图、折线图、饼图示例",
-    "heroFooter": "免费图表制作 · 无需注册 · 支持 PNG/SVG 导出"
+    "heroFooter": "免费图表制作 · 无需注册 · 支持 PNG/SVG 导出",
+    "chartFilterAll": "全部",
+    "chartFilterBar": "柱状图",
+    "chartFilterLine": "折线图",
+    "chartFilterScatter": "散点图",
+    "chartFilterRadar": "雷达图",
+    "chartFilterTreeMap": "矩形树图",
+    "chartFilterSunburst": "旭日图"
   },
   "Templates": {
     "heroEyebrow": "MakeGraph • 图表模板",

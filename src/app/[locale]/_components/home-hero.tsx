@@ -43,7 +43,7 @@ export function HomeHero() {
         </p>
       </section>
 
-      <HomeChartList className="relative container-box" />
+      <HomeChartList className="relative container-box" showFilter />
     </main>
   );
 }
