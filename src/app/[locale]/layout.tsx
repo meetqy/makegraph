@@ -10,6 +10,7 @@ import { GlobalHeader } from '~/components/global-header';
 import { googleAnalyticsId, siteUrl } from '~/lib/site';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { TRPCReactProvider } from '~/trpc/react';
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl ?? 'http://localhost:3001'),
@@ -72,6 +73,7 @@ export default async function RootLayout({
             <div className="flex-1">{children}</div>
             <GlobalFooter />
             <GoogleAnalytics gaId={googleAnalyticsId} />
+            <NextTopLoader />
           </body>
         </NextIntlClientProvider>
       </TRPCReactProvider>
