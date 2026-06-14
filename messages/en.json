@@ -25,7 +25,8 @@
     "chartFilterScatter": "Scatter Chart",
     "chartFilterRadar": "Radar Chart",
     "chartFilterTreeMap": "Tree Map",
-    "chartFilterSunburst": "Sunburst"
+    "chartFilterSunburst": "Sunburst",
+    "chartFilterBandSeating": "Seating Chart"
   },
   "Templates": {
     "heroEyebrow": "MakeGraph • Chart Templates",

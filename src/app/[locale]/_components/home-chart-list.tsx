@@ -16,6 +16,7 @@ const FILTER_OPTIONS: Array<{ tag: string; labelKey: string }> = [
   { tag: 'radar-chart', labelKey: 'chartFilterRadar' },
   { tag: 'tree-map-chart', labelKey: 'chartFilterTreeMap' },
   { tag: 'sunburst-chart', labelKey: 'chartFilterSunburst' },
+  { tag: 'band-seating-chart', labelKey: 'chartFilterBandSeating' },
 ] as const;
 const FILTER_TAGS = new Set(FILTER_OPTIONS.map((option) => option.tag));
 
@@ -38,6 +39,7 @@ export function HomeChartList({
   const tTreeMap = useTranslations('TreeMapChart');
   const tSunburst = useTranslations('SunburstChart');
   const tBar = useTranslations('BarChart');
+  const tBandSeating = useTranslations('BandSeatingChart');
   const tBarRace = useTranslations('BarChartRace');
   const tDoubleBar = useTranslations('DoubleBarChart');
   const tStackedBar = useTranslations('StackedBarChart');
@@ -56,6 +58,8 @@ export function HomeChartList({
         return tTreeMap;
       case '/charts/sunburst-chart':
         return tSunburst;
+      case '/charts/band-seating-chart':
+        return tBandSeating;
       case '/charts/bar-chart':
         return tBar;
       case '/charts/bar-chart-race':
@@ -99,6 +103,7 @@ export function HomeChartList({
   }, [
     activeTag,
     tBar,
+    tBandSeating,
     tBarRace,
     tDoubleBar,
     tLine,

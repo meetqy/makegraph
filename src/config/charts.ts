@@ -56,6 +56,15 @@ export const chartTypeItems: ChartTypeItem[] = [
     tags: ['sunburst-chart'],
   },
   {
+    name: 'Band Seating Chart',
+    description:
+      'Free online band seating chart maker. Set rows, seat counts, and stage direction to generate a semicircle seating layout instantly.',
+    href: '/charts/band-seating-chart',
+    icon: BarChart3,
+    image: '/charts/band-seating-chart-og-image.png',
+    tags: ['band-seating-chart'],
+  },
+  {
     name: 'Bar Chart',
     description:
       'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.',

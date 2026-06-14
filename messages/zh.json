@@ -25,7 +25,8 @@
     "chartFilterScatter": "散点图",
     "chartFilterRadar": "雷达图",
     "chartFilterTreeMap": "矩形树图",
-    "chartFilterSunburst": "旭日图"
+    "chartFilterSunburst": "旭日图",
+    "chartFilterBandSeating": "座位图"
   },
   "Templates": {
     "heroEyebrow": "MakeGraph • 图表模板",
