@@ -7,7 +7,7 @@ const llmsBody = `# ${siteName}
 
 > ${siteDescription}
 
-MakeGraph is a free online chart maker that turns spreadsheet data into clear, presentation-ready charts in about a minute. No signup is required for the core experience.
+MakeGraph is a free online chart maker for Excel and CSV data. Users can upload or paste a spreadsheet, generate bar charts, line charts, and pie charts in about a minute, then export PNG or SVG instantly. No signup or registration is required.
 
 ## Charts (English)
 
@@ -33,8 +33,8 @@ MakeGraph is a free online chart maker that turns spreadsheet data into clear, p
 
 ## Pages
 
-- [Home (English)](${siteUrl}/): Landing page that lists every available chart maker.
-- [首页 (中文)](${siteUrl}/zh/): 首页。
+- [Home (English)](${siteUrl}/): Free online chart maker for Excel and CSV data. Upload or paste a spreadsheet, generate charts in about a minute, and export PNG or SVG.
+- [首页 (中文)](${siteUrl}/zh/): 适用于 Excel 和 CSV 数据的免费在线图表制作工具，支持上传或粘贴电子表格并导出 PNG 或 SVG。
 - [Privacy Policy](${siteUrl}/privacy-policy)
 - [隐私政策](${siteUrl}/zh/privacy-policy)
 - [Terms of Service](${siteUrl}/terms-of-service)

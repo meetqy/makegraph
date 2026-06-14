@@ -2,26 +2,29 @@
 
 [English](README.md) | [中文](README_ZH.md)
 
-MakeGraph is the codebase for [makegraph.org](https://makegraph.org), a chart-focused web app built with Next.js, TypeScript, and React.
+MakeGraph is the codebase for [makegraph.org](https://makegraph.org), a free online chart maker for Excel and CSV data built with Next.js, TypeScript, and React.
 
 ![MakeGraph preview](public/og.png)
 
 ## Overview
 
-MakeGraph focuses on a narrow workflow: turn structured data into chart pages and editable chart experiences with as little setup friction as possible.
+MakeGraph focuses on a narrow workflow: upload or paste spreadsheet data, generate clear charts in about 1 minute, and export them with as little setup friction as possible.
 
 The repository includes:
 
-- Interactive chart editors with live preview and PNG export
-- Localized chart landing pages and chart-specific copy
-- Blog and template pages connected to chart pages
+- Interactive chart editors for spreadsheet-style data input and live preview
+- Chart experiences built around common spreadsheet chart tasks and the currently supported chart types
+- PNG and SVG-oriented chart output flows
+- Localized chart landing pages, blog posts, and templates
 - Shared UI components, chart utilities, and data table editing
 - Database and auth scaffolding for future product features
 
 ## Features
 
+- Upload or paste spreadsheet data from Excel and CSV workflows
 - Full-screen chart editors with live preview
-- PNG export for chart output
+- Fast chart creation flow built for common spreadsheet chart needs
+- PNG export for chart output, with SVG reflected in product positioning copy
 - Localized chart pages powered by `next-intl`
 - Reusable data table editing for chart inputs
 - Chart-related blog and template linking

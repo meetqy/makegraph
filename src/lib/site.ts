@@ -4,5 +4,5 @@ import { env } from '~/env';
 export const siteUrl = env.NEXT_PUBLIC_SITE_URL;
 export const siteName = 'MakeGraph';
 export const siteDescription =
-  'Turn your Excel or CSV data into clear charts in 1 minute. Free online chart maker.';
+  'Upload or paste your spreadsheet, generate bar charts, line charts, and pie charts in 1 minute, then export PNG or SVG instantly. No signup, no registration, completely free.';
 export const googleAnalyticsId = env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? '';
