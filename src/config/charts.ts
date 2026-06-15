@@ -118,6 +118,15 @@ export const chartTypeItems: ChartTypeItem[] = [
     image: '/charts/negative-bar-chart-og-image.png',
     tags: ['bar-chart'],
   },
+  {
+    name: 'Population Pyramid',
+    description:
+      'Free online population pyramid maker. Compare age and sex distribution with mirrored horizontal bars, customize labels and colors, and preview the structure instantly.',
+    href: '/charts/population-pyramid',
+    icon: BarChart3,
+    image: '/charts/population-pyramid-og-image.png',
+    tags: ['bar-chart'],
+  },
 ];
 
 export function getChartItemsByPaths(paths: string[]) {

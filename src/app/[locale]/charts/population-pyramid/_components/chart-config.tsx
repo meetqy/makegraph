@@ -1,0 +1,146 @@
+import { useEffect, useState } from 'react';
+import { CompactPicker } from 'react-color';
+import { Checkbox } from '~/components/ui/checkbox';
+import { Input } from '~/components/ui/input';
+import type { ChartSettings } from './population-pyramid-maker';
+
+type ChartConfigPanelProps = {
+  settings: ChartSettings;
+  onChange: (settings: ChartSettings) => void;
+};
+
+export function ChartConfigPanel({
+  settings,
+  onChange,
+}: ChartConfigPanelProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const updateSetting = <K extends keyof ChartSettings>(
+    key: K,
+    value: ChartSettings[K]
+  ) => {
+    onChange({ ...settings, [key]: value });
+  };
+
+  return (
+    <div className="flex flex-col overflow-hidden bg-white pb-8">
+      <div className="flex h-14 shrink-0 items-center border-[#ebebeb] border-b px-5">
+        <h2 className="font-medium text-[#171717] text-sm uppercase tracking-wide">
+          Customize
+        </h2>
+      </div>
+
+      <div className="flex flex-col gap-6 p-5 overflow-y-auto">
+        <label htmlFor="chart-title" className="flex flex-col gap-2">
+          <span className="font-medium text-[#4d4d4d] text-xs">
+            Chart Title
+          </span>
+          <Input
+            id="chart-title"
+            type="text"
+            value={settings.title}
+            onChange={(e) => updateSetting('title', e.target.value)}
+            placeholder="e.g., Population Pyramid by Age Group"
+            className="h-9 w-full rounded-md border-[#ebebeb] bg-[#fafafa] px-3 py-2 text-sm transition-colors focus-visible:border-[#171717] focus-visible:bg-white focus-visible:ring-0 shadow-none"
+          />
+        </label>
+
+        <label htmlFor="left-series-label" className="flex flex-col gap-2">
+          <span className="font-medium text-[#4d4d4d] text-xs">
+            Left Series Label
+          </span>
+          <Input
+            id="left-series-label"
+            type="text"
+            value={settings.leftSeriesLabel}
+            onChange={(e) => updateSetting('leftSeriesLabel', e.target.value)}
+            placeholder="e.g., Male"
+            className="h-9 w-full rounded-md border-[#ebebeb] bg-[#fafafa] px-3 py-2 text-sm transition-colors focus-visible:border-[#171717] focus-visible:bg-white focus-visible:ring-0 shadow-none"
+          />
+        </label>
+
+        <label htmlFor="right-series-label" className="flex flex-col gap-2">
+          <span className="font-medium text-[#4d4d4d] text-xs">
+            Right Series Label
+          </span>
+          <Input
+            id="right-series-label"
+            type="text"
+            value={settings.rightSeriesLabel}
+            onChange={(e) => updateSetting('rightSeriesLabel', e.target.value)}
+            placeholder="e.g., Female"
+            className="h-9 w-full rounded-md border-[#ebebeb] bg-[#fafafa] px-3 py-2 text-sm transition-colors focus-visible:border-[#171717] focus-visible:bg-white focus-visible:ring-0 shadow-none"
+          />
+        </label>
+
+        <div className="flex flex-col gap-3">
+          <span className="font-medium text-[#4d4d4d] text-xs">
+            Left Series Color
+          </span>
+          {mounted ? (
+            <div className="rounded-md border border-[#ebebeb] bg-white p-2 compact-picker-container">
+              <CompactPicker
+                color={settings.leftColor}
+                onChange={(color) => updateSetting('leftColor', color.hex)}
+              />
+            </div>
+          ) : (
+            <div className="h-[90px]" />
+          )}
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <span className="font-medium text-[#4d4d4d] text-xs">
+            Right Series Color
+          </span>
+          {mounted ? (
+            <div className="rounded-md border border-[#ebebeb] bg-white p-2 compact-picker-container">
+              <CompactPicker
+                color={settings.rightColor}
+                onChange={(color) => updateSetting('rightColor', color.hex)}
+              />
+            </div>
+          ) : (
+            <div className="h-[90px]" />
+          )}
+        </div>
+
+        <div className="border-[#ebebeb] border-t pt-5">
+          <div className="flex flex-col gap-4">
+            <label
+              htmlFor="show-values"
+              className="flex cursor-pointer items-center gap-3"
+            >
+              <Checkbox
+                id="show-values"
+                checked={settings.showValues}
+                onCheckedChange={(checked) =>
+                  updateSetting('showValues', !!checked)
+                }
+              />
+              <span className="text-[#4d4d4d] text-sm">Show Value Labels</span>
+            </label>
+
+            <label
+              htmlFor="show-legend"
+              className="flex cursor-pointer items-center gap-3"
+            >
+              <Checkbox
+                id="show-legend"
+                checked={settings.showLegend}
+                onCheckedChange={(checked) =>
+                  updateSetting('showLegend', !!checked)
+                }
+              />
+              <span className="text-[#4d4d4d] text-sm">Show Legend</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -40,7 +40,7 @@ The current chart OG images are listed below.
 | [![Line Chart](public/charts/line-chart-og-image.png)](https://makegraph.org/charts/line-chart)<br/>[Line Chart](https://makegraph.org/charts/line-chart)                                    | [![Radar Chart](public/charts/radar-chart-og-image.png)](https://makegraph.org/charts/radar-chart)<br/>[Radar Chart](https://makegraph.org/charts/radar-chart)                | [![Scatter Chart](public/charts/scatter-chart-og-image.png)](https://makegraph.org/charts/scatter-chart)<br/>[Scatter Chart](https://makegraph.org/charts/scatter-chart)                |
 | [![Stacked Bar Chart](public/charts/stacked-bar-chart-og-image.png)](https://makegraph.org/charts/stacked-bar-chart)<br/>[Stacked Bar Chart](https://makegraph.org/charts/stacked-bar-chart) | [![Tree Map Chart](public/charts/tree-map-chart-og-image.png)](https://makegraph.org/charts/tree-map-chart)<br/>[Tree Map Chart](https://makegraph.org/charts/tree-map-chart) | [![Waterfall Bar Chart](public/charts/waterfall-bar-chart-og-image.png)](https://makegraph.org/charts/waterfall-bar-chart)<br/>[Waterfall Bar Chart](https://makegraph.org/charts/waterfall-bar-chart) |
 
-`Sunburst Chart` and `Band Seating Chart` are also available at `https://makegraph.org/charts/sunburst-chart` and `https://makegraph.org/charts/band-seating-chart`. Their OG preview image paths are reserved in code and can be added later under `public/charts/`.
+`Sunburst Chart`, `Band Seating Chart`, and `Population Pyramid` are also available at `https://makegraph.org/charts/sunburst-chart`, `https://makegraph.org/charts/band-seating-chart`, and `https://makegraph.org/charts/population-pyramid`. Their OG preview image paths are reserved in code and can be added later under `public/charts/`.
 
 ## Tech Stack
 
@@ -66,6 +66,7 @@ The current app includes editors and landing pages for:
 - Double Bar Chart
 - Line Chart
 - Negative Bar Chart
+- Population Pyramid
 - Radar Chart
 - Scatter Chart
 - Stacked Bar Chart

@@ -45,6 +45,7 @@ export function HomeChartList({
   const tStackedBar = useTranslations('StackedBarChart');
   const tWaterfallBar = useTranslations('WaterfallBarChart');
   const tNegativeBar = useTranslations('NegativeBarChart');
+  const tPopulationPyramid = useTranslations('PopulationPyramid');
 
   const getTranslation = (href: string) => {
     switch (href) {
@@ -72,6 +73,8 @@ export function HomeChartList({
         return tWaterfallBar;
       case '/charts/negative-bar-chart':
         return tNegativeBar;
+      case '/charts/population-pyramid':
+        return tPopulationPyramid;
       default:
         return null;
     }
@@ -108,6 +111,7 @@ export function HomeChartList({
     tDoubleBar,
     tLine,
     tNegativeBar,
+    tPopulationPyramid,
     tRadar,
     tScatter,
     tStackedBar,
