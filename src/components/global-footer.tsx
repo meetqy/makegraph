@@ -32,6 +32,11 @@ export const friendLinks: string[] = [
   `<a href="https://huzzler.so/products/xh9LqPFi1k/makegraph?utm_source=huzzler_product_website&utm_medium=badge&utm_campaign=free_listing" target="_blank" rel="noopener noreferrer"><img alt="Huzzler Embed Badge" src="https://huzzler.so/assets/images/embeddable-badges/featured.png" width="159" height="55" /></a>`,
   `<a href="https://sellwithboost.com" target="_blank" rel="noopener noreferrer"><img src="https://sellwithboost.com/badge/listing.svg" alt="Listed on Sell With boost" style="height: 40px; width: auto;" /></a>`,
   `<a href="https://shipstry.com/" target="_blank" rel="noopener noreferrer"><img src="https://shipstry.com/badges/featured.svg" alt="Featured on Shipstry" width="220" height="52"></a>`,
+  `<a href='https://submito.net' target='_blank' title='Listed on Submito'><img src='https://submito.net/badge/listed-light.svg' alt='Listed on Submito' /></a>`,
+  `<a href="https://aijustbetter.com/item/makegraph.org" target="_blank" rel="noopener" title="MakeGraph: Detailed review, analysis and comparison on AI Just Better"><img src="https://cdn.aijustbetter.com/badges/badge-light.svg" alt="Featured on AIJustBetter.com" width="212" height="55" /></a>`,
+  `<a href="https://toolrain.com/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://toolrain.com/badges/badge-listed-light.svg" alt="Listed on ToolRain" style="height: 60px; width: auto;" /></a>`,
+  `<a href="https://mossai.org" title="MossAI Tools">MossAI Tools</a>`,
+  `<a href="https://aidirs.best/item/make-graph" target="_blank" rel="noopener"><img src="https://aidirs.best/light.svg" alt="MakeGraph - AI Data Chart Maker | Aidirs" width="200" height="56" /></a>`,
 ];
 
 function FooterChartLink({ item }: { item: ChartTypeItem }) {
