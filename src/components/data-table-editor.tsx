@@ -17,9 +17,27 @@ export type DataTableColumn<T> = {
   key: Extract<keyof T, string>;
   title: string;
   type: 'text' | 'number';
+  min?: number;
+  max?: number;
   minWidth?: number;
   width?: number;
 };
+
+function clampNumber(value: number, min?: number, max?: number) {
+  if (!Number.isFinite(value)) {
+    return 0;
+  }
+
+  if (typeof min === 'number' && value < min) {
+    return min;
+  }
+
+  if (typeof max === 'number' && value > max) {
+    return max;
+  }
+
+  return value;
+}
 
 type DataTableEditorProps<T extends Record<string, unknown>> = {
   title?: string;
@@ -130,7 +148,11 @@ export function DataTableEditor<T extends Record<string, unknown>>({
               const val = row[matchedKey];
               if (col.type === 'number') {
                 const num = Number(val);
-                mutableRow[col.key as string] = Number.isNaN(num) ? 0 : num;
+                mutableRow[col.key as string] = clampNumber(
+                  Number.isNaN(num) ? 0 : num,
+                  col.min,
+                  col.max
+                );
               } else {
                 mutableRow[col.key as string] = String(val);
               }
@@ -156,7 +178,7 @@ export function DataTableEditor<T extends Record<string, unknown>>({
         if (col.type === 'number') {
           const parsed =
             typeof rawValue === 'number' ? rawValue : Number(rawValue ?? 0);
-          mutableRow[col.key] = Number.isFinite(parsed) ? parsed : 0;
+          mutableRow[col.key] = clampNumber(parsed, col.min, col.max);
         } else {
           mutableRow[col.key] = rawValue == null ? '' : String(rawValue);
         }

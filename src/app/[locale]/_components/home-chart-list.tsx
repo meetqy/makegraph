@@ -35,6 +35,7 @@ export function HomeChartList({
   const tHome = useTranslations('Home');
   const tLine = useTranslations('LineChart');
   const tScatter = useTranslations('ScatterChart');
+  const tCorrelation = useTranslations('CorrelationChart');
   const tRadar = useTranslations('RadarChart');
   const tTreeMap = useTranslations('TreeMapChart');
   const tSunburst = useTranslations('SunburstChart');
@@ -53,6 +54,8 @@ export function HomeChartList({
         return tLine;
       case '/charts/scatter-chart':
         return tScatter;
+      case '/charts/correlation-matrix-chart':
+        return tCorrelation;
       case '/charts/radar-chart':
         return tRadar;
       case '/charts/tree-map-chart':
@@ -107,6 +110,7 @@ export function HomeChartList({
     activeTag,
     tBar,
     tBandSeating,
+    tCorrelation,
     tBarRace,
     tDoubleBar,
     tLine,

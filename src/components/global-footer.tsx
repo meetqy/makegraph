@@ -40,16 +40,57 @@ export const friendLinks: string[] = [
 ];
 
 function FooterChartLink({ item }: { item: ChartTypeItem }) {
-  const nameMatch = item.href.match(/\/charts\/(.+)/);
-  const translationKey = nameMatch?.[1]
-    ? nameMatch[1]
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join('')
-    : 'LineChart';
+  const tLine = useTranslations('LineChart');
+  const tScatter = useTranslations('ScatterChart');
+  const tCorrelation = useTranslations('CorrelationChart');
+  const tRadar = useTranslations('RadarChart');
+  const tTreeMap = useTranslations('TreeMapChart');
+  const tSunburst = useTranslations('SunburstChart');
+  const tBandSeating = useTranslations('BandSeatingChart');
+  const tBar = useTranslations('BarChart');
+  const tBarRace = useTranslations('BarChartRace');
+  const tDoubleBar = useTranslations('DoubleBarChart');
+  const tStackedBar = useTranslations('StackedBarChart');
+  const tWaterfallBar = useTranslations('WaterfallBarChart');
+  const tNegativeBar = useTranslations('NegativeBarChart');
+  const tPopulationPyramid = useTranslations('PopulationPyramid');
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const itemT = useTranslations(translationKey as any);
+  const getTranslation = (href: string) => {
+    switch (href) {
+      case '/charts/line-chart':
+        return tLine;
+      case '/charts/scatter-chart':
+        return tScatter;
+      case '/charts/correlation-matrix-chart':
+        return tCorrelation;
+      case '/charts/radar-chart':
+        return tRadar;
+      case '/charts/tree-map-chart':
+        return tTreeMap;
+      case '/charts/sunburst-chart':
+        return tSunburst;
+      case '/charts/band-seating-chart':
+        return tBandSeating;
+      case '/charts/bar-chart':
+        return tBar;
+      case '/charts/bar-chart-race':
+        return tBarRace;
+      case '/charts/double-bar-chart':
+        return tDoubleBar;
+      case '/charts/stacked-bar-chart':
+        return tStackedBar;
+      case '/charts/waterfall-bar-chart':
+        return tWaterfallBar;
+      case '/charts/negative-bar-chart':
+        return tNegativeBar;
+      case '/charts/population-pyramid':
+        return tPopulationPyramid;
+      default:
+        return null;
+    }
+  };
+
+  const itemT = getTranslation(item.href);
 
   return (
     <li>
@@ -57,7 +98,7 @@ function FooterChartLink({ item }: { item: ChartTypeItem }) {
         href={item.href}
         className="text-sm text-[#888888] hover:text-[#171717] transition-colors"
       >
-        {itemT('heroEyebrow')}
+        {itemT ? itemT('heroEyebrow') : item.name}
       </Link>
     </li>
   );

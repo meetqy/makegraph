@@ -29,6 +29,15 @@ export const chartTypeItems: ChartTypeItem[] = [
     tags: ['scatter-chart'],
   },
   {
+    name: 'Correlation Matrix',
+    description:
+      'Free online correlation matrix maker. Build a matrix heatmap, compare positive and negative relationships, and preview metric pair strength instantly.',
+    href: '/charts/correlation-matrix-chart',
+    icon: BarChart3,
+    image: '/charts/correlation-matrix-chart-og-image.png',
+    tags: ['correlation-matrix-chart'],
+  },
+  {
     name: 'Radar Chart',
     description:
       'Free online radar chart maker. Compare strengths across multiple dimensions, customize labels and colors, and preview results instantly for reports and presentations.',
