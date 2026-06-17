@@ -17,23 +17,11 @@ import {
 import { ChartConfigPanel } from './chart-config';
 import { ChartPreview } from './chart-preview';
 
-export type ChartDataRow = {
-  name: string;
-  value1: number;
-  value2: number;
-  value3: number;
-};
+export type ChartDataRow = Record<string, string | number>;
 
 export type ChartSettings = {
   title: string;
-  seriesLabel1: string;
-  seriesLabel2: string;
-  seriesLabel3: string;
-  color1: string;
-  color2: string;
-  color3: string;
-  showLegend: boolean;
-  showGrid: boolean;
+  colors: string[];
   showValues: boolean;
 };
 
@@ -51,14 +39,7 @@ const DEFAULT_INITIAL_DATA: ChartDataRow[] = [
 
 const DEFAULT_INITIAL_SETTINGS: ChartSettings = {
   title: 'Regional Revenue Mix',
-  seriesLabel1: 'Consumer',
-  seriesLabel2: 'SMB',
-  seriesLabel3: 'Enterprise',
-  color1: '#171717',
-  color2: '#525252',
-  color3: '#a3a3a3',
-  showLegend: true,
-  showGrid: true,
+  colors: ['#171717', '#525252', '#a3a3a3'],
   showValues: true,
 };
 
@@ -136,11 +117,15 @@ export function MarimekkoChartMaker({
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto xl:flex-none">
-          <ChartPreview data={data} settings={settings} />
+          <ChartPreview data={data} settings={settings} columns={columns} />
         </div>
 
         <div className="hidden h-full min-h-0 flex-col overflow-hidden xl:-mr-px xl:flex">
-          <ChartConfigPanel settings={settings} onChange={setSettings} />
+          <ChartConfigPanel
+            settings={settings}
+            onChange={setSettings}
+            columns={columns}
+          />
         </div>
 
         <div className="fixed right-0 bottom-0 left-0 z-50 flex items-center gap-4 border-t border-[#ebebeb] bg-white px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] xl:hidden">
@@ -195,7 +180,11 @@ export function MarimekkoChartMaker({
                 {t('editorCustomizeTitle')}
               </SheetTitle>
               <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
-                <ChartConfigPanel settings={settings} onChange={setSettings} />
+                <ChartConfigPanel
+                  settings={settings}
+                  onChange={setSettings}
+                  columns={columns}
+                />
               </div>
             </SheetContent>
           </Sheet>

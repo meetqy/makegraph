@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useId } from 'react';
 import { CompactPicker } from 'react-color';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Input } from '~/components/ui/input';
@@ -17,6 +17,8 @@ export function ChartConfigPanel({
   categories,
   onCategoryColorChange,
 }: ChartConfigPanelProps) {
+  const chartTitleId = useId();
+  const showValuesId = useId();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -39,12 +41,12 @@ export function ChartConfigPanel({
       </div>
 
       <div className="flex flex-col gap-6 overflow-y-auto p-5">
-        <label htmlFor="chart-title" className="flex flex-col gap-2">
+        <label htmlFor={chartTitleId} className="flex flex-col gap-2">
           <span className="font-medium text-[#4d4d4d] text-xs">
             Chart Title
           </span>
           <Input
-            id="chart-title"
+            id={chartTitleId}
             type="text"
             value={settings.title}
             onChange={(event) => updateSetting('title', event.target.value)}
@@ -151,11 +153,11 @@ export function ChartConfigPanel({
         <div className="border-[#ebebeb] border-t pt-5">
           <div className="flex flex-col gap-4">
             <label
-              htmlFor="show-values"
+              htmlFor={showValuesId}
               className="flex cursor-pointer items-center gap-3"
             >
               <Checkbox
-                id="show-values"
+                id={showValuesId}
                 checked={settings.showValues}
                 onCheckedChange={(checked) =>
                   updateSetting('showValues', !!checked)

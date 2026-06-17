@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useId } from 'react';
 import { useTranslations } from 'next-intl';
 import { CompactPicker } from 'react-color';
 import { ChartColorModeToggle } from '~/components/chart-color-mode-toggle';
@@ -16,6 +16,10 @@ export function ChartConfigPanel({
   onChange,
 }: ChartConfigPanelProps) {
   const t = useTranslations('SunburstChart');
+  const showLegendId = useId();
+  const showLabelsId = useId();
+  const showValuesId = useId();
+  const chartTitleId = useId();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -38,12 +42,12 @@ export function ChartConfigPanel({
       </div>
 
       <div className="flex flex-col gap-6 overflow-y-auto p-5">
-        <label htmlFor="chart-title" className="flex flex-col gap-2">
+        <label htmlFor={chartTitleId} className="flex flex-col gap-2">
           <span className="font-medium text-[#4d4d4d] text-xs">
             {t('editorChartTitleLabel')}
           </span>
           <Input
-            id="chart-title"
+            id={chartTitleId}
             type="text"
             value={settings.title}
             onChange={(e) => updateSetting('title', e.target.value)}
@@ -94,11 +98,11 @@ export function ChartConfigPanel({
 
         <div className="border-t border-[#ebebeb] pt-5">
           <label
-            htmlFor="show-labels"
+            htmlFor={showLabelsId}
             className="flex cursor-pointer items-center gap-3"
           >
             <Checkbox
-              id="show-labels"
+              id={showLabelsId}
               checked={settings.showLabels}
               onCheckedChange={(checked) =>
                 updateSetting('showLabels', Boolean(checked))

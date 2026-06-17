@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 import { Input } from '~/components/ui/input';
 import {
@@ -24,6 +25,9 @@ export function ChartConfigPanel({
   onChange,
 }: ChartConfigPanelProps) {
   const t = useTranslations('BandSeatingChart');
+  const showLegendId = useId();
+  const showValuesId = useId();
+  const chartTitleId = useId();
   const normalizedRotation = normalizeRotation(settings.rotation);
 
   const updateSetting = <K extends keyof ChartSettings>(

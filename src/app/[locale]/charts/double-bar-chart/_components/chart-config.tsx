@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useId } from 'react';
 import { Input } from '~/components/ui/input';
 import type { ChartSettings } from './double-bar-chart-maker';
 import { Checkbox } from '~/components/ui/checkbox';
@@ -13,6 +13,8 @@ export function ChartConfigPanel({
   settings,
   onChange,
 }: ChartConfigPanelProps) {
+  const chartTitleId = useId();
+  const showLegendId = useId();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -36,12 +38,12 @@ export function ChartConfigPanel({
 
       <div className="flex flex-col gap-6 p-5 overflow-y-auto">
         {/* 标题设置 */}
-        <label htmlFor="chart-title" className="flex flex-col gap-2">
+        <label htmlFor={chartTitleId} className="flex flex-col gap-2">
           <span className="font-medium text-[#4d4d4d] text-xs">
             Chart Title
           </span>
           <Input
-            id="chart-title"
+            id={chartTitleId}
             type="text"
             value={settings.title}
             onChange={(e) => updateSetting('title', e.target.value)}
@@ -116,11 +118,11 @@ export function ChartConfigPanel({
         <div className="border-[#ebebeb] border-t pt-5">
           <div className="flex flex-col gap-4">
             <label
-              htmlFor="show-legend"
+              htmlFor={showLegendId}
               className="flex cursor-pointer items-center gap-3"
             >
               <Checkbox
-                id="show-legend"
+                id={showLegendId}
                 checked={settings.showLegend}
                 onCheckedChange={(checked) =>
                   updateSetting('showLegend', !!checked)

@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { CustomSeriesRenderItemParams, EChartsOption } from 'echarts';
 import * as echarts from 'echarts/core';
 import { CustomChart } from 'echarts/charts';
@@ -14,20 +14,38 @@ echarts.use([CustomChart, GridComponent, TooltipComponent, SVGRenderer]);
 type ChartPreviewProps = {
   data: ChartDataRow[];
   settings: ChartSettings;
+  columns?: Array<{
+    key: string;
+    title?: string;
+  }>;
 };
 
-type NormalizedRow = {
+type SeriesDefinition = {
+  key: string;
   name: string;
-  values: number[];
+  color: string;
+};
+
+type RowSegment = {
+  seriesKey: string;
+  seriesName: string;
+  color: string;
+  value: number;
+};
+
+type MarimekkoRow = {
+  name: string;
   total: number;
-  widthPercent: number;
   startPercent: number;
   endPercent: number;
+  widthPercent: number;
   centerPercent: number;
+  segments: RowSegment[];
 };
 
 type RectDatum = {
   rowName: string;
+  seriesKey: string;
   seriesName: string;
   color: string;
   x0: number;
@@ -75,99 +93,168 @@ function formatValue(value: number) {
   }).format(value);
 }
 
-export function ChartPreview({ data, settings }: ChartPreviewProps) {
+export function ChartPreview({ data, settings, columns }: ChartPreviewProps) {
   const t = useTranslations('MarimekkoChart');
   const exportTargetRef = useRef<HTMLDivElement>(null);
+  const [hiddenSeriesKeys, setHiddenSeriesKeys] = useState<string[]>([]);
 
-  const seriesMeta = useMemo(
-    () => [
-      {
-        name: settings.seriesLabel1 || t('editorSeries1Fallback'),
-        color: settings.color1,
-      },
-      {
-        name: settings.seriesLabel2 || t('editorSeries2Fallback'),
-        color: settings.color2,
-      },
-      {
-        name: settings.seriesLabel3 || t('editorSeries3Fallback'),
-        color: settings.color3,
-      },
-    ],
-    [
-      settings.color1,
-      settings.color2,
-      settings.color3,
-      settings.seriesLabel1,
-      settings.seriesLabel2,
-      settings.seriesLabel3,
-      t,
-    ]
+  const dataColumns = useMemo(() => {
+    if (columns && columns.length > 0) {
+      return columns.filter((column) => column.key !== 'name');
+    }
+
+    const firstRow = data[0];
+    if (!firstRow) {
+      return [];
+    }
+
+    return Object.keys(firstRow)
+      .filter((key) => key !== 'name')
+      .map((key) => ({
+        key,
+        title: key,
+      }));
+  }, [columns, data]);
+
+  const seriesDefinitions = useMemo<SeriesDefinition[]>(() => {
+    const defaultColors = [
+      '#171717',
+      '#525252',
+      '#a3a3a3',
+      '#d4d4d4',
+      '#e5e5e5',
+    ];
+
+    return dataColumns.map((column, index) => ({
+      key: column.key,
+      name:
+        column.title ||
+        t(`editorSeries${index + 1}Fallback` as never) ||
+        `Series ${index + 1}`,
+      color:
+        settings.colors?.[index] ??
+        defaultColors[index % defaultColors.length] ??
+        '#171717',
+    }));
+  }, [dataColumns, settings.colors, t]);
+
+  useEffect(() => {
+    const validSeriesKeys = new Set(
+      seriesDefinitions.map((series) => series.key)
+    );
+
+    setHiddenSeriesKeys((prev) =>
+      prev.filter((seriesKey) => validSeriesKeys.has(seriesKey))
+    );
+  }, [seriesDefinitions]);
+
+  const hiddenSeriesKeySet = useMemo(
+    () => new Set(hiddenSeriesKeys),
+    [hiddenSeriesKeys]
   );
 
-  const normalizedRows = useMemo<NormalizedRow[]>(() => {
-    const cleaned = data
+  const visibleSeriesDefinitions = useMemo(
+    () =>
+      seriesDefinitions.filter((series) => !hiddenSeriesKeySet.has(series.key)),
+    [hiddenSeriesKeySet, seriesDefinitions]
+  );
+
+  const marimekkoRows = useMemo<MarimekkoRow[]>(() => {
+    const baseRows = data
       .map((row) => {
-        const name = row.name.trim();
-        const values = [row.value1, row.value2, row.value3].map((value) =>
-          Number.isFinite(value) && value > 0 ? value : 0
-        );
-        const total = values.reduce((sum, value) => sum + value, 0);
+        const name = String(row.name ?? '').trim();
+        if (!name) {
+          return null;
+        }
+
+        const segments = visibleSeriesDefinitions
+          .map<RowSegment | null>((series) => {
+            const rawValue = Number(row[series.key]);
+            if (!Number.isFinite(rawValue) || rawValue <= 0) {
+              return null;
+            }
+
+            return {
+              seriesKey: series.key,
+              seriesName: series.name,
+              color: series.color,
+              value: rawValue,
+            };
+          })
+          .filter((segment): segment is RowSegment => segment !== null);
+
+        const total = segments.reduce((sum, segment) => sum + segment.value, 0);
+        if (total <= 0) {
+          return null;
+        }
 
         return {
           name,
-          values,
           total,
+          segments,
         };
       })
-      .filter((row) => row.name && row.total > 0);
+      .filter(
+        (
+          row
+        ): row is {
+          name: string;
+          total: number;
+          segments: RowSegment[];
+        } => row !== null
+      );
 
-    const grandTotal = cleaned.reduce((sum, row) => sum + row.total, 0);
-    let cumulative = 0;
+    const grandTotal = baseRows.reduce((sum, row) => sum + row.total, 0);
+    let currentStart = 0;
 
-    return cleaned.map((row) => {
+    return baseRows.map((row) => {
       const widthPercent = grandTotal > 0 ? (row.total / grandTotal) * 100 : 0;
-      const startPercent = cumulative;
-      const endPercent = cumulative + widthPercent;
-      cumulative = endPercent;
+      const startPercent = currentStart;
+      const endPercent = startPercent + widthPercent;
+      currentStart = endPercent;
 
       return {
-        ...row,
-        widthPercent,
+        name: row.name,
+        total: row.total,
         startPercent,
         endPercent,
+        widthPercent,
         centerPercent: startPercent + widthPercent / 2,
+        segments: row.segments,
       };
     });
-  }, [data]);
+  }, [data, visibleSeriesDefinitions]);
 
   const rectData = useMemo<RectDatum[]>(() => {
-    return normalizedRows.flatMap((row) => {
-      let cumulativeHeight = 0;
+    return marimekkoRows.flatMap((row) => {
+      let currentHeight = 0;
 
-      return row.values.map((value, index) => {
-        const heightPercent = row.total > 0 ? (value / row.total) * 100 : 0;
-        const datum: RectDatum = {
+      return row.segments.map((segment) => {
+        const heightPercent =
+          row.total > 0 ? (segment.value / row.total) * 100 : 0;
+        const y0 = currentHeight;
+        const y1 = y0 + heightPercent;
+        currentHeight = y1;
+
+        return {
           rowName: row.name,
-          seriesName: seriesMeta[index]?.name ?? `Series ${index + 1}`,
-          color: seriesMeta[index]?.color ?? '#171717',
+          seriesKey: segment.seriesKey,
+          seriesName: segment.seriesName,
+          color: segment.color,
           x0: row.startPercent,
           x1: row.endPercent,
-          y0: cumulativeHeight,
-          y1: cumulativeHeight + heightPercent,
-          rawValue: value,
+          y0,
+          y1,
+          rawValue: segment.value,
           rowTotal: row.total,
           widthPercent: row.widthPercent,
           heightPercent,
         };
-
-        cumulativeHeight += heightPercent;
-        return datum;
       });
     });
-  }, [normalizedRows, seriesMeta]);
+  }, [marimekkoRows]);
 
-  const option = useMemo<EChartsOption>(() => {
+  const option = useMemo(() => {
     return {
       animation: false,
       grid: {
@@ -188,7 +275,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
           show: false,
         },
         splitLine: {
-          show: settings.showGrid,
+          show: false,
           lineStyle: {
             color: '#ebebeb',
           },
@@ -209,7 +296,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
           show: false,
         },
         splitLine: {
-          show: settings.showGrid,
+          show: false,
           lineStyle: {
             color: '#ebebeb',
           },
@@ -228,8 +315,13 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
           color: '#171717',
           fontSize: 13,
         },
-        formatter: (params: any) => {
-          const datum = rectData[params.dataIndex];
+        formatter: (params) => {
+          const raw = params as { dataIndex?: number };
+          const datum =
+            typeof raw.dataIndex === 'number'
+              ? rectData[raw.dataIndex]
+              : undefined;
+
           if (!datum) {
             return '';
           }
@@ -247,7 +339,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
         {
           type: 'custom' as const,
           data: rectData.map((_, index) => index),
-          renderItem: (params: CustomSeriesRenderItemParams, api: any): any => {
+          renderItem: (params: CustomSeriesRenderItemParams, api: any) => {
             const datum = rectData[params.dataIndex];
             if (!datum) {
               return null;
@@ -259,9 +351,8 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
             const y = topLeft[1];
             const width = bottomRight[0] - topLeft[0];
             const height = bottomRight[1] - topLeft[1];
-            const labelFits =
+            const showInnerLabel =
               settings.showValues && width >= 42 && height >= 28;
-            const textColor = getTextColor(datum.color);
 
             const rectShape = echarts.graphic.clipRectByRect(
               {
@@ -294,7 +385,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
                     lineWidth: 2,
                   },
                 },
-                ...(labelFits
+                ...(showInnerLabel
                   ? [
                       {
                         type: 'text',
@@ -302,7 +393,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
                           x: x + width / 2,
                           y: y + height / 2,
                           text: formatPercent(datum.heightPercent),
-                          fill: textColor,
+                          fill: getTextColor(datum.color),
                           fontSize: 12,
                           fontWeight: 600,
                           align: 'center',
@@ -317,13 +408,21 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
           },
         },
       ],
-    };
-  }, [rectData, settings.showGrid, settings.showValues, t]);
+    } as EChartsOption;
+  }, [rectData, settings.showValues, t]);
 
-  const hasData = normalizedRows.length > 0;
+  const hasData = marimekkoRows.length > 0 && rectData.length > 0;
+
+  const toggleSeries = (seriesKey: string) => {
+    setHiddenSeriesKeys((prev) =>
+      prev.includes(seriesKey)
+        ? prev.filter((key) => key !== seriesKey)
+        : [...prev, seriesKey]
+    );
+  };
 
   return (
-    <div className="flex flex-1 flex-col overflow-hidden bg-white">
+    <div className="flex flex-1 flex-col overflow-hidden">
       <div className="flex h-14 shrink-0 items-center justify-between border-b border-[#ebebeb] px-6">
         <h2 className="font-medium text-[#171717] text-sm uppercase tracking-wide">
           {t('editorGraphTitle')}
@@ -342,7 +441,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
       <div className="flex w-full flex-1 overflow-x-auto">
         <div
           ref={exportTargetRef}
-          className="mx-auto flex h-full min-h-[520px] w-full min-w-[860px] flex-col bg-white p-4 sm:p-6"
+          className="mx-auto flex h-full min-h-[520px] w-full min-w-[860px] flex-col p-4 sm:p-6"
         >
           {settings.title ? (
             <h3 className="mb-6 shrink-0 text-center font-medium text-[#171717] text-xl">
@@ -356,7 +455,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
             </div>
           ) : (
             <>
-              <div className="relative flex-1 rounded-2xl border border-[#ebebeb] bg-[#fafafa] p-3 sm:p-4">
+              <div className="relative flex-1 p-3 sm:p-4">
                 <div className="relative h-full w-full">
                   <ReactEChartsCore
                     echarts={echarts}
@@ -366,11 +465,12 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
                     opts={{ renderer: 'svg' }}
                     style={{ width: '100%', height: '100%' }}
                   />
+
                   <div
                     className="pointer-events-none absolute bottom-4 h-14"
                     style={{ left: 20, right: 20 }}
                   >
-                    {normalizedRows.map((row) => (
+                    {marimekkoRows.map((row) => (
                       <div
                         key={row.name}
                         className="absolute text-[#4d4d4d] text-xs"
@@ -388,20 +488,40 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
                 </div>
               </div>
 
-              {settings.showLegend ? (
+              {seriesDefinitions.length > 0 ? (
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
-                  {seriesMeta.map((series) => (
-                    <div
-                      key={series.name}
-                      className="flex items-center gap-2 text-sm text-[#4d4d4d]"
-                    >
-                      <span
-                        className="h-2.5 w-2.5 rounded-full"
-                        style={{ backgroundColor: series.color }}
-                      />
-                      <span>{series.name}</span>
-                    </div>
-                  ))}
+                  {seriesDefinitions.map((series) => {
+                    const isHidden = hiddenSeriesKeySet.has(series.key);
+
+                    return (
+                      <button
+                        type="button"
+                        key={series.key}
+                        onClick={() => toggleSeries(series.key)}
+                        className={`flex cursor-pointer items-center gap-2 text-sm transition-opacity ${
+                          isHidden ? 'opacity-40' : 'opacity-100'
+                        }`}
+                      >
+                        <span
+                          className="h-2.5 w-2.5 rounded-full"
+                          style={{
+                            backgroundColor: isHidden
+                              ? '#d4d4d4'
+                              : series.color,
+                          }}
+                        />
+                        <span
+                          className={
+                            isHidden
+                              ? 'text-[#a3a3a3] line-through'
+                              : 'text-[#4d4d4d]'
+                          }
+                        >
+                          {series.name}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               ) : null}
             </>
