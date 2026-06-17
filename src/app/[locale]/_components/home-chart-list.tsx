@@ -36,6 +36,7 @@ export function HomeChartList({
   const tLine = useTranslations('LineChart');
   const tScatter = useTranslations('ScatterChart');
   const tCorrelation = useTranslations('CorrelationChart');
+  const tMarimekko = useTranslations('MarimekkoChart');
   const tRadar = useTranslations('RadarChart');
   const tTreeMap = useTranslations('TreeMapChart');
   const tSunburst = useTranslations('SunburstChart');
@@ -56,6 +57,8 @@ export function HomeChartList({
         return tScatter;
       case '/charts/correlation-matrix-chart':
         return tCorrelation;
+      case '/charts/marimekko-chart':
+        return tMarimekko;
       case '/charts/radar-chart':
         return tRadar;
       case '/charts/tree-map-chart':
@@ -114,6 +117,7 @@ export function HomeChartList({
     tBarRace,
     tDoubleBar,
     tLine,
+    tMarimekko,
     tNegativeBar,
     tPopulationPyramid,
     tRadar,

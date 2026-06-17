@@ -13,6 +13,7 @@ MakeGraph is a free online chart maker for Excel and CSV data. Users can upload 
 
 - [Line Chart Maker](${siteUrl}/charts/line-chart): Plot trends over time, customize labels and colors, and preview results instantly for reports and presentations.
 - [Correlation Matrix Maker](${siteUrl}/charts/correlation-matrix-chart): Build a correlation matrix heatmap, compare positive and negative relationships across metrics, and preview the strength of each pair instantly.
+- [Marimekko Chart Maker](${siteUrl}/charts/marimekko-chart): Show category share and subcategory composition with variable-width stacked columns, customize labels and colors, and preview the layout instantly.
 - [Tree Map Chart Maker](${siteUrl}/charts/tree-map-chart): Compare part-to-whole values with nested rectangles, adjust labels and color, and preview the treemap layout instantly.
 - [Sunburst Chart Maker](${siteUrl}/charts/sunburst-chart): Visualize hierarchical part-to-whole data with concentric rings, customize labels and colors, and preview the structure instantly.
 - [Bar Chart Maker](${siteUrl}/charts/bar-chart): Compare values across categories. Edit data in a built-in table, customize labels, colors, legend, and grid, and export as PNG.
@@ -27,6 +28,7 @@ MakeGraph is a free online chart maker for Excel and CSV data. Users can upload 
 
 - [折线图制作工具](${siteUrl}/zh/charts/line-chart)
 - [相关矩阵制作工具](${siteUrl}/zh/charts/correlation-matrix-chart)
+- [马里梅科图制作工具](${siteUrl}/zh/charts/marimekko-chart)
 - [矩形树图生成器](${siteUrl}/zh/charts/tree-map-chart)
 - [旭日图生成器](${siteUrl}/zh/charts/sunburst-chart)
 - [柱状图制作工具](${siteUrl}/zh/charts/bar-chart)

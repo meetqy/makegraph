@@ -37,12 +37,16 @@ export const friendLinks: string[] = [
   `<a href="https://toolrain.com/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://toolrain.com/badges/badge-listed-light.svg" alt="Listed on ToolRain" style="height: 60px; width: auto;" /></a>`,
   `<a href="https://mossai.org" title="MossAI Tools">MossAI Tools</a>`,
   `<a href="https://aidirs.best/item/make-graph" target="_blank" rel="noopener"><img src="https://aidirs.best/light.svg" alt="MakeGraph - AI Data Chart Maker | Aidirs" width="200" height="56" /></a>`,
+  `<a href="https://aidirs.org/item/makegraph" target="_blank" rel="noopener noreferrer"><img src="https://aidirs.org/badges/badge-listed-light.svg" alt="Listed on AIDirs" /></a>`,
+  `<a href="https://www.justsimple.tools" target="_blank" rel="noopener noreferrer"><img src="https://www.justsimple.tools/badge.svg" width="150"  alt="Listed on JustSimple Tools" /></a>`,
+  `<a href="https://bestsky.tools?utm_source=badge" target="_blank"><img src="https://assets.bestsky.tools/badges/featured-light.svg" alt="Featured on BestskyTools" width="150" /></a>`,
 ];
 
 function FooterChartLink({ item }: { item: ChartTypeItem }) {
   const tLine = useTranslations('LineChart');
   const tScatter = useTranslations('ScatterChart');
   const tCorrelation = useTranslations('CorrelationChart');
+  const tMarimekko = useTranslations('MarimekkoChart');
   const tRadar = useTranslations('RadarChart');
   const tTreeMap = useTranslations('TreeMapChart');
   const tSunburst = useTranslations('SunburstChart');
@@ -63,6 +67,8 @@ function FooterChartLink({ item }: { item: ChartTypeItem }) {
         return tScatter;
       case '/charts/correlation-matrix-chart':
         return tCorrelation;
+      case '/charts/marimekko-chart':
+        return tMarimekko;
       case '/charts/radar-chart':
         return tRadar;
       case '/charts/tree-map-chart':

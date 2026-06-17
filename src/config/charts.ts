@@ -38,6 +38,15 @@ export const chartTypeItems: ChartTypeItem[] = [
     tags: ['correlation-matrix-chart'],
   },
   {
+    name: 'Marimekko Chart',
+    description:
+      'Free online Marimekko chart maker. Compare category share and subcategory mix with variable-width stacked columns, customize labels and colors, and preview instantly.',
+    href: '/charts/marimekko-chart',
+    icon: BarChart3,
+    image: '/charts/marimekko-chart-og-image.png',
+    tags: ['bar-chart'],
+  },
+  {
     name: 'Radar Chart',
     description:
       'Free online radar chart maker. Compare strengths across multiple dimensions, customize labels and colors, and preview results instantly for reports and presentations.',

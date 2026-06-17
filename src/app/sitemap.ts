@@ -53,6 +53,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${siteUrl}/charts/marimekko-chart`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: getI18nAlternates('/charts/marimekko-chart'),
+      },
+    },
+    {
       url: `${siteUrl}/charts/tree-map-chart`,
       lastModified: now,
       changeFrequency: 'monthly',
