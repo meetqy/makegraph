@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { ChartHero } from '~/components/chart-hero';
-import { ChartRelatedBlogs } from '~/components/chart-related-blogs';
-import { Button } from '~/components/ui/button';
+import { ChartLandingPage } from '~/components/chart-landing-page';
 import { getMetadataAlternates, withChartLinks } from '~/lib/utils';
 import { ConfidenceIntervalAreaChartMaker } from './_components/confidence-interval-area-chart-maker';
 
@@ -45,263 +42,345 @@ export default async function ConfidenceIntervalAreaChartPage({
   });
 
   const comparisonPoints = [
-    t('comparisonPoint1'),
-    t('comparisonPoint2'),
-    t('comparisonPoint3'),
+    {
+      key: 'comparison-1',
+      content: withChartLinks(
+        t('comparisonPoint1'),
+        'comparison-1',
+        currentPath
+      ),
+    },
+    {
+      key: 'comparison-2',
+      content: withChartLinks(
+        t('comparisonPoint2'),
+        'comparison-2',
+        currentPath
+      ),
+    },
+    {
+      key: 'comparison-3',
+      content: withChartLinks(
+        t('comparisonPoint3'),
+        'comparison-3',
+        currentPath
+      ),
+    },
   ];
 
   const featureHighlights = [
     {
+      key: 'feature-1',
       title: t('feature1Title'),
       description: t('feature1Description'),
     },
     {
+      key: 'feature-2',
       title: t('feature2Title'),
       description: t('feature2Description'),
     },
     {
+      key: 'feature-3',
       title: t('feature3Title'),
       description: t('feature3Description'),
     },
     {
+      key: 'feature-4',
       title: t('feature4Title'),
       description: t('feature4Description'),
     },
   ];
 
   const useCases = [
-    t('useCase1'),
-    t('useCase2'),
-    t('useCase3'),
-    t('useCase4'),
-    t('useCase5'),
-    t('useCase6'),
+    {
+      key: 'use-case-1',
+      content: withChartLinks(t('useCase1'), 'use-case-1', currentPath),
+    },
+    {
+      key: 'use-case-2',
+      content: withChartLinks(t('useCase2'), 'use-case-2', currentPath),
+    },
+    {
+      key: 'use-case-3',
+      content: withChartLinks(t('useCase3'), 'use-case-3', currentPath),
+    },
+    {
+      key: 'use-case-4',
+      content: withChartLinks(t('useCase4'), 'use-case-4', currentPath),
+    },
+    {
+      key: 'use-case-5',
+      content: withChartLinks(t('useCase5'), 'use-case-5', currentPath),
+    },
+    {
+      key: 'use-case-6',
+      content: withChartLinks(t('useCase6'), 'use-case-6', currentPath),
+    },
   ];
 
   const decisionGuide = [
     {
+      key: 'decision-guide-1',
       title: t('decisionGuide1Title'),
       items: [
-        t('decisionGuide1Point1'),
-        t('decisionGuide1Point2'),
-        t('decisionGuide1Point3'),
-        t('decisionGuide1Point4'),
+        {
+          key: 'decision-guide-1-1',
+          content: withChartLinks(
+            t('decisionGuide1Point1'),
+            'decision-guide-1-1',
+            currentPath
+          ),
+        },
+        {
+          key: 'decision-guide-1-2',
+          content: withChartLinks(
+            t('decisionGuide1Point2'),
+            'decision-guide-1-2',
+            currentPath
+          ),
+        },
+        {
+          key: 'decision-guide-1-3',
+          content: withChartLinks(
+            t('decisionGuide1Point3'),
+            'decision-guide-1-3',
+            currentPath
+          ),
+        },
+        {
+          key: 'decision-guide-1-4',
+          content: withChartLinks(
+            t('decisionGuide1Point4'),
+            'decision-guide-1-4',
+            currentPath
+          ),
+        },
       ],
     },
     {
+      key: 'decision-guide-2',
       title: t('decisionGuide2Title'),
       items: [
-        t('decisionGuide2Point1'),
-        t('decisionGuide2Point2'),
-        t('decisionGuide2Point3'),
-        t('decisionGuide2Point4'),
+        {
+          key: 'decision-guide-2-1',
+          content: withChartLinks(
+            t('decisionGuide2Point1'),
+            'decision-guide-2-1',
+            currentPath
+          ),
+        },
+        {
+          key: 'decision-guide-2-2',
+          content: withChartLinks(
+            t('decisionGuide2Point2'),
+            'decision-guide-2-2',
+            currentPath
+          ),
+        },
+        {
+          key: 'decision-guide-2-3',
+          content: withChartLinks(
+            t('decisionGuide2Point3'),
+            'decision-guide-2-3',
+            currentPath
+          ),
+        },
+        {
+          key: 'decision-guide-2-4',
+          content: withChartLinks(
+            t('decisionGuide2Point4'),
+            'decision-guide-2-4',
+            currentPath
+          ),
+        },
       ],
     },
   ];
 
   const faqs = [
     {
+      key: 'faq-1',
       question: t('faq1Question'),
       answer: t('faq1Answer'),
     },
     {
+      key: 'faq-2',
       question: t('faq2Question'),
       answer: t('faq2Answer'),
     },
     {
+      key: 'faq-3',
       question: t('faq3Question'),
       answer: t('faq3Answer'),
     },
     {
+      key: 'faq-4',
       question: t('faq4Question'),
       answer: t('faq4Answer'),
     },
     {
+      key: 'faq-5',
       question: t('faq5Question'),
       answer: t('faq5Answer'),
     },
     {
+      key: 'faq-6',
       question: t('faq6Question'),
       answer: t('faq6Answer'),
     },
   ];
 
   return (
-    <div className="flex flex-col bg-transparent">
-      <ChartHero
-        eyebrow={t('heroEyebrow')}
-        title={t('heroTitle')}
-        description={t('heroDescription')}
-      />
-      <div className="chart-editor-shell">
-        <div className="chart-editor-frame">
-          <ConfidenceIntervalAreaChartMaker />
+    <ChartLandingPage
+      hero={{
+        eyebrow: t('heroEyebrow'),
+        title: t('heroTitle'),
+        description: t('heroDescription'),
+      }}
+      editor={<ConfidenceIntervalAreaChartMaker />}
+      whyItWorks={{
+        eyebrow: t('whyItWorksEyebrow'),
+        title: t('whyItWorksTitle'),
+        description: withChartLinks(
+          t('whyItWorksDescription'),
+          'why-it-works-description',
+          currentPath
+        ),
+        points: comparisonPoints,
+      }}
+      previewImage={{
+        src: '/charts/confidence-interval-area-chart-og-image.png',
+        alt: 'Confidence Interval Area Chart Example',
+      }}
+      productHighlights={{
+        eyebrow: t('productHighlightsEyebrow'),
+        title: t('productHighlightsTitle'),
+        features: featureHighlights,
+      }}
+      useCases={{
+        eyebrow: t('useCasesEyebrow'),
+        title: t('useCasesTitle'),
+        items: useCases,
+      }}
+      decisionGuide={decisionGuide}
+      faq={{
+        eyebrow: t('faqEyebrow'),
+        title: t('faqTitle'),
+        items: faqs.map((item) => ({
+          key: item.key,
+          question: withChartLinks(
+            item.question,
+            `${item.key}-question`,
+            currentPath
+          ),
+          answer: withChartLinks(
+            item.answer,
+            `${item.key}-answer`,
+            currentPath
+          ),
+        })),
+      }}
+      cta={{
+        eyebrow: t('ctaEyebrow'),
+        title: t('ctaTitle'),
+        description: withChartLinks(
+          t('ctaDescription'),
+          'cta-description',
+          currentPath
+        ),
+        buttonLabel: t('ctaButton'),
+        buttonHref: '#',
+      }}
+      chartPath={currentPath}
+      locale={locale}
+    >
+      <section className="py-16">
+        <div className="max-w-3xl">
+          <p className="font-mono text-[#888888] text-xs uppercase tracking-[0.12em]">
+            {t('quickDecisionEyebrow')}
+          </p>
+          <h2 className="mt-4 text-balance font-semibold text-[#171717] text-3xl tracking-[-0.96px] sm:text-4xl sm:tracking-[-1.28px]">
+            {t('quickDecisionTitle')}
+          </h2>
+          <p className="mt-6 text-base leading-7 text-[#4d4d4d] sm:text-[18px]">
+            {withChartLinks(
+              t('quickDecisionDescription'),
+              'quick-decision-description',
+              currentPath
+            )}
+          </p>
         </div>
-      </div>
-      <div className="relative border-t border-[#ebebeb] bg-white">
-        <section className="container-box flex flex-col divide-y divide-[#ebebeb] py-16 sm:py-20">
-          <section className="py-16 first:pt-0">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                  {t('whyItWorksEyebrow')}
-                </p>
-                <h2 className="mt-4 max-w-3xl text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                  {t('whyItWorksTitle')}
-                </h2>
-                <p className="mt-6 max-w-2xl text-base leading-7 text-[#4d4d4d] sm:text-[18px]">
-                  {t('whyItWorksDescription')}
-                </p>
-              </div>
-              <div className="space-y-5 lg:pl-8">
-                {comparisonPoints.map((point) => (
-                  <p
-                    className="text-sm leading-6 text-[#4d4d4d] sm:text-base"
-                    key={point}
-                  >
-                    {point}
-                  </p>
-                ))}
-              </div>
-            </div>
-            <div className="mt-12">
-              <div className="flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#ebebeb] bg-[#fafafa]">
-                <Image
-                  src="/charts/confidence-interval-area-chart-og-image.png"
-                  alt="Confidence Interval Area Chart Example"
-                  width={1200}
-                  height={630}
-                  className="h-auto w-full object-cover"
-                />
-              </div>
-            </div>
-          </section>
 
-          <section className="py-16">
-            <div className="max-w-3xl">
-              <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                {t('productHighlightsEyebrow')}
-              </p>
-              <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                {t('productHighlightsTitle')}
-              </h2>
-            </div>
-            <div className="mt-10 grid gap-x-8 gap-y-8 md:grid-cols-2">
-              {featureHighlights.map((feature) => (
-                <div key={feature.title}>
-                  <h3 className="text-xl font-semibold tracking-[-0.6px] text-[#171717]">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-[#4d4d4d] sm:text-base">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
+        <div className="mt-10 grid gap-10 border-[#ebebeb] border-y py-8 lg:grid-cols-2">
+          <div className="lg:pr-8">
+            <p className="font-mono text-[#888888] text-xs uppercase tracking-[0.12em]">
+              {t('quickDecisionLineChartQuestion')}
+            </p>
+            <p className="mt-3 max-w-lg font-semibold text-[#171717] text-2xl tracking-[-0.72px] sm:text-[28px]">
+              {withChartLinks(
+                t('quickDecisionLineChartAnswer'),
+                'quick-decision-line-answer',
+                currentPath
+              )}
+            </p>
+          </div>
 
-          <section className="py-16">
-            <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                  {t('useCasesEyebrow')}
-                </p>
-                <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                  {t('useCasesTitle')}
-                </h2>
-                <div className="mt-6 space-y-3">
-                  {useCases.map((item) => (
-                    <p
-                      className="text-sm leading-6 text-[#4d4d4d] sm:text-base"
-                      key={item}
-                    >
-                      {item}
-                    </p>
-                  ))}
-                </div>
-              </div>
+          <div className="lg:border-[#ebebeb] lg:border-l lg:pl-8">
+            <p className="font-mono text-[#888888] text-xs uppercase tracking-[0.12em]">
+              {t('quickDecisionConfidenceQuestion')}
+            </p>
+            <p className="mt-3 max-w-lg font-semibold text-[#171717] text-2xl tracking-[-0.72px] sm:text-[28px]">
+              {withChartLinks(
+                t('quickDecisionConfidenceAnswer'),
+                'quick-decision-confidence-answer',
+                currentPath
+              )}
+            </p>
+          </div>
+        </div>
 
-              <div className="grid gap-10 md:grid-cols-2">
-                {decisionGuide.map((group) => (
-                  <div key={group.title}>
-                    <h3 className="text-xl font-semibold tracking-[-0.6px] text-[#171717]">
-                      {group.title}
-                    </h3>
-                    <div className="mt-4 space-y-3">
-                      {group.items.map((item, itemIndex) => (
-                        <p
-                          className="text-sm leading-6 text-[#4d4d4d] sm:text-base"
-                          key={`${group.title}-${itemIndex}`}
-                        >
-                          {withChartLinks(item, `dg-${itemIndex}`, currentPath)}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className="py-16">
-            <div className="max-w-3xl">
-              <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#888888]">
-                {t('faqEyebrow')}
-              </p>
-              <h2 className="mt-4 text-balance font-semibold text-3xl tracking-[-0.96px] text-[#171717] sm:text-4xl sm:tracking-[-1.28px]">
-                {t('faqTitle')}
-              </h2>
-            </div>
-            <div className="mt-10 grid gap-10 md:grid-cols-2">
-              {faqs.map((item, faqIndex) => (
-                <div key={item.question}>
-                  <h3 className="text-xl font-semibold tracking-[-0.6px] text-[#171717]">
-                    {withChartLinks(
-                      item.question,
-                      `faq-q-${faqIndex}`,
-                      currentPath
-                    )}
-                  </h3>
-                  <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4d4d4d] sm:text-base">
-                    {withChartLinks(
-                      item.answer,
-                      `faq-a-${faqIndex}`,
-                      currentPath
-                    )}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="py-16">
-            <div className="rounded-2xl bg-[#171717] px-6 py-8 text-white sm:px-8 sm:py-10">
-              <p className="font-mono text-xs uppercase tracking-[0.12em] text-white/60">
-                {t('ctaEyebrow')}
-              </p>
-              <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-                <div className="max-w-3xl">
-                  <h2 className="text-balance font-semibold text-3xl tracking-[-0.96px] sm:text-4xl sm:tracking-[-1.28px]">
-                    {t('ctaTitle')}
-                  </h2>
-                  <p className="mt-4 text-base leading-7 text-white/70 sm:text-[18px]">
-                    {t('ctaDescription')}
-                  </p>
-                </div>
-                <Button
-                  asChild
-                  className="h-11 rounded-full bg-white px-5 text-[#171717] hover:bg-white/90"
-                  size="lg"
+        <div className="mt-10 grid gap-10 lg:grid-cols-2">
+          <div className="lg:pr-8">
+            <h3 className="font-semibold text-[#171717] text-xl tracking-[-0.6px]">
+              {t('quickDecisionChecklistLineTitle')}
+            </h3>
+            <div className="mt-4 space-y-3">
+              {[1, 2, 3, 4].map((index) => (
+                <p
+                  className="text-[#4d4d4d] text-sm leading-6 sm:text-base"
+                  key={`quick-line-${index}`}
                 >
-                  <a href="#">{t('ctaButton')}</a>
-                </Button>
-              </div>
+                  {withChartLinks(
+                    t(`quickDecisionChecklistLineItem${index}`),
+                    `quick-line-${index}`,
+                    currentPath
+                  )}
+                </p>
+              ))}
             </div>
-          </section>
+          </div>
 
-          <ChartRelatedBlogs chartPath={currentPath} locale={locale} />
-        </section>
-      </div>
-    </div>
+          <div className="lg:border-[#ebebeb] lg:border-l lg:pl-8">
+            <h3 className="font-semibold text-[#171717] text-xl tracking-[-0.6px]">
+              {t('quickDecisionChecklistConfidenceTitle')}
+            </h3>
+            <div className="mt-4 space-y-3">
+              {[1, 2, 3, 4, 5].map((index) => (
+                <p
+                  className="text-[#4d4d4d] text-sm leading-6 sm:text-base"
+                  key={`quick-confidence-${index}`}
+                >
+                  {withChartLinks(
+                    t(`quickDecisionChecklistConfidenceItem${index}`),
+                    `quick-confidence-${index}`,
+                    currentPath
+                  )}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </ChartLandingPage>
   );
 }

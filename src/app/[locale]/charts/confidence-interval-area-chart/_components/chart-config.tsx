@@ -103,40 +103,18 @@ export function ChartConfigPanel({
           />
         </label>
 
-        <div className="grid gap-4">
-          <div className="flex flex-col gap-3">
-            <span className="font-medium text-[#4d4d4d] text-xs">
-              Line Color
-            </span>
-            {mounted ? (
-              <div className="compact-picker-container rounded-md border border-[#ebebeb] bg-white p-2">
-                <CompactPicker
-                  color={settings.lineColor}
-                  onChange={(color) => updateSetting('lineColor', color.hex)}
-                />
-              </div>
-            ) : (
-              <div className="h-[90px]" />
-            )}
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <span className="font-medium text-[#4d4d4d] text-xs">
-              Confidence Band Color
-            </span>
-            {mounted ? (
-              <div className="compact-picker-container rounded-md border border-[#ebebeb] bg-white p-2">
-                <CompactPicker
-                  color={settings.intervalColor}
-                  onChange={(color) =>
-                    updateSetting('intervalColor', color.hex)
-                  }
-                />
-              </div>
-            ) : (
-              <div className="h-[90px]" />
-            )}
-          </div>
+        <div className="flex flex-col gap-3">
+          <span className="font-medium text-[#4d4d4d] text-xs">Line Color</span>
+          {mounted ? (
+            <div className="compact-picker-container rounded-md border border-[#ebebeb] bg-white p-2">
+              <CompactPicker
+                color={settings.lineColor}
+                onChange={(color) => updateSetting('lineColor', color.hex)}
+              />
+            </div>
+          ) : (
+            <div className="h-[90px]" />
+          )}
         </div>
 
         <div className="border-[#ebebeb] border-t pt-5">

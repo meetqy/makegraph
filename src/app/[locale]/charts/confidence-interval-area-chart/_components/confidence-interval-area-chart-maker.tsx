@@ -29,7 +29,6 @@ export type ChartSettings = {
   intervalLabel: string;
   yAxisLabel: string;
   lineColor: string;
-  intervalColor: string;
   showLegend: boolean;
   showGrid: boolean;
 };
@@ -49,7 +48,6 @@ const initialSettings: ChartSettings = {
   intervalLabel: '95% Confidence Interval',
   yAxisLabel: 'Orders',
   lineColor: '#171717',
-  intervalColor: '#9ca3af',
   showLegend: true,
   showGrid: true,
 };

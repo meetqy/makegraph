@@ -44,6 +44,29 @@ function formatNumber(value: number) {
   return numberFormatter.format(Number.isFinite(value) ? value : 0);
 }
 
+function withAlpha(hexColor: string, alpha: number) {
+  const normalizedHex = hexColor.replace('#', '').trim();
+  const safeAlpha = Math.max(0, Math.min(1, alpha));
+
+  if (!/^[\da-f]{3}([\da-f]{3})?$/iu.test(normalizedHex)) {
+    return `rgba(23, 23, 23, ${safeAlpha})`;
+  }
+
+  const expandedHex =
+    normalizedHex.length === 3
+      ? normalizedHex
+          .split('')
+          .map((char) => `${char}${char}`)
+          .join('')
+      : normalizedHex;
+
+  const red = Number.parseInt(expandedHex.slice(0, 2), 16);
+  const green = Number.parseInt(expandedHex.slice(2, 4), 16);
+  const blue = Number.parseInt(expandedHex.slice(4, 6), 16);
+
+  return `rgba(${red}, ${green}, ${blue}, ${safeAlpha})`;
+}
+
 export function ChartPreview({ data, settings }: ChartPreviewProps) {
   const exportTargetRef = useRef<HTMLDivElement>(null);
 
@@ -74,6 +97,8 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
   }, [data]);
 
   const chartOption = useMemo<EChartsOption>(() => {
+    const intervalFillColor = withAlpha(settings.lineColor, 0.24);
+
     return {
       animation: false,
       grid: {
@@ -192,8 +217,7 @@ export function ChartPreview({ data, settings }: ChartPreviewProps) {
             opacity: 0,
           },
           areaStyle: {
-            color: settings.intervalColor,
-            opacity: 0.24,
+            color: intervalFillColor,
           },
           tooltip: {
             show: false,
