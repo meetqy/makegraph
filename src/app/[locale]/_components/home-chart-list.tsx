@@ -34,6 +34,9 @@ export function HomeChartList({
   const searchParams = useSearchParams();
   const tHome = useTranslations('Home');
   const tLine = useTranslations('LineChart');
+  const tConfidenceIntervalArea = useTranslations(
+    'ConfidenceIntervalAreaChart'
+  );
   const tScatter = useTranslations('ScatterChart');
   const tCorrelation = useTranslations('CorrelationChart');
   const tMarimekko = useTranslations('MarimekkoChart');
@@ -53,6 +56,8 @@ export function HomeChartList({
     switch (href) {
       case '/charts/line-chart':
         return tLine;
+      case '/charts/confidence-interval-area-chart':
+        return tConfidenceIntervalArea;
       case '/charts/scatter-chart':
         return tScatter;
       case '/charts/correlation-matrix-chart':
@@ -113,6 +118,7 @@ export function HomeChartList({
     activeTag,
     tBar,
     tBandSeating,
+    tConfidenceIntervalArea,
     tCorrelation,
     tBarRace,
     tDoubleBar,

@@ -20,6 +20,15 @@ export const chartTypeItems: ChartTypeItem[] = [
     tags: ['line-chart'],
   },
   {
+    name: 'Confidence Interval Area Chart',
+    description:
+      'Free online confidence interval area chart maker. Plot an estimate line with a shaded confidence band to show forecast ranges, regression intervals, and statistical uncertainty.',
+    href: '/charts/confidence-interval-area-chart',
+    icon: BarChart3,
+    image: '/charts/confidence-interval-area-chart-og-image.png',
+    tags: ['line-chart'],
+  },
+  {
     name: 'Scatter Chart',
     description:
       'Free online scatter chart maker. Plot relationships between two numeric variables, edit x and y values in a table, and preview the result instantly.',

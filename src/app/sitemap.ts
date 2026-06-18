@@ -44,6 +44,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${siteUrl}/charts/confidence-interval-area-chart`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: getI18nAlternates('/charts/confidence-interval-area-chart'),
+      },
+    },
+    {
       url: `${siteUrl}/charts/correlation-matrix-chart`,
       lastModified: now,
       changeFrequency: 'monthly',

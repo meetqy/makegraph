@@ -44,6 +44,9 @@ export const friendLinks: string[] = [
 
 function FooterChartLink({ item }: { item: ChartTypeItem }) {
   const tLine = useTranslations('LineChart');
+  const tConfidenceIntervalArea = useTranslations(
+    'ConfidenceIntervalAreaChart'
+  );
   const tScatter = useTranslations('ScatterChart');
   const tCorrelation = useTranslations('CorrelationChart');
   const tMarimekko = useTranslations('MarimekkoChart');
@@ -63,6 +66,8 @@ function FooterChartLink({ item }: { item: ChartTypeItem }) {
     switch (href) {
       case '/charts/line-chart':
         return tLine;
+      case '/charts/confidence-interval-area-chart':
+        return tConfidenceIntervalArea;
       case '/charts/scatter-chart':
         return tScatter;
       case '/charts/correlation-matrix-chart':
