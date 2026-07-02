@@ -55,6 +55,7 @@ function FooterChartLink({ item }: { item: ChartTypeItem }) {
   const tSunburst = useTranslations('SunburstChart');
   const tBandSeating = useTranslations('BandSeatingChart');
   const tBar = useTranslations('BarChart');
+  const tPareto = useTranslations('ParetoChart');
   const tBarRace = useTranslations('BarChartRace');
   const tDoubleBar = useTranslations('DoubleBarChart');
   const tStackedBar = useTranslations('StackedBarChart');
@@ -84,6 +85,8 @@ function FooterChartLink({ item }: { item: ChartTypeItem }) {
         return tBandSeating;
       case '/charts/bar-chart':
         return tBar;
+      case '/charts/pareto-chart':
+        return tPareto;
       case '/charts/bar-chart-race':
         return tBarRace;
       case '/charts/double-bar-chart':

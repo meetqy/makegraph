@@ -98,6 +98,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${siteUrl}/charts/pareto-chart`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: getI18nAlternates('/charts/pareto-chart'),
+      },
+    },
+    {
       url: `${siteUrl}/charts/bar-chart-race`,
       lastModified: now,
       changeFrequency: 'monthly',

@@ -71,6 +71,7 @@ const CHART_LINK_PATTERNS: Array<[RegExp, string]> = [
   [/scatter chart/gi, '/charts/scatter-chart'],
   [/line chart/gi, '/charts/line-chart'],
   [/bar chart race/gi, '/charts/bar-chart-race'],
+  [/pareto chart/gi, '/charts/pareto-chart'],
   [/regular bar chart/gi, '/charts/bar-chart'],
   [/bar chart/gi, '/charts/bar-chart'],
 
@@ -94,6 +95,7 @@ const CHART_LINK_PATTERNS: Array<[RegExp, string]> = [
   [/散点图/gi, '/charts/scatter-chart'],
   [/折线图/gi, '/charts/line-chart'],
   [/动态排序柱状图/gi, '/charts/bar-chart-race'],
+  [/帕累托图/gi, '/charts/pareto-chart'],
   [/常规柱状图/gi, '/charts/bar-chart'],
   [/柱状图/gi, '/charts/bar-chart'],
 ];

@@ -92,6 +92,15 @@ export const chartTypeItems: ChartTypeItem[] = [
     tags: ['band-seating-chart'],
   },
   {
+    name: 'Pareto Chart',
+    description:
+      'Free online Pareto chart maker. Rank categories, plot the cumulative percentage line, and analyze the key few causes behind most of the impact.',
+    href: '/charts/pareto-chart',
+    icon: BarChart3,
+    image: '/charts/pareto-chart-og-image.png',
+    tags: ['bar-chart'],
+  },
+  {
     name: 'Bar Chart',
     description:
       'Free online bar chart maker. Easily compare category data, customize labels and colors, and preview results instantly for reports and presentations.',

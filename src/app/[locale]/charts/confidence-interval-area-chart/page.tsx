@@ -289,7 +289,7 @@ export default async function ConfidenceIntervalAreaChartPage({
           currentPath
         ),
         buttonLabel: t('ctaButton'),
-        buttonHref: '#',
+        buttonHref: '#chart-editor',
       }}
       chartPath={currentPath}
       locale={locale}

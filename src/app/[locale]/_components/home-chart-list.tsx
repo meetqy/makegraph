@@ -44,6 +44,7 @@ export function HomeChartList({
   const tTreeMap = useTranslations('TreeMapChart');
   const tSunburst = useTranslations('SunburstChart');
   const tBar = useTranslations('BarChart');
+  const tPareto = useTranslations('ParetoChart');
   const tBandSeating = useTranslations('BandSeatingChart');
   const tBarRace = useTranslations('BarChartRace');
   const tDoubleBar = useTranslations('DoubleBarChart');
@@ -74,6 +75,8 @@ export function HomeChartList({
         return tBandSeating;
       case '/charts/bar-chart':
         return tBar;
+      case '/charts/pareto-chart':
+        return tPareto;
       case '/charts/bar-chart-race':
         return tBarRace;
       case '/charts/double-bar-chart':
@@ -125,6 +128,7 @@ export function HomeChartList({
     tLine,
     tMarimekko,
     tNegativeBar,
+    tPareto,
     tPopulationPyramid,
     tRadar,
     tScatter,

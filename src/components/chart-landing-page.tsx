@@ -93,7 +93,7 @@ export function ChartLandingPage({
         title={hero.title}
         description={hero.description}
       />
-      <div className="chart-editor-shell">
+      <div id="chart-editor" className="chart-editor-shell scroll-mt-24">
         <div className="chart-editor-frame">{editor}</div>
       </div>
       <div className="relative border-[#ebebeb] border-t bg-white">
